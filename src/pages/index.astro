@@ -6,25 +6,28 @@ import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import services from '../data/services.json';
 
-// Group services by owner - split into priority "Biggest Enablers" and secondary
-const priorityOwners = ['Zuckerberg', 'Musk', 'Bezos', 'Altman', 'Ellison', 'Pichai'];
-const secondaryOwners = ['Ek', 'Hastings', 'Iger', 'Nadella', 'Roberts', 'Zaslav', 'Zhang Yiming'];
+// Split services into Defund (paid) and Disconnect (social/free)
+const socialIds = ['facebook', 'instagram', 'tiktok', 'x'];
+const defundServices = services.filter(s => !socialIds.includes(s.id));
+const disconnectServices = services.filter(s => socialIds.includes(s.id));
 
-const priorityGroups = priorityOwners
+// Group defund services by owner
+const defundOwnerOrder = ['Bezos', 'Altman', 'Pichai', 'Ellison', 'Ek', 'Hastings', 'Iger', 'Nadella', 'Roberts', 'Zaslav'];
+const defundGroups = defundOwnerOrder
   .map(owner => ({
     owner,
-    services: services.filter(s => s.owner === owner)
+    services: defundServices.filter(s => s.owner === owner)
   }))
   .filter(group => group.services.length > 0);
 
-const secondaryGroups = secondaryOwners
+// Group disconnect services by owner
+const disconnectOwnerOrder = ['Zuckerberg', 'Musk', 'Zhang Yiming'];
+const disconnectGroups = disconnectOwnerOrder
   .map(owner => ({
     owner,
-    services: services.filter(s => s.owner === owner)
+    services: disconnectServices.filter(s => s.owner === owner)
   }))
   .filter(group => group.services.length > 0);
-
-const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.services.length, 0);
 ---
 
 <BaseLayout title="Cut Them Off">
@@ -45,10 +48,17 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
       <strong>Not ready to quit forever?</strong> Start with 90 days. That's one earnings quarter—long enough to show up in their numbers and make shareholders nervous.
     </div>
 
-    <div class="priority-section">
-      <h3 class="section-label">Biggest Enablers</h3>
+    <!-- Step 1: Defund -->
+    <div class="step-section">
+      <div class="step-header">
+        <span class="step-number">1</span>
+        <div class="step-info">
+          <h3 class="step-title">Defund</h3>
+          <p class="step-desc">Cancel subscriptions. Immediate impact, easy wins.</p>
+        </div>
+      </div>
       <div class="owner-groups">
-        {priorityGroups.map((group) => (
+        {defundGroups.map((group) => (
           <div class="owner-group">
             <h4 class="owner-name">{group.owner}</h4>
             <div class="owner-services">
@@ -88,16 +98,17 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
       </div>
     </div>
 
-    <button type="button" class="expand-btn" id="expand-services">
-      <span class="expand-text">Show {secondaryServiceCount} more services</span>
-      <svg class="expand-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
-
-    <div class="secondary-section hidden" id="secondary-services">
+    <!-- Step 2: Disconnect -->
+    <div class="step-section">
+      <div class="step-header">
+        <span class="step-number">2</span>
+        <div class="step-info">
+          <h3 class="step-title">Disconnect</h3>
+          <p class="step-desc">Leave their platforms. Harder, but it sends a message.</p>
+        </div>
+      </div>
       <div class="owner-groups">
-        {secondaryGroups.map((group) => (
+        {disconnectGroups.map((group) => (
           <div class="owner-group">
             <h4 class="owner-name">{group.owner}</h4>
             <div class="owner-services">
@@ -327,72 +338,47 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     line-height: 1.5;
   }
 
-  .tip-label {
-    font-weight: 700;
-    color: var(--accent);
-    margin-right: 0.25rem;
+  /* Step sections */
+  .step-section {
+    margin-bottom: 2rem;
   }
 
-  .tip-text {
-    color: var(--text);
+  .step-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
   }
 
-  .priority-section {
-    margin-bottom: 1.5rem;
-  }
-
-  .priority-section .owner-name {
-    border-bottom-color: #b91c1c;
-  }
-
-  .section-label {
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--muted);
-    margin: 0 0 1rem 0;
-    text-align: center;
-  }
-
-  .expand-btn {
+  .step-number {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.75rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--muted);
-    transition: all 0.2s;
+    width: 2rem;
+    height: 2rem;
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50%;
+    flex-shrink: 0;
   }
 
-  .expand-btn:hover {
-    border-color: var(--accent);
+  .step-info {
+    flex: 1;
+  }
+
+  .step-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
     color: var(--text);
   }
 
-  .expand-arrow {
-    width: 1rem;
-    height: 1rem;
-    transition: transform 0.2s;
-  }
-
-  .expand-btn.expanded .expand-arrow {
-    transform: rotate(180deg);
-  }
-
-  .secondary-section {
-    margin-top: 1rem;
-  }
-
-  .secondary-section.hidden {
-    display: none;
+  .step-desc {
+    margin: 0.25rem 0 0 0;
+    font-size: 0.9rem;
+    color: var(--muted);
   }
 
   .owner-groups {
@@ -988,16 +974,4 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     }
   }
 
-  // Expand/collapse secondary services
-  const expandBtn = document.getElementById('expand-services');
-  const secondarySection = document.getElementById('secondary-services');
-  const expandText = expandBtn?.querySelector('.expand-text');
-
-  expandBtn?.addEventListener('click', () => {
-    const isExpanded = expandBtn.classList.toggle('expanded');
-    secondarySection?.classList.toggle('hidden', !isExpanded);
-    if (expandText) {
-      expandText.textContent = isExpanded ? 'Show fewer' : 'Show 9 more services';
-    }
-  });
 </script>
