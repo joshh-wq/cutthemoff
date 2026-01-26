@@ -46,8 +46,8 @@ import services from '../data/services.json';
   </section>
 
   <section class="share-section hidden">
-    <h3 class="share-cta">Multiply the impact</h3>
-    <p class="share-hint">You're cutting off <span id="share-amount">$0</span>/year. If 10 friends join you, that's <span id="share-multiplied">$0</span> Big Tech won't see.</p>
+    <h3 class="share-cta">Multiply your impact</h3>
+    <p class="share-hint">If 10 friends join you, that's <span id="share-multiplied">$0</span> these companies won't see.</p>
     <p class="share-hint-small">Send via text, email, or Signal.</p>
     <button type="button" class="btn btn-success" id="share-btn">Share the strike</button>
     <span class="share-feedback hidden" id="share-feedback">Link copied!</span>
@@ -288,7 +288,6 @@ import services from '../data/services.json';
   const shareTextEl = document.getElementById('share-text');
   const shareBtn = document.getElementById('share-btn');
   const shareFeedback = document.getElementById('share-feedback');
-  const shareAmountEl = document.getElementById('share-amount');
   const shareMultipliedEl = document.getElementById('share-multiplied');
 
   function formatMoney(amount: number): string {
@@ -321,13 +320,11 @@ import services from '../data/services.json';
 
     if (annual > 0) {
       if (annualSavingsEl) annualSavingsEl.textContent = `${formatMoney(annual)}/year`;
-      if (shareAmountEl) shareAmountEl.textContent = formatMoney(annual);
       if (shareMultipliedEl) shareMultipliedEl.textContent = formatMoney(multiplied);
       if (shareTextEl) {
         shareTextEl.textContent = `I'm cutting off ${formatMoney(annual)}/year from Big Tech. If you join me, we multiply the impact. https://cutthemoff.vercel.app`;
       }
     } else {
-      if (shareAmountEl) shareAmountEl.textContent = '$0';
       if (shareMultipliedEl) shareMultipliedEl.textContent = '$0';
       if (shareTextEl) {
         shareTextEl.textContent = `I'm cutting off Big Tech. If you join me, we multiply the impact. https://cutthemoff.vercel.app`;
