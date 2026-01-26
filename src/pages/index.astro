@@ -31,9 +31,10 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
   <Header slot="header" />
 
   <Hero headline="Cut Them Off.">
+    <div class="accent-bar"></div>
     <p class="subtext intro-line">Billionaires bent the knee to this regime because they only care about one thing: their bottom line.</p>
     <p class="subtext punch-line">Fine. We speak that language too.</p>
-    <p class="subtext intro-line">Every subscription you cancel is money out of their pockets. Every account you delete makes shareholders nervous. Hit them where it hurts—it's the only thing they understand.</p>
+    <p class="subtext intro-line last">Every subscription you cancel is money out of their pockets. Every account you delete makes shareholders nervous. Hit them where it hurts—it's the only thing they understand.</p>
   </Hero>
 
   <section class="selector">
@@ -158,6 +159,14 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
 </BaseLayout>
 
 <style>
+  .accent-bar {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 1.5rem;
+    border-radius: 2px;
+  }
+
   .subtext {
     font-size: 1.1rem;
     color: var(--muted);
@@ -167,14 +176,18 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
   }
 
   .subtext.intro-line {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .subtext.intro-line.last {
+    margin-bottom: 0;
   }
 
   .subtext.punch-line {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text);
-    margin: 1.5rem auto;
+    margin: 1.25rem auto;
   }
 
   .subtext.cta {
@@ -253,7 +266,7 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
   }
 
   .selector {
-    padding: 1.5rem 0;
+    padding: 1rem 0 1.5rem;
   }
 
   .selector h2 {
