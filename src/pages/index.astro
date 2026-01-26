@@ -7,7 +7,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 import services from '../data/services.json';
 
 // Split services into Defund (paid) and Disconnect (social/free)
-const socialIds = ['facebook', 'instagram', 'tiktok', 'x'];
+const socialIds = ['facebook', 'instagram', 'threads', 'tiktok', 'x'];
 const defundServices = services.filter(s => !socialIds.includes(s.id));
 const disconnectServices = services.filter(s => socialIds.includes(s.id));
 

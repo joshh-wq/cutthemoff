@@ -38,6 +38,26 @@
     }
   },
   {
+    "id": "threads",
+    "name": "Threads",
+    "owner": "Zuckerberg",
+    "category": "Social Media",
+    "monthlyPrice": 0,
+    "reason": "Meta's Twitter clone. Same Zuckerberg, same data harvesting, same complicity. Bluesky exists.",
+    "cancelUrl": "https://help.instagram.com/articles/679607907498750",
+    "cancelSteps": [
+      "Open Threads app",
+      "Go to Settings > Account",
+      "Tap 'Deactivate or delete profile'",
+      "Choose delete (note: deleting Threads can affect Instagram)"
+    ],
+    "alternative": {
+      "name": "Bluesky",
+      "description": "Decentralized, open protocol, no Zuckerberg.",
+      "url": "https://bsky.app"
+    }
+  },
+  {
     "id": "tiktok",
     "name": "TikTok",
     "owner": "Zhang Yiming",
