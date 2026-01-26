@@ -237,7 +237,7 @@ const deleteGroups = deleteOwnerOrder
       </button>
     </div>
     <span class="share-feedback hidden" id="share-feedback" role="status" aria-live="polite">Copied! Now paste in Signal or anywhere.</span>
-    <p class="share-text hidden" id="share-text">I'm cutting off billionaires who bent the knee. Join me. https://cutthemoff.vercel.app</p>
+    <p class="share-text hidden" id="share-text">I'm cutting off billionaires who bent the knee. Join me. https://defundbillionaires.org</p>
   </section>
 
   <!-- Sticky bottom bar for mobile -->
@@ -972,14 +972,14 @@ const deleteGroups = deleteOwnerOrder
       animateCounter(annual, annualSavingsEl, '/year');
       if (stickyAmount) stickyAmount.textContent = formatMoney(annual);
       if (shareTextEl) {
-        shareTextEl.textContent = `I'm cutting off ${formatMoney(annual)}/year from ${ownerCount} billionaire${ownerCount === 1 ? '' : 's'}. Join me. https://cutthemoff.vercel.app`;
+        shareTextEl.textContent = `I'm cutting off ${formatMoney(annual)}/year from ${ownerCount} billionaire${ownerCount === 1 ? '' : 's'}. Join me. https://defundbillionaires.org`;
       }
     } else {
       currentDisplayedAmount = 0;
       if (annualSavingsEl) annualSavingsEl.textContent = '$0/year';
       if (stickyAmount) stickyAmount.textContent = '$0';
       if (shareTextEl) {
-        shareTextEl.textContent = `I'm cutting off billionaires who bent the knee. Join me. https://cutthemoff.vercel.app`;
+        shareTextEl.textContent = `I'm cutting off billionaires who bent the knee. Join me. https://defundbillionaires.org`;
       }
     }
 
@@ -1018,7 +1018,7 @@ const deleteGroups = deleteOwnerOrder
     const text = shareTextEl?.textContent || '';
     if (navigator.share) {
       try {
-        await navigator.share({ text, url: 'https://cutthemoff.vercel.app' });
+        await navigator.share({ text, url: 'https://defundbillionaires.org' });
       } catch (err) {
         // User cancelled
       }
