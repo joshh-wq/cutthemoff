@@ -12,7 +12,7 @@ const defundServices = services.filter(s => !socialIds.includes(s.id));
 const disconnectServices = services.filter(s => socialIds.includes(s.id));
 
 // Group defund services by owner
-const defundOwnerOrder = ['Bezos', 'Altman', 'Pichai', 'Ellison', 'Ek', 'Hastings', 'Iger', 'Nadella', 'Roberts', 'Zaslav'];
+const defundOwnerOrder = ['Jeff Bezos', 'Sam Altman', 'Sundar Pichai', 'Larry Ellison', 'Daniel Ek', 'Reed Hastings', 'Bob Iger', 'Satya Nadella', 'Brian Roberts', 'David Zaslav'];
 const defundGroups = defundOwnerOrder
   .map(owner => ({
     owner,
@@ -21,7 +21,7 @@ const defundGroups = defundOwnerOrder
   .filter(group => group.services.length > 0);
 
 // Group disconnect services by owner
-const disconnectOwnerOrder = ['Zuckerberg', 'Musk', 'Zhang Yiming'];
+const disconnectOwnerOrder = ['Mark Zuckerberg', 'Elon Musk', 'Zhang Yiming'];
 const disconnectGroups = disconnectOwnerOrder
   .map(owner => ({
     owner,

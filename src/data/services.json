@@ -2,7 +2,7 @@
   {
     "id": "facebook",
     "name": "Facebook",
-    "owner": "Zuckerberg",
+    "owner": "Mark Zuckerberg",
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "Zuckerberg killed fact-checking, dined at Mar-a-Lago, and donated $1M to the inauguration. Your data is their product. Take it back.",
@@ -21,7 +21,7 @@
   {
     "id": "instagram",
     "name": "Instagram",
-    "owner": "Zuckerberg",
+    "owner": "Mark Zuckerberg",
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "Same company, same Zuckerberg, same complicity. Your attention is their revenue. Cut them off.",
@@ -40,7 +40,7 @@
   {
     "id": "threads",
     "name": "Threads",
-    "owner": "Zuckerberg",
+    "owner": "Mark Zuckerberg",
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "Meta's Twitter clone. Same Zuckerberg, same data harvesting, same complicity. Bluesky exists.",
@@ -79,7 +79,7 @@
   {
     "id": "x",
     "name": "X (formerly Twitter)",
-    "owner": "Musk",
+    "owner": "Elon Musk",
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "Musk runs a federal department now. Every post, like, and view gives him leverage. Walk away.",
@@ -99,7 +99,7 @@
   {
     "id": "spotify",
     "name": "Spotify",
-    "owner": "Ek",
+    "owner": "Daniel Ek",
     "category": "Streaming",
     "monthlyPrice": 11.99,
     "reason": "Joe Rogan got $250M. Artists get fractions of a penny. Leadership stays silent. The free tier still works.",
@@ -118,7 +118,7 @@
   {
     "id": "netflix",
     "name": "Netflix",
-    "owner": "Hastings",
+    "owner": "Reed Hastings",
     "category": "Streaming",
     "monthlyPrice": 15.49,
     "reason": "Co-founder Reed Hastings bankrolls Republican candidates. Stop funding it.",
@@ -137,7 +137,7 @@
   {
     "id": "amazon-prime",
     "name": "Amazon Prime",
-    "owner": "Bezos",
+    "owner": "Jeff Bezos",
     "category": "Streaming",
     "monthlyPrice": 14.99,
     "reason": "Bezos owns the Washington Post and met with Trump. Prime funds union-busting and political access. End it.",
@@ -156,7 +156,7 @@
   {
     "id": "chatgpt",
     "name": "ChatGPT Plus",
-    "owner": "Altman",
+    "owner": "Sam Altman",
     "category": "AI",
     "monthlyPrice": 20.00,
     "reason": "Sam Altman made the pilgrimage to Mar-a-Lago. OpenAI spends millions lobbying in DC. You don't have to fund it.",
@@ -175,7 +175,7 @@
   {
     "id": "disney-plus",
     "name": "Disney+",
-    "owner": "Iger",
+    "owner": "Bob Iger",
     "category": "Streaming",
     "monthlyPrice": 13.99,
     "reason": "Bob Iger plays nice with whoever holds power. Disney caves to pressure—make sure it's ours.",
@@ -194,7 +194,7 @@
   {
     "id": "max",
     "name": "Max",
-    "owner": "Zaslav",
+    "owner": "David Zaslav",
     "category": "Streaming",
     "monthlyPrice": 16.99,
     "reason": "David Zaslav gutted HBO, slashed jobs, and stays silent. Keep your $17.",
@@ -213,7 +213,7 @@
   {
     "id": "hulu",
     "name": "Hulu",
-    "owner": "Iger",
+    "owner": "Bob Iger",
     "category": "Streaming",
     "monthlyPrice": 17.99,
     "reason": "Disney owns this too. Canceling Hulu and Disney+ sends the same message twice.",
@@ -232,7 +232,7 @@
   {
     "id": "paramount-plus",
     "name": "Paramount+",
-    "owner": "Ellison",
+    "owner": "Larry Ellison",
     "category": "Streaming",
     "monthlyPrice": 12.99,
     "reason": "Paramount's leadership plays it safe while democracy burns. Your subscription funds their silence.",
@@ -251,7 +251,7 @@
   {
     "id": "peacock",
     "name": "Peacock",
-    "owner": "Roberts",
+    "owner": "Brian Roberts",
     "category": "Streaming",
     "monthlyPrice": 7.99,
     "reason": "Comcast owns NBC and plays both sides. Your monthly fee funds their access game.",
@@ -270,7 +270,7 @@
   {
     "id": "copilot",
     "name": "Microsoft Copilot Pro",
-    "owner": "Nadella",
+    "owner": "Satya Nadella",
     "category": "AI",
     "monthlyPrice": 20.00,
     "reason": "Microsoft bankrolls OpenAI and plays both sides of every political fence. Cut the cord.",
@@ -289,7 +289,7 @@
   {
     "id": "youtube-premium",
     "name": "YouTube Premium",
-    "owner": "Pichai",
+    "owner": "Sundar Pichai",
     "category": "Streaming",
     "monthlyPrice": 13.99,
     "reason": "Google's CEO met with Trump and stays quiet while cashing your checks. The free tier still works—just with ads.",
