@@ -61,6 +61,28 @@ const deleteGroups = deleteOwnerOrder
     <p class="selector-help">Pick one to start. Not ready to quit forever? Try 90 days.</p>
     <p class="urgency-callout">Q1 earnings close March 31. Cancel before then to hit their numbers.</p>
 
+    <div class="countdown" id="countdown" aria-label="Time remaining until Q1 earnings close">
+      <div class="countdown-unit">
+        <span class="countdown-number" id="countdown-days">--</span>
+        <span class="countdown-label">days</span>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="countdown-hours">--</span>
+        <span class="countdown-label">hours</span>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="countdown-minutes">--</span>
+        <span class="countdown-label">min</span>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="countdown-seconds">--</span>
+        <span class="countdown-label">sec</span>
+      </div>
+    </div>
+
     <!-- Step 1: Defund -->
     <div class="step-section">
       <div class="step-header">
@@ -413,8 +435,67 @@ const deleteGroups = deleteOwnerOrder
     text-align: center;
     font-weight: 600;
     color: #dc2626;
-    margin: 0 0 2.5rem 0;
+    margin: 0 0 1.5rem 0;
     font-size: 1rem;
+  }
+
+  .countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .countdown-number {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text);
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    min-width: 3.25rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .countdown-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+  }
+
+  .countdown-separator {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--muted);
+    padding-bottom: 1.25rem;
+  }
+
+  @media (min-width: 400px) {
+    .countdown {
+      gap: 0.5rem;
+    }
+
+    .countdown-number {
+      font-size: 2.25rem;
+      padding: 0.625rem 1rem;
+      min-width: 4rem;
+    }
+
+    .countdown-separator {
+      font-size: 2rem;
+    }
   }
 
   /* Step sections */
@@ -1069,6 +1150,41 @@ const deleteGroups = deleteOwnerOrder
 
   // Initialize share links on page load
   updateShareLinks();
+
+  // Countdown timer to Q1 end (March 31, 2026 at midnight)
+  const q1End = new Date('2026-03-31T23:59:59').getTime();
+  const daysEl = document.getElementById('countdown-days');
+  const hoursEl = document.getElementById('countdown-hours');
+  const minutesEl = document.getElementById('countdown-minutes');
+  const secondsEl = document.getElementById('countdown-seconds');
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = q1End - now;
+
+    if (distance < 0) {
+      // Q1 is over
+      if (daysEl) daysEl.textContent = '00';
+      if (hoursEl) hoursEl.textContent = '00';
+      if (minutesEl) minutesEl.textContent = '00';
+      if (secondsEl) secondsEl.textContent = '00';
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+  }
+
+  // Update immediately and then every second
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 
   // View more button functionality
   const defundViewMoreBtn = document.getElementById('defund-view-more');
