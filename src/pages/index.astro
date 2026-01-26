@@ -30,7 +30,7 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
 <BaseLayout title="Cut Them Off">
   <Header slot="header" />
 
-  <Hero headline="Cut Them Off.">
+  <Hero headline="Cut Them Off">
     <div class="accent-bar"></div>
     <p class="subtext intro-line">Billionaires bent the knee to this regime because they only care about one thing: their bottom line.</p>
     <p class="subtext punch-line">Fine. We speak that language too.</p>
@@ -266,7 +266,9 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
   }
 
   .selector {
-    padding: 1rem 0 1.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+    margin-top: 1.5rem;
   }
 
   .selector h2 {
