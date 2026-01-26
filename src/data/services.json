@@ -304,5 +304,25 @@
       "description": "Free tier still works. Or run open-source models locally with Ollama.",
       "url": "https://ollama.ai"
     }
+  },
+  {
+    "id": "apple-tv-plus",
+    "name": "Apple TV+",
+    "owner": "Tim Cook",
+    "category": "Streaming",
+    "monthlyPrice": 9.99,
+    "reason": "Tim Cook presented Trump with a gold-plated award in the Oval Office and attended Melania's documentary screening at the White House.",
+    "cancelUrl": "https://support.apple.com/en-us/HT202039",
+    "cancelSteps": [
+      "Open Settings on your iPhone/iPad",
+      "Tap your name, then Subscriptions",
+      "Tap Apple TV+",
+      "Tap Cancel Subscription"
+    ],
+    "alternative": {
+      "name": "Kanopy",
+      "description": "Free with your library card. Quality films and documentaries.",
+      "url": "https://www.kanopy.com/en/signup"
+    }
   }
 ]
