@@ -5,10 +5,10 @@ import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import services from '../data/services.json';
 
-// Split services into Defund (paid) and Disconnect (social/free)
+// Split services into Defund (paid) and Delete (social/free)
 const socialIds = ['facebook', 'instagram', 'threads', 'tiktok', 'x'];
 const defundServices = services.filter(s => !socialIds.includes(s.id));
-const disconnectServices = services.filter(s => socialIds.includes(s.id));
+const deleteServices = services.filter(s => socialIds.includes(s.id));
 
 // Group defund services by owner - split into initial and more
 const defundInitialOwners = ['Jeff Bezos', 'Sam Altman', 'Sundar Pichai', 'Larry Ellison'];
@@ -28,12 +28,12 @@ const defundMoreGroups = defundMoreOwners
   }))
   .filter(group => group.services.length > 0);
 
-// Group disconnect services by owner
-const disconnectOwnerOrder = ['Mark Zuckerberg', 'Elon Musk', 'Zhang Yiming'];
-const disconnectGroups = disconnectOwnerOrder
+// Group delete services by owner
+const deleteOwnerOrder = ['Mark Zuckerberg', 'Elon Musk', 'Zhang Yiming'];
+const deleteGroups = deleteOwnerOrder
   .map(owner => ({
     owner,
-    services: disconnectServices.filter(s => s.owner === owner)
+    services: deleteServices.filter(s => s.owner === owner)
   }))
   .filter(group => group.services.length > 0);
 ---
@@ -45,12 +45,12 @@ const disconnectGroups = disconnectOwnerOrder
     <p class="subtext intro-line">Billionaires bent the knee to this regime because they only care about one thing: their bottom line.</p>
     <p class="subtext punch-line">Fine. We speak that language too.</p>
     <p class="subtext intro-line">Every subscription you cancel is money out of their pockets. Every account you delete makes shareholders nervous. Hit them where it hurts—it's the only thing they understand.</p>
-    <p class="subtext intro-line last">Two steps: defund them, then disconnect.</p>
+    <p class="subtext intro-line last">Two steps: defund them, then delete.</p>
   </Hero>
 
   <section class="selector">
     <div class="accent-bar" aria-hidden="true"></div>
-    <h2>Defund. Then Disconnect.</h2>
+    <h2>Defund. Then Delete.</h2>
     <p class="selector-help">Pick one to start. Not ready to quit forever?<br />90 days is one earnings quarter—enough to hit their numbers.</p>
 
     <!-- Step 1: Defund -->
@@ -150,17 +150,17 @@ const disconnectGroups = disconnectOwnerOrder
       </div>
     </div>
 
-    <!-- Step 2: Disconnect -->
+    <!-- Step 2: Delete -->
     <div class="step-section">
       <div class="step-header">
         <span class="step-number" aria-hidden="true">2</span>
         <div class="step-info">
-          <h3 class="step-title">Disconnect</h3>
-          <p class="step-desc">Leave their platforms. Harder, but it sends a message.</p>
+          <h3 class="step-title">Delete</h3>
+          <p class="step-desc">Delete your accounts. Harder, but it sends a message.</p>
         </div>
       </div>
       <div class="owner-groups">
-        {disconnectGroups.map((group) => (
+        {deleteGroups.map((group) => (
           <div class="owner-group">
             <h4 class="owner-name">{group.owner}</h4>
             <div class="owner-services">
