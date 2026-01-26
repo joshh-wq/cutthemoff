@@ -199,6 +199,42 @@
     }
   },
   {
+    "id": "paramount-plus",
+    "name": "Paramount+",
+    "category": "Streaming",
+    "monthlyPrice": 12.99,
+    "reason": "Paramount's leadership plays it safe while democracy burns. Your subscription funds their silence.",
+    "cancelUrl": "https://www.paramountplus.com/account/",
+    "cancelSteps": [
+      "Go to Account settings",
+      "Click 'Cancel Subscription'",
+      "Confirm cancellation"
+    ],
+    "alternative": {
+      "name": "Kanopy",
+      "description": "Free with your library card. Quality content, no corporate silence.",
+      "url": "https://www.kanopy.com/en/signup"
+    }
+  },
+  {
+    "id": "peacock",
+    "name": "Peacock",
+    "category": "Streaming",
+    "monthlyPrice": 7.99,
+    "reason": "Comcast owns NBC and plays both sides. Your monthly fee funds their access game.",
+    "cancelUrl": "https://www.peacocktv.com/account/",
+    "cancelSteps": [
+      "Go to Account settings",
+      "Click 'Cancel Plan'",
+      "Confirm cancellation"
+    ],
+    "alternative": {
+      "name": "Kanopy + Hoopla",
+      "description": "Free with your library card. No Comcast money.",
+      "url": "https://www.kanopy.com/en/signup"
+    }
+  },
+  {
     "id": "copilot",
     "name": "Microsoft Copilot Pro",
     "category": "AI",
