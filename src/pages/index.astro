@@ -139,6 +139,22 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     <p class="share-text hidden" id="share-text">I'm cutting off $0/year from companies supporting the current regime. If you join me, we multiply the impact. https://cutthemoff.vercel.app</p>
   </section>
 
+  <!-- Sticky bottom bar for mobile -->
+  <div class="sticky-bar hidden" id="sticky-bar">
+    <div class="sticky-content">
+      <div class="sticky-total">
+        <span class="sticky-amount" id="sticky-amount">$0</span>
+        <span class="sticky-label">/year</span>
+      </div>
+      <button type="button" class="sticky-share-btn" id="sticky-share">
+        Share
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
   <Footer slot="footer" />
 </BaseLayout>
 
@@ -371,14 +387,24 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     gap: 0.5rem;
     padding: 0.625rem 0.75rem;
     background: var(--card-bg);
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     border-radius: 8px;
     cursor: pointer;
-    transition: border-color 0.2s;
+    transition: all 0.2s ease;
   }
 
   .service-checkbox:hover {
     border-color: var(--accent);
+  }
+
+  .service-checkbox.selected {
+    border-color: var(--success);
+    background: rgba(5, 150, 105, 0.08);
+  }
+
+  .service-checkbox.selected .service-name {
+    color: var(--success);
+    font-weight: 600;
   }
 
   .service-checkbox input {
@@ -580,10 +606,95 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
       grid-template-columns: repeat(4, 1fr);
     }
   }
+
+  /* Sticky bottom bar */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--card-bg);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 1rem;
+    z-index: 100;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+  }
+
+  .sticky-bar.hidden {
+    transform: translateY(100%);
+  }
+
+  .sticky-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .sticky-total {
+    display: flex;
+    align-items: baseline;
+    gap: 0.125rem;
+  }
+
+  .sticky-amount {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--success);
+  }
+
+  .sticky-label {
+    font-size: 0.875rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .sticky-share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .sticky-share-btn:hover {
+    background: var(--accent-hover);
+  }
+
+  .sticky-share-btn svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /* Add padding to body when sticky bar is visible */
+  body.has-sticky-bar {
+    padding-bottom: 70px;
+  }
+
+  /* Hide sticky bar on larger screens */
+  @media (min-width: 768px) {
+    .sticky-bar {
+      display: none;
+    }
+    body.has-sticky-bar {
+      padding-bottom: 0;
+    }
+  }
 </style>
 
 <script>
   const checkboxes = document.querySelectorAll<HTMLInputElement>('.service-checkbox input');
+  const checkboxLabels = document.querySelectorAll('.service-checkbox');
   const cards = document.querySelectorAll('.service-card');
   const grid = document.querySelector('.services-grid');
   const emptyState = document.querySelector('.empty-state');
@@ -597,9 +708,46 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
   const shareCopy = document.getElementById('share-copy');
   const shareFeedback = document.getElementById('share-feedback');
   const shareMultipliedEl = document.getElementById('share-multiplied');
+  const stickyBar = document.getElementById('sticky-bar');
+  const stickyAmount = document.getElementById('sticky-amount');
+  const stickyShare = document.getElementById('sticky-share');
+
+  let currentDisplayedAmount = 0;
+  let animationFrame: number | null = null;
 
   function formatMoney(amount: number): string {
     return '$' + amount.toLocaleString('en-US');
+  }
+
+  // Animated counter
+  function animateCounter(targetAmount: number, element: HTMLElement | null, suffix: string = '') {
+    if (!element) return;
+
+    const startAmount = currentDisplayedAmount;
+    const diff = targetAmount - startAmount;
+    const duration = 400; // ms
+    const startTime = performance.now();
+
+    if (animationFrame) cancelAnimationFrame(animationFrame);
+
+    function update(currentTime: number) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Easing function for smooth animation
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(startAmount + diff * easeOut);
+
+      element.textContent = `${formatMoney(current)}${suffix}`;
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(update);
+      } else {
+        currentDisplayedAmount = targetAmount;
+      }
+    }
+
+    animationFrame = requestAnimationFrame(update);
   }
 
   function updateResults() {
@@ -607,13 +755,17 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     const selectedOwners = new Set<string>();
     let totalMonthly = 0;
 
-    checkboxes.forEach((cb) => {
+    checkboxes.forEach((cb, index) => {
+      const label = checkboxLabels[index];
       if (cb.checked) {
         selected.add(cb.value);
         totalMonthly += parseFloat(cb.dataset.price || '0');
         if (cb.dataset.owner) {
           selectedOwners.add(cb.dataset.owner);
         }
+        label?.classList.add('selected');
+      } else {
+        label?.classList.remove('selected');
       }
     });
 
@@ -628,7 +780,11 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     shareSection?.classList.toggle('hidden', !hasSelection);
     grid?.classList.toggle('active', hasSelection);
 
-    // Update savings display and share text
+    // Toggle sticky bar
+    stickyBar?.classList.toggle('hidden', !hasSelection);
+    document.body.classList.toggle('has-sticky-bar', hasSelection);
+
+    // Update savings display with animation
     const annualSavingsEl = document.getElementById('annual-savings');
     const ownerCountEl = document.getElementById('owner-count');
 
@@ -637,12 +793,16 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     }
 
     if (annual > 0) {
-      if (annualSavingsEl) annualSavingsEl.textContent = `${formatMoney(annual)}/year`;
+      animateCounter(annual, annualSavingsEl, '/year');
+      if (stickyAmount) stickyAmount.textContent = formatMoney(annual);
       if (shareMultipliedEl) shareMultipliedEl.textContent = formatMoney(multiplied);
       if (shareTextEl) {
         shareTextEl.textContent = `I'm cutting off ${formatMoney(annual)}/year from ${ownerCount} billionaire${ownerCount === 1 ? '' : 's'}. If you join me, we multiply the impact. https://cutthemoff.vercel.app`;
       }
     } else {
+      currentDisplayedAmount = 0;
+      if (annualSavingsEl) annualSavingsEl.textContent = '$0/year';
+      if (stickyAmount) stickyAmount.textContent = '$0';
       if (shareMultipliedEl) shareMultipliedEl.textContent = '$0';
       if (shareTextEl) {
         shareTextEl.textContent = `I'm cutting off ${ownerCount} billionaire${ownerCount === 1 ? '' : 's'}. If you join me, we multiply the impact. https://cutthemoff.vercel.app`;
@@ -662,6 +822,11 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
 
   checkboxes.forEach((cb) => {
     cb.addEventListener('change', updateResults);
+  });
+
+  // Sticky bar share button - scroll to share section
+  stickyShare?.addEventListener('click', () => {
+    shareSection?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 
   // Hide all cards initially
