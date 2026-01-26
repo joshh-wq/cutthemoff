@@ -8,7 +8,7 @@ const { headline, subheadline } = Astro.props;
 ---
 
 <section class="hero">
-  <h1>{headline}</h1>
+  <h1 set:html={headline} />
   {subheadline && <p class="subheadline">{subheadline}</p>}
   <slot />
 </section>
