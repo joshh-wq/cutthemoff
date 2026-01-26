@@ -53,13 +53,34 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
             <h4 class="owner-name">{group.owner}</h4>
             <div class="owner-services">
               {group.services.map((service) => (
-                <label class="service-checkbox">
-                  <input type="checkbox" value={service.id} data-price={service.monthlyPrice} data-owner={service.owner} />
-                  <span class="service-name">{service.name}</span>
-                  <span class="service-price">
-                    {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
-                  </span>
-                </label>
+                <div class="service-item" data-id={service.id}>
+                  <label class="service-checkbox">
+                    <input type="checkbox" value={service.id} data-price={service.monthlyPrice} data-owner={service.owner} />
+                    <span class="service-name">{service.name}</span>
+                    <span class="service-price">
+                      {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
+                    </span>
+                  </label>
+                  <div class="inline-steps hidden">
+                    <ol>
+                      {service.cancelSteps.map((step) => <li>{step}</li>)}
+                    </ol>
+                    <a href={service.cancelUrl} target="_blank" rel="noopener noreferrer" class="cancel-link">
+                      Go to {service.name} →
+                    </a>
+                    {service.alternative && (
+                      <div class="inline-alt">
+                        <span class="alt-label">Instead:</span>
+                        {service.alternative.url ? (
+                          <a href={service.alternative.url} target="_blank" rel="noopener">{service.alternative.name}</a>
+                        ) : (
+                          <span>{service.alternative.name}</span>
+                        )}
+                        <span class="alt-desc">— {service.alternative.description}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -81,13 +102,34 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
             <h4 class="owner-name">{group.owner}</h4>
             <div class="owner-services">
               {group.services.map((service) => (
-                <label class="service-checkbox">
-                  <input type="checkbox" value={service.id} data-price={service.monthlyPrice} data-owner={service.owner} />
-                  <span class="service-name">{service.name}</span>
-                  <span class="service-price">
-                    {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
-                  </span>
-                </label>
+                <div class="service-item" data-id={service.id}>
+                  <label class="service-checkbox">
+                    <input type="checkbox" value={service.id} data-price={service.monthlyPrice} data-owner={service.owner} />
+                    <span class="service-name">{service.name}</span>
+                    <span class="service-price">
+                      {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
+                    </span>
+                  </label>
+                  <div class="inline-steps hidden">
+                    <ol>
+                      {service.cancelSteps.map((step) => <li>{step}</li>)}
+                    </ol>
+                    <a href={service.cancelUrl} target="_blank" rel="noopener noreferrer" class="cancel-link">
+                      Go to {service.name} →
+                    </a>
+                    {service.alternative && (
+                      <div class="inline-alt">
+                        <span class="alt-label">Instead:</span>
+                        {service.alternative.url ? (
+                          <a href={service.alternative.url} target="_blank" rel="noopener">{service.alternative.name}</a>
+                        ) : (
+                          <span>{service.alternative.name}</span>
+                        )}
+                        <span class="alt-desc">— {service.alternative.description}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -100,15 +142,6 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     <p class="savings-highlight">Taking back <span id="annual-savings" class="amount">$0/year</span> from <span id="owner-count" class="owner-count">0 billionaires</span></p>
   </section>
 
-  <section class="results">
-    <p class="empty-state">Select services above to see how to cancel or delete them.</p>
-
-    <div class="services-grid">
-      {services.map((service) => (
-        <ServiceCard {...service} />
-      ))}
-    </div>
-  </section>
 
   <section class="share-section hidden">
     <h3 class="share-cta">Multiply your impact</h3>
@@ -442,6 +475,90 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     color: var(--muted);
   }
 
+  .service-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inline-steps {
+    background: var(--card-bg);
+    border: 1px solid var(--success);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 1rem;
+    margin-top: -4px;
+    animation: slideDown 0.2s ease;
+  }
+
+  .inline-steps.hidden {
+    display: none;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .inline-steps ol {
+    margin: 0 0 0.75rem 0;
+    padding-left: 1.25rem;
+  }
+
+  .inline-steps li {
+    font-size: 0.85rem;
+    margin-bottom: 0.375rem;
+    color: var(--text);
+  }
+
+  .cancel-link {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+  }
+
+  .cancel-link:hover {
+    background: var(--accent-hover);
+    text-decoration: none;
+  }
+
+  .inline-alt {
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .inline-alt .alt-label {
+    font-weight: 600;
+    color: var(--success);
+  }
+
+  .inline-alt a {
+    color: var(--success);
+    font-weight: 600;
+  }
+
+  .inline-alt .alt-desc {
+    display: block;
+    margin-top: 0.125rem;
+  }
+
+  .service-item .service-checkbox.selected {
+    border-radius: 8px 8px 0 0;
+  }
+
   .results {
     padding: 1rem 0;
   }
@@ -712,9 +829,6 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
 <script>
   const checkboxes = document.querySelectorAll<HTMLInputElement>('.service-checkbox input');
   const checkboxLabels = document.querySelectorAll('.service-checkbox');
-  const cards = document.querySelectorAll('.service-card');
-  const grid = document.querySelector('.services-grid');
-  const emptyState = document.querySelector('.empty-state');
   const savingsSection = document.querySelector('.savings-section');
   const shareSection = document.querySelector('.share-section');
   const shareTextEl = document.getElementById('share-text');
@@ -774,6 +888,9 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
 
     checkboxes.forEach((cb, index) => {
       const label = checkboxLabels[index];
+      const serviceItem = label?.closest('.service-item');
+      const inlineSteps = serviceItem?.querySelector('.inline-steps');
+
       if (cb.checked) {
         selected.add(cb.value);
         totalMonthly += parseFloat(cb.dataset.price || '0');
@@ -781,8 +898,10 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
           selectedOwners.add(cb.dataset.owner);
         }
         label?.classList.add('selected');
+        inlineSteps?.classList.remove('hidden');
       } else {
         label?.classList.remove('selected');
+        inlineSteps?.classList.add('hidden');
       }
     });
 
@@ -792,10 +911,8 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     const ownerCount = selectedOwners.size;
 
     // Toggle sections
-    emptyState?.classList.toggle('hidden', hasSelection);
     savingsSection?.classList.toggle('hidden', !hasSelection || annual === 0);
     shareSection?.classList.toggle('hidden', !hasSelection);
-    grid?.classList.toggle('active', hasSelection);
 
     // Toggle sticky bar
     stickyBar?.classList.toggle('hidden', !hasSelection);
@@ -826,13 +943,6 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
       }
     }
 
-    // Show/hide individual cards
-    cards.forEach((card) => {
-      const id = card.getAttribute('data-id');
-      const isSelected = id ? selected.has(id) : false;
-      (card as HTMLElement).style.display = isSelected ? 'flex' : 'none';
-    });
-
     // Update share links with new text
     updateShareLinks();
   }
@@ -844,11 +954,6 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
   // Sticky bar share button - scroll to share section
   stickyShare?.addEventListener('click', () => {
     shareSection?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
-
-  // Hide all cards initially
-  cards.forEach((card) => {
-    (card as HTMLElement).style.display = 'none';
   });
 
   // Update share links when selections change
