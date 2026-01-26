@@ -15,6 +15,15 @@ import services from '../data/services.json';
     <p class="subtext">Every canceled subscription or deleted account is money out of their pockets—and power back to us. Cut off the companies propping up this regime, and the ones staying silent while democracy burns.</p>
   </Hero>
 
+  <section class="goal-callout">
+    <div class="goal-header">
+      <span class="goal-icon">🎯</span>
+      <span class="goal-label">THE GOAL:</span>
+      <span class="goal-target">1,000 people by February 15</span>
+    </div>
+    <p class="goal-subtext">Can we get there? Make your plan below, then share with 3 friends.</p>
+  </section>
+
   <section class="selector">
     <h2>Which companies will you cut off?</h2>
     <p class="selector-help">Select the ones you want to cancel. We'll show you how.</p>
@@ -119,6 +128,54 @@ import services from '../data/services.json';
     height: 8px;
     background: var(--accent);
     border-radius: 50%;
+  }
+
+  .goal-callout {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%);
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .goal-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .goal-icon {
+    font-size: 1.5rem;
+  }
+
+  .goal-label {
+    font-weight: 800;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+
+  .goal-target {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--text);
+  }
+
+  .goal-subtext {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .goal-target {
+      font-size: 1.5rem;
+    }
   }
 
   .selector {
