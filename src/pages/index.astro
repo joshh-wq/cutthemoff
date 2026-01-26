@@ -6,54 +6,88 @@ import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import services from '../data/services.json';
 
-// Group services by owner - priority billionaires first, then rest alphabetically
-const ownerOrder = ['Altman', 'Bezos', 'Ellison', 'Musk', 'Zuckerberg', 'Ek', 'Hastings', 'Iger', 'Nadella', 'Roberts', 'Zaslav', 'Zhang Yiming'];
-const servicesByOwner = ownerOrder
+// Group services by owner - split into priority "Biggest Enablers" and secondary
+const priorityOwners = ['Zuckerberg', 'Musk', 'Bezos', 'Altman', 'Ellison'];
+const secondaryOwners = ['Ek', 'Hastings', 'Iger', 'Nadella', 'Roberts', 'Zaslav', 'Zhang Yiming'];
+
+const priorityGroups = priorityOwners
   .map(owner => ({
     owner,
     services: services.filter(s => s.owner === owner)
   }))
   .filter(group => group.services.length > 0);
+
+const secondaryGroups = secondaryOwners
+  .map(owner => ({
+    owner,
+    services: services.filter(s => s.owner === owner)
+  }))
+  .filter(group => group.services.length > 0);
+
+const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.services.length, 0);
 ---
 
 <BaseLayout title="Cut Them Off">
   <Header slot="header" />
 
   <Hero headline="Cut Them Off.">
-    <p class="subtext intro-line">These billionaires bent the knee to Trump because they care about one thing: their bottom line.</p>
+    <p class="subtext intro-line">These billionaires bent the knee to the regime because they care about one thing: their bottom line.</p>
     <p class="subtext punch-line">Fine. We speak that language too.</p>
     <p class="subtext intro-line">Every subscription you cancel is money out of their pockets. Every account you delete makes shareholders nervous. Hit them where it hurts—it's the only thing they understand.</p>
   </Hero>
 
-  <section class="goal-callout">
-    <div class="goal-header">
-      <span class="goal-icon">🎯</span>
-      <span class="goal-label">THE GOAL:</span>
-      <span class="goal-target">1,000 people by February 15</span>
-    </div>
-    <p class="goal-subtext">Can we get there? Make your plan below, then share with 3 friends.</p>
-  </section>
-
   <section class="selector">
     <h2>Who will you cut off?</h2>
-    <p class="selector-help">Select the ones you want to cancel. We'll show you how.</p>
-    <div class="owner-groups">
-      {servicesByOwner.map((group) => (
-        <div class="owner-group">
-          <h3 class="owner-name">{group.owner}</h3>
-          <div class="owner-services">
-            {group.services.map((service) => (
-              <label class="service-checkbox">
-                <input type="checkbox" value={service.id} data-price={service.monthlyPrice} data-owner={service.owner} />
-                <span class="service-name">{service.name}</span>
-                <span class="service-price">
-                  {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
-                </span>
-              </label>
-            ))}
+    <p class="selector-help">Start with just one. Select the services you want to cancel or delete, and we'll show you how.</p>
+
+    <div class="priority-section">
+      <h3 class="section-label">Biggest Enablers</h3>
+      <div class="owner-groups">
+        {priorityGroups.map((group) => (
+          <div class="owner-group">
+            <h4 class="owner-name">{group.owner}</h4>
+            <div class="owner-services">
+              {group.services.map((service) => (
+                <label class="service-checkbox">
+                  <input type="checkbox" value={service.id} data-price={service.monthlyPrice} data-owner={service.owner} />
+                  <span class="service-name">{service.name}</span>
+                  <span class="service-price">
+                    {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
+                  </span>
+                </label>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+    </div>
+
+    <button type="button" class="expand-btn" id="expand-services">
+      <span class="expand-text">Show {secondaryServiceCount} more services</span>
+      <svg class="expand-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+
+    <div class="secondary-section hidden" id="secondary-services">
+      <div class="owner-groups">
+        {secondaryGroups.map((group) => (
+          <div class="owner-group">
+            <h4 class="owner-name">{group.owner}</h4>
+            <div class="owner-services">
+              {group.services.map((service) => (
+                <label class="service-checkbox">
+                  <input type="checkbox" value={service.id} data-price={service.monthlyPrice} data-owner={service.owner} />
+                  <span class="service-name">{service.name}</span>
+                  <span class="service-price">
+                    {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -214,10 +248,74 @@ const servicesByOwner = ownerOrder
     font-size: 0.95rem;
   }
 
+  .priority-section {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(249, 115, 22, 0.08) 100%);
+    border: 2px solid rgba(239, 68, 68, 0.3);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #dc2626;
+    margin: 0 0 1rem 0;
+    text-align: center;
+  }
+
+  .expand-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+
+  .expand-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .expand-arrow {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.2s;
+  }
+
+  .expand-btn.expanded .expand-arrow {
+    transform: rotate(180deg);
+  }
+
+  .secondary-section {
+    margin-top: 1rem;
+  }
+
+  .secondary-section.hidden {
+    display: none;
+  }
+
   .owner-groups {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.5rem 1rem;
+  }
+
+  @media (min-width: 480px) {
+    .owner-groups {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .owner-group {
@@ -593,4 +691,17 @@ const servicesByOwner = ownerOrder
       console.error('Failed to copy:', err);
     }
   }
+
+  // Expand/collapse secondary services
+  const expandBtn = document.getElementById('expand-services');
+  const secondarySection = document.getElementById('secondary-services');
+  const expandText = expandBtn?.querySelector('.expand-text');
+
+  expandBtn?.addEventListener('click', () => {
+    const isExpanded = expandBtn.classList.toggle('expanded');
+    secondarySection?.classList.toggle('hidden', !isExpanded);
+    if (expandText) {
+      expandText.textContent = isExpanded ? 'Show fewer' : 'Show 9 more services';
+    }
+  });
 </script>
