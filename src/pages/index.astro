@@ -305,8 +305,7 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
   }
 
   .priority-section {
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(249, 115, 22, 0.08) 100%);
-    border: 2px solid rgba(239, 68, 68, 0.3);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 1.25rem;
     margin-bottom: 1rem;
@@ -317,7 +316,7 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #dc2626;
+    color: var(--muted);
     margin: 0 0 1rem 0;
     text-align: center;
   }
