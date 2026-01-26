@@ -30,6 +30,13 @@ const defundMoreGroups = defundMoreOwners
 
 // Group delete services by owner
 const deleteOwnerOrder = ['Mark Zuckerberg', 'Elon Musk', 'Zhang Yiming'];
+
+// Snarky nicknames for billionaires
+const nicknames: Record<string, string> = {
+  'Elon Musk': 'Space Karen',
+  'Mark Zuckerberg': 'MAGA Mark',
+  'Jeff Bezos': 'Low-rent Dr. Evil',
+};
 const deleteGroups = deleteOwnerOrder
   .map(owner => ({
     owner,
@@ -65,7 +72,7 @@ const deleteGroups = deleteOwnerOrder
       <div class="owner-groups">
         {defundInitialGroups.map((group) => (
           <div class="owner-group">
-            <h4 class="owner-name">{group.owner}</h4>
+            <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
             <div class="owner-services">
               {group.services.map((service) => (
                 <div class="service-item" data-id={service.id}>
@@ -112,7 +119,7 @@ const deleteGroups = deleteOwnerOrder
       <div class="owner-groups defund-more hidden" id="defund-more-groups">
         {defundMoreGroups.map((group) => (
           <div class="owner-group">
-            <h4 class="owner-name">{group.owner}</h4>
+            <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
             <div class="owner-services">
               {group.services.map((service) => (
                 <div class="service-item" data-id={service.id}>
@@ -162,7 +169,7 @@ const deleteGroups = deleteOwnerOrder
       <div class="owner-groups">
         {deleteGroups.map((group) => (
           <div class="owner-group">
-            <h4 class="owner-name">{group.owner}</h4>
+            <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
             <div class="owner-services">
               {group.services.map((service) => (
                 <div class="service-item" data-id={service.id}>
@@ -510,6 +517,12 @@ const deleteGroups = deleteOwnerOrder
     margin: 0;
     padding-bottom: 0.25rem;
     border-bottom: 2px solid var(--accent);
+  }
+
+  .owner-name .nickname {
+    font-weight: 500;
+    font-style: italic;
+    color: var(--muted);
   }
 
   .owner-services {
