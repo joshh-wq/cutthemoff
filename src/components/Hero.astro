@@ -1,0 +1,43 @@
+---
+interface Props {
+  headline: string;
+  subheadline?: string;
+}
+
+const { headline, subheadline } = Astro.props;
+---
+
+<section class="hero">
+  <h1>{headline}</h1>
+  {subheadline && <p class="subheadline">{subheadline}</p>}
+  <slot />
+</section>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  .subheadline {
+    font-size: 1.25rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero {
+      padding: 4rem 2rem;
+    }
+
+    .subheadline {
+      font-size: 1.5rem;
+    }
+  }
+</style>

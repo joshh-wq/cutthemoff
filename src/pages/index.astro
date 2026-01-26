@@ -1,0 +1,357 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import services from '../data/services.json';
+---
+
+<BaseLayout title="Cut Them Off">
+  <Header slot="header" />
+
+  <Hero headline="Cut Them Off.">
+    <p class="subtext">This is how we strike.</p>
+    <p class="subtext">Every canceled subscription is money out of their pockets—and power back to us. Cut off the companies propping up this regime, and the ones staying silent while democracy burns.</p>
+  </Hero>
+
+  <section class="selector">
+    <h2>Which companies will you cut off?</h2>
+    <p class="selector-help">Select the ones you want to cancel. We'll show you how.</p>
+    <div class="service-checklist">
+      {services.map((service) => (
+        <label class="service-checkbox">
+          <input type="checkbox" value={service.id} data-price={service.monthlyPrice} />
+          <span class="service-name">{service.name}</span>
+          <span class="service-price">
+            {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
+          </span>
+        </label>
+      ))}
+    </div>
+  </section>
+
+  <section class="savings-section hidden">
+    <p class="savings-highlight">Taking back <span id="annual-savings" class="amount">$0/year</span> from these companies</p>
+  </section>
+
+  <section class="results">
+    <p class="empty-state">Select services above to see how to cancel or delete them.</p>
+
+    <div class="services-grid">
+      {services.map((service) => (
+        <ServiceCard {...service} />
+      ))}
+    </div>
+  </section>
+
+  <section class="share-section hidden">
+    <p class="share-cta">Spread the word</p>
+    <p class="share-hint">Send to friends via text, email, or Signal.</p>
+    <button type="button" class="btn btn-success" id="share-btn">Share with friends</button>
+    <span class="share-feedback hidden" id="share-feedback">Link copied!</span>
+    <p class="share-text hidden" id="share-text">I'm taking back $0/year from Big Tech. Join me: https://cutthemoff.vercel.app</p>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .subtext {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .subtext.cta {
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    color: var(--text);
+  }
+
+  .facts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .facts li {
+    padding: 0.75rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: var(--muted);
+  }
+
+  .facts li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .selector {
+    padding: 1.5rem 0;
+  }
+
+  .selector h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .selector-help {
+    text-align: center;
+    color: var(--muted);
+    margin: 0 0 1rem 0;
+    font-size: 0.95rem;
+  }
+
+  .service-checklist {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .service-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .service-checkbox:hover {
+    border-color: var(--accent);
+  }
+
+  .service-checkbox input {
+    width: 1.125rem;
+    height: 1.125rem;
+    accent-color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .service-checkbox .service-name {
+    flex: 1;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .service-checkbox .service-price {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .results {
+    padding: 1rem 0;
+  }
+
+  .empty-state {
+    text-align: center;
+    color: var(--muted);
+    padding: 2rem;
+    background: var(--card-bg);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+  }
+
+  .empty-state.hidden {
+    display: none;
+  }
+
+  .savings-section {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 2px solid var(--success);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .savings-section.hidden {
+    display: none;
+  }
+
+  .savings-highlight {
+    font-size: 1.25rem;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .savings-highlight .amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--success);
+  }
+
+  .share-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .share-section.hidden {
+    display: none;
+  }
+
+  .share-cta {
+    margin: 0 0 0.25rem 0;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .share-hint {
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .share-text {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .share-feedback {
+    display: block;
+    margin-top: 0.75rem;
+    color: var(--success);
+    font-weight: 500;
+  }
+
+  .share-feedback.hidden {
+    display: none;
+  }
+
+  .services-grid {
+    display: none;
+    gap: 1rem;
+  }
+
+  .services-grid.active {
+    display: grid;
+  }
+
+  @media (min-width: 640px) {
+    .service-checklist {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .services-grid.active {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .service-checklist {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>
+
+<script>
+  const checkboxes = document.querySelectorAll<HTMLInputElement>('.service-checkbox input');
+  const cards = document.querySelectorAll('.service-card');
+  const grid = document.querySelector('.services-grid');
+  const emptyState = document.querySelector('.empty-state');
+  const savingsSection = document.querySelector('.savings-section');
+  const shareSection = document.querySelector('.share-section');
+  const shareTextEl = document.getElementById('share-text');
+  const shareBtn = document.getElementById('share-btn');
+  const shareFeedback = document.getElementById('share-feedback');
+
+  function updateResults() {
+    const selected = new Set<string>();
+    let totalMonthly = 0;
+
+    checkboxes.forEach((cb) => {
+      if (cb.checked) {
+        selected.add(cb.value);
+        totalMonthly += parseFloat(cb.dataset.price || '0');
+      }
+    });
+
+    const hasSelection = selected.size > 0;
+    const annual = Math.round(totalMonthly * 12);
+
+    // Toggle sections
+    emptyState?.classList.toggle('hidden', hasSelection);
+    savingsSection?.classList.toggle('hidden', !hasSelection || annual === 0);
+    shareSection?.classList.toggle('hidden', !hasSelection);
+    grid?.classList.toggle('active', hasSelection);
+
+    // Update savings display and share text
+    const annualSavingsEl = document.getElementById('annual-savings');
+
+    if (annual > 0) {
+      if (annualSavingsEl) annualSavingsEl.textContent = `$${annual}/year`;
+      if (shareTextEl) {
+        shareTextEl.textContent = `I'm taking back $${annual}/year from Big Tech. Join me: https://cutthemoff.vercel.app`;
+      }
+    } else {
+      if (shareTextEl) {
+        shareTextEl.textContent = `I'm cutting off Big Tech. Join me: https://cutthemoff.vercel.app`;
+      }
+    }
+
+    // Show/hide individual cards
+    cards.forEach((card) => {
+      const id = card.getAttribute('data-id');
+      const isSelected = id ? selected.has(id) : false;
+      (card as HTMLElement).style.display = isSelected ? 'flex' : 'none';
+    });
+  }
+
+  checkboxes.forEach((cb) => {
+    cb.addEventListener('change', updateResults);
+  });
+
+  // Hide all cards initially
+  cards.forEach((card) => {
+    (card as HTMLElement).style.display = 'none';
+  });
+
+  shareBtn?.addEventListener('click', async () => {
+    const text = shareTextEl?.textContent || '';
+    const shareData = {
+      title: 'Cut Them Off',
+      text: text,
+      url: 'https://cutthemoff.vercel.app'
+    };
+
+    // Use native share if available (mobile), otherwise copy to clipboard
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        // User cancelled or error - ignore
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(text);
+        shareFeedback?.classList.remove('hidden');
+        setTimeout(() => {
+          shareFeedback?.classList.add('hidden');
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    }
+  });
+</script>

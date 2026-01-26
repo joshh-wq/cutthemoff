@@ -1,0 +1,219 @@
+[
+  {
+    "id": "facebook",
+    "name": "Facebook",
+    "category": "Social Media",
+    "monthlyPrice": 0,
+    "reason": "Zuckerberg killed fact-checking, dined at Mar-a-Lago, and donated $1M to the inauguration. Your data is their product. Take it back.",
+    "cancelUrl": "https://www.facebook.com/deactivate",
+    "cancelSteps": [
+      "Go to Settings & Privacy",
+      "Click 'Deactivation and deletion'",
+      "Choose delete or deactivate"
+    ],
+    "alternative": {
+      "name": "Bluesky",
+      "description": "Decentralized, no algorithm manipulation, no billionaire owner",
+      "url": "https://bsky.app"
+    }
+  },
+  {
+    "id": "instagram",
+    "name": "Instagram",
+    "category": "Social Media",
+    "monthlyPrice": 0,
+    "reason": "Same company, same Zuckerberg, same complicity. Your attention is their revenue. Cut them off.",
+    "cancelUrl": "https://www.instagram.com/accounts/remove/request/permanent/",
+    "cancelSteps": [
+      "Go to Settings > Account",
+      "Tap 'Delete account'",
+      "Select reason and confirm"
+    ],
+    "alternative": {
+      "name": "Pixelfed",
+      "description": "Decentralized, ad-free photo sharing. No algorithm, no ads, no Meta.",
+      "url": "https://pixelfed.org"
+    }
+  },
+  {
+    "id": "tiktok",
+    "name": "TikTok",
+    "category": "Social Media",
+    "monthlyPrice": 0,
+    "reason": "An algorithm designed to keep you scrolling while the world burns. Reclaim your time.",
+    "cancelUrl": "https://support.tiktok.com/en/account-and-privacy/deleting-an-account",
+    "cancelSteps": [
+      "Go to Settings and privacy",
+      "Tap 'Manage account'",
+      "Select 'Delete account'"
+    ],
+    "alternative": {
+      "name": "Your free time",
+      "description": "You'll be amazed what you do with an extra hour a day",
+      "url": null
+    }
+  },
+  {
+    "id": "x",
+    "name": "X",
+    "category": "Social Media",
+    "monthlyPrice": 0,
+    "reason": "Musk runs a federal department now. Every post, like, and view gives him leverage. Walk away.",
+    "cancelUrl": "https://x.com/settings/deactivate",
+    "cancelSteps": [
+      "Go to Settings and privacy",
+      "Click 'Your account'",
+      "Select 'Deactivate your account'",
+      "Confirm deactivation (deleted after 30 days)"
+    ],
+    "alternative": {
+      "name": "Bluesky",
+      "description": "Where most of Twitter's best users went. Open protocol, no Musk.",
+      "url": "https://bsky.app"
+    }
+  },
+  {
+    "id": "spotify",
+    "name": "Spotify",
+    "category": "Streaming",
+    "monthlyPrice": 11.99,
+    "reason": "Joe Rogan got $250M. Artists get fractions of a penny. Leadership stays silent. The free tier still works.",
+    "cancelUrl": "https://www.spotify.com/account/subscription/",
+    "cancelSteps": [
+      "Go to Account page",
+      "Click 'Change plan'",
+      "Select 'Cancel Premium'"
+    ],
+    "alternative": {
+      "name": "Tidal",
+      "description": "Artist-owned, better payouts to musicians, high-quality audio.",
+      "url": "https://tidal.com"
+    }
+  },
+  {
+    "id": "netflix",
+    "name": "Netflix",
+    "category": "Streaming",
+    "monthlyPrice": 15.49,
+    "reason": "Co-founder Reed Hastings bankrolls Republican candidates. Stop funding it.",
+    "cancelUrl": "https://www.netflix.com/cancelplan",
+    "cancelSteps": [
+      "Go to Account settings",
+      "Click 'Cancel Membership'",
+      "Confirm cancellation"
+    ],
+    "alternative": {
+      "name": "Kanopy",
+      "description": "Free with your library card. Criterion Collection, indie films, documentaries.",
+      "url": "https://www.kanopy.com/en/signup"
+    }
+  },
+  {
+    "id": "amazon-prime",
+    "name": "Amazon Prime",
+    "category": "Streaming",
+    "monthlyPrice": 14.99,
+    "reason": "Bezos owns the Washington Post and met with Trump. Prime funds union-busting and political access. End it.",
+    "cancelUrl": "https://www.amazon.com/hz/mycd/myx#/home/settings/payment",
+    "cancelSteps": [
+      "Go to Prime membership settings",
+      "Click 'Update, cancel and more'",
+      "Select 'End membership'"
+    ],
+    "alternative": {
+      "name": "Your local library + Bookshop.org",
+      "description": "Library for free, Bookshop.org to support indie bookstores when you buy.",
+      "url": "https://bookshop.org"
+    }
+  },
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT Plus",
+    "category": "AI",
+    "monthlyPrice": 20.00,
+    "reason": "Sam Altman made the pilgrimage to Mar-a-Lago. OpenAI spends millions lobbying in DC. You don't have to fund it.",
+    "cancelUrl": "https://help.openai.com/en/articles/7232927-how-do-i-cancel-my-chatgpt-plus-subscription",
+    "cancelSteps": [
+      "Go to Settings in ChatGPT",
+      "Click 'Manage my subscription'",
+      "Select 'Cancel Plan'"
+    ],
+    "alternative": {
+      "name": "ChatGPT Free or Ollama",
+      "description": "Free tier still works. Or run open-source models locally with Ollama.",
+      "url": "https://ollama.ai"
+    }
+  },
+  {
+    "id": "disney-plus",
+    "name": "Disney+",
+    "category": "Streaming",
+    "monthlyPrice": 13.99,
+    "reason": "Bob Iger plays nice with whoever holds power. Disney caves to pressure—make sure it's ours.",
+    "cancelUrl": "https://www.disneyplus.com/account",
+    "cancelSteps": [
+      "Go to Account settings",
+      "Select your subscription",
+      "Click 'Cancel Subscription'"
+    ],
+    "alternative": {
+      "name": "Kanopy + Hoopla",
+      "description": "Both free with your library card. Thousands of films and shows.",
+      "url": "https://www.kanopy.com/en/signup"
+    }
+  },
+  {
+    "id": "max",
+    "name": "Max",
+    "category": "Streaming",
+    "monthlyPrice": 16.99,
+    "reason": "David Zaslav gutted HBO, slashed jobs, and stays silent. Keep your $17.",
+    "cancelUrl": "https://www.max.com/settings/subscription",
+    "cancelSteps": [
+      "Go to Account settings",
+      "Click 'Manage Subscription'",
+      "Select 'Cancel Subscription'"
+    ],
+    "alternative": {
+      "name": "Kanopy",
+      "description": "Quality films, free with your library card. No Zaslav.",
+      "url": "https://www.kanopy.com/en/signup"
+    }
+  },
+  {
+    "id": "hulu",
+    "name": "Hulu",
+    "category": "Streaming",
+    "monthlyPrice": 17.99,
+    "reason": "Disney owns this too. Canceling Hulu and Disney+ sends the same message twice.",
+    "cancelUrl": "https://help.hulu.com/article/hulu-cancel-hulu-subscription",
+    "cancelSteps": [
+      "Go to Your Account page",
+      "Click 'Cancel Your Subscription'",
+      "Follow the prompts to confirm"
+    ],
+    "alternative": {
+      "name": "Kanopy + Hoopla",
+      "description": "Free with your library card. No Disney money.",
+      "url": "https://www.kanopy.com/en/signup"
+    }
+  },
+  {
+    "id": "copilot",
+    "name": "Microsoft Copilot Pro",
+    "category": "AI",
+    "monthlyPrice": 20.00,
+    "reason": "Microsoft bankrolls OpenAI and plays both sides of every political fence. Cut the cord.",
+    "cancelUrl": "https://account.microsoft.com/services",
+    "cancelSteps": [
+      "Go to Microsoft Account services",
+      "Find Copilot Pro subscription",
+      "Click 'Manage' then 'Cancel'"
+    ],
+    "alternative": {
+      "name": "Ollama",
+      "description": "Run powerful open-source AI models locally. Free, private, no Microsoft.",
+      "url": "https://ollama.ai"
+    }
+  }
+]

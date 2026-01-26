@@ -1,0 +1,158 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  category: string;
+  monthlyPrice: number;
+  reason: string;
+  cancelUrl: string;
+  cancelSteps: string[];
+  alternative?: {
+    name: string;
+    description: string;
+    url: string | null;
+  };
+}
+
+const { id, name, category, monthlyPrice, reason, cancelUrl, cancelSteps, alternative } = Astro.props;
+const priceDisplay = monthlyPrice > 0 ? `$${monthlyPrice.toFixed(2)}/mo` : null;
+---
+
+<article class="service-card card" data-category={category} data-id={id}>
+  <div class="card-header">
+    <div class="service-info">
+      <h3>{name}</h3>
+      <span class="category-badge">{category}</span>
+    </div>
+    {priceDisplay && <span class="price">{priceDisplay}</span>}
+  </div>
+
+  <p class="reason">{reason}</p>
+
+  <ol class="cancel-steps">
+    {cancelSteps.map((step) => (
+      <li>{step}</li>
+    ))}
+    <li class="final-step">
+      <a href={cancelUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        Go to {name} →
+      </a>
+    </li>
+  </ol>
+
+  {alternative && (
+    <div class="alternative">
+      <span class="alt-label">Instead:</span>
+      {alternative.url ? (
+        <a href={alternative.url} target="_blank" rel="noopener noreferrer" class="alt-name">{alternative.name}</a>
+      ) : (
+        <span class="alt-name">{alternative.name}</span>
+      )}
+      <span class="alt-desc">{alternative.description}</span>
+    </div>
+  )}
+</article>
+
+<style>
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .service-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  .category-badge {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .price {
+    font-weight: 600;
+    font-size: 1.125rem;
+    white-space: nowrap;
+  }
+
+  .reason {
+    color: var(--muted);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .cancel-steps {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .cancel-steps li {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .cancel-steps li.final-step {
+    list-style: none;
+    margin-left: -1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+
+  .cancel-steps .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .alternative {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--success);
+    border-radius: 8px;
+    padding: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.5rem;
+  }
+
+  .alt-label {
+    font-weight: 600;
+    color: var(--success);
+    font-size: 0.85rem;
+  }
+
+  .alt-name {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  a.alt-name {
+    color: var(--success);
+    text-decoration: underline;
+  }
+
+  a.alt-name:hover {
+    color: var(--text);
+  }
+
+  .alt-desc {
+    width: 100%;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+</style>
+
