@@ -338,10 +338,7 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
   }
 
   .priority-section {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .priority-section .owner-name {
@@ -435,21 +432,18 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.625rem 0.75rem;
-    background: var(--card-bg);
-    border: 2px solid var(--border);
-    border-radius: 8px;
+    padding: 0.75rem 0.5rem;
     cursor: pointer;
     transition: all 0.2s ease;
+    border-radius: 8px;
   }
 
   .service-checkbox:hover {
-    border-color: var(--accent);
+    background: rgba(0, 0, 0, 0.03);
   }
 
   .service-checkbox.selected {
-    border-color: var(--success);
-    background: rgba(5, 150, 105, 0.08);
+    background: rgba(5, 150, 105, 0.1);
   }
 
   .service-checkbox.selected .service-name {
@@ -481,12 +475,7 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
   }
 
   .inline-steps {
-    background: var(--card-bg);
-    border: 1px solid var(--success);
-    border-top: none;
-    border-radius: 0 0 8px 8px;
-    padding: 1rem;
-    margin-top: -4px;
+    padding: 0 0.5rem 1rem 2.25rem;
     animation: slideDown 0.2s ease;
   }
 
@@ -508,36 +497,34 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
   .inline-steps ol {
     margin: 0 0 0.75rem 0;
     padding-left: 1.25rem;
+    color: var(--muted);
   }
 
   .inline-steps li {
-    font-size: 0.85rem;
-    margin-bottom: 0.375rem;
-    color: var(--text);
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
   }
 
   .cancel-link {
     display: inline-block;
-    background: var(--accent);
+    background: var(--success);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 6px;
-    font-size: 0.85rem;
+    font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
-    margin-bottom: 0.75rem;
   }
 
   .cancel-link:hover {
-    background: var(--accent-hover);
+    opacity: 0.9;
     text-decoration: none;
   }
 
   .inline-alt {
     font-size: 0.8rem;
     color: var(--muted);
-    padding-top: 0.5rem;
-    border-top: 1px solid var(--border);
+    margin-top: 0.75rem;
   }
 
   .inline-alt .alt-label {
@@ -553,10 +540,6 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
   .inline-alt .alt-desc {
     display: block;
     margin-top: 0.125rem;
-  }
-
-  .service-item .service-checkbox.selected {
-    border-radius: 8px 8px 0 0;
   }
 
   .results {
