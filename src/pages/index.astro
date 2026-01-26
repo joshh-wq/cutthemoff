@@ -10,9 +10,18 @@ const socialIds = ['facebook', 'instagram', 'threads', 'tiktok', 'x'];
 const defundServices = services.filter(s => !socialIds.includes(s.id));
 const disconnectServices = services.filter(s => socialIds.includes(s.id));
 
-// Group defund services by owner
-const defundOwnerOrder = ['Jeff Bezos', 'Sam Altman', 'Sundar Pichai', 'Tim Cook', 'Larry Ellison', 'Daniel Ek', 'Reed Hastings', 'Bob Iger', 'Brian Roberts', 'David Zaslav'];
-const defundGroups = defundOwnerOrder
+// Group defund services by owner - split into initial and more
+const defundInitialOwners = ['Jeff Bezos', 'Sam Altman', 'Sundar Pichai', 'Larry Ellison'];
+const defundMoreOwners = ['Tim Cook', 'Daniel Ek', 'Reed Hastings', 'Bob Iger', 'Brian Roberts', 'David Zaslav'];
+
+const defundInitialGroups = defundInitialOwners
+  .map(owner => ({
+    owner,
+    services: defundServices.filter(s => s.owner === owner)
+  }))
+  .filter(group => group.services.length > 0);
+
+const defundMoreGroups = defundMoreOwners
   .map(owner => ({
     owner,
     services: defundServices.filter(s => s.owner === owner)
@@ -54,7 +63,54 @@ const disconnectGroups = disconnectOwnerOrder
         </div>
       </div>
       <div class="owner-groups">
-        {defundGroups.map((group) => (
+        {defundInitialGroups.map((group) => (
+          <div class="owner-group">
+            <h4 class="owner-name">{group.owner}</h4>
+            <div class="owner-services">
+              {group.services.map((service) => (
+                <div class="service-item" data-id={service.id}>
+                  <label class="service-checkbox">
+                    <input type="checkbox" value={service.id} data-price={service.monthlyPrice} data-owner={service.owner} />
+                    <span class="service-name">{service.name}</span>
+                    <span class="service-price">
+                      {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
+                    </span>
+                  </label>
+                  <div class="inline-steps hidden">
+                    <ol>
+                      {service.cancelSteps.map((step) => <li>{step}</li>)}
+                    </ol>
+                    <a href={service.cancelUrl} target="_blank" rel="noopener noreferrer" class="cancel-link">
+                      Go to {service.name} <span class="sr-only">(opens in new tab)</span> →
+                    </a>
+                    {service.alternative && (
+                      <div class="inline-alt">
+                        <span class="alt-label">Instead:</span>
+                        {service.alternative.url ? (
+                          <a href={service.alternative.url} target="_blank" rel="noopener">{service.alternative.name} <span class="sr-only">(opens in new tab)</span></a>
+                        ) : (
+                          <span>{service.alternative.name}</span>
+                        )}
+                        <span class="alt-desc">— {service.alternative.description}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <button type="button" class="view-more-btn" id="defund-view-more" aria-expanded="false">
+        View more <span class="view-more-count">({defundMoreGroups.length} more)</span>
+        <svg aria-hidden="true" class="view-more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+
+      <div class="owner-groups defund-more hidden" id="defund-more-groups">
+        {defundMoreGroups.map((group) => (
           <div class="owner-group">
             <h4 class="owner-name">{group.owner}</h4>
             <div class="owner-services">
@@ -386,6 +442,47 @@ const disconnectGroups = disconnectOwnerOrder
     margin: 0.25rem 0 0 0;
     font-size: 0.9rem;
     color: var(--muted);
+  }
+
+  .view-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin: 1.5rem 0;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .view-more-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .view-more-btn .view-more-icon {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.2s;
+  }
+
+  .view-more-btn[aria-expanded="true"] .view-more-icon {
+    transform: rotate(180deg);
+  }
+
+  .view-more-btn.hidden {
+    display: none;
+  }
+
+  .defund-more.hidden {
+    display: none;
   }
 
   .owner-groups {
@@ -950,4 +1047,21 @@ const disconnectGroups = disconnectOwnerOrder
 
   // Initialize share links on page load
   updateShareLinks();
+
+  // View more button functionality
+  const defundViewMoreBtn = document.getElementById('defund-view-more');
+  const defundMoreGroups = document.getElementById('defund-more-groups');
+
+  defundViewMoreBtn?.addEventListener('click', () => {
+    const isExpanded = defundViewMoreBtn.getAttribute('aria-expanded') === 'true';
+    defundViewMoreBtn.setAttribute('aria-expanded', String(!isExpanded));
+    defundMoreGroups?.classList.toggle('hidden', isExpanded);
+
+    // Update button text
+    const countSpan = defundViewMoreBtn.querySelector('.view-more-count');
+    if (countSpan) {
+      countSpan.textContent = isExpanded ? '(6 more)' : '';
+    }
+    defundViewMoreBtn.childNodes[0].textContent = isExpanded ? 'View more ' : 'View less ';
+  });
 </script>
