@@ -51,11 +51,10 @@ const deleteGroups = deleteOwnerOrder
     <div class="accent-bar" aria-hidden="true"></div>
     <p class="subtext intro-line">Billionaires bent the knee to this regime because they only care about one thing: their bottom line.</p>
     <p class="subtext punch-line">Fine. We speak that language too.</p>
-    <p class="subtext intro-line">Every subscription you cancel is money out of their pockets. Every account you delete makes shareholders nervous. Hit them where it hurts—it's the only thing they understand.</p>
-    <p class="subtext intro-line last">Two steps: defund them, then delete.</p>
+    <p class="subtext intro-line last">Every subscription you cancel is money out of their pockets. Every account you delete makes shareholders nervous. Hit them where it hurts—it's the only thing they understand.</p>
   </Hero>
 
-  <section class="selector">
+  <section class="selector steps-section">
     <div class="accent-bar" aria-hidden="true"></div>
     <h2>Defund. Then Delete.</h2>
     <p class="selector-help">Pick one to start. Not ready to quit forever? Try 90 days.</p>
@@ -414,6 +413,34 @@ const deleteGroups = deleteOwnerOrder
   .selector {
     padding: 1.5rem 0;
     margin-top: 0.25rem;
+  }
+
+  .steps-section {
+    background: #f8f5f0;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .steps-section {
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      border-radius: 16px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .steps-section {
+      margin-left: -2rem;
+      margin-right: -2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 
   .selector .accent-bar {
