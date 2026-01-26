@@ -40,6 +40,7 @@ const disconnectGroups = disconnectOwnerOrder
   </Hero>
 
   <section class="selector">
+    <div class="accent-bar" aria-hidden="true"></div>
     <h2>Defund. Then Disconnect.</h2>
     <p class="selector-help">Pick one to start. Not ready to quit forever?<br />90 days is one earnings quarter—enough to hit their numbers.</p>
 
@@ -324,8 +325,11 @@ const disconnectGroups = disconnectOwnerOrder
 
   .selector {
     padding: 1.5rem 0;
-    border-top: 1px solid var(--border);
     margin-top: 1.5rem;
+  }
+
+  .selector .accent-bar {
+    margin-bottom: 1.5rem;
   }
 
   .selector h2 {
