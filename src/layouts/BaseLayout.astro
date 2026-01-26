@@ -17,8 +17,9 @@ const { title, description = "This is how we strike. Cut off the companies suppo
     <title>{title}</title>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <slot name="header" />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <slot name="footer" />
