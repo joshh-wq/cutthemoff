@@ -285,5 +285,24 @@
       "description": "Free tier with an ad blocker. Same content, no money to Google.",
       "url": "https://ublockorigin.com"
     }
+  },
+  {
+    "id": "gemini",
+    "name": "Google Gemini Advanced",
+    "owner": "Sundar Pichai",
+    "category": "AI",
+    "monthlyPrice": 19.99,
+    "reason": "Same Pichai, same Google. Free tier or open-source alternatives work fine.",
+    "cancelUrl": "https://one.google.com/about/plans",
+    "cancelSteps": [
+      "Go to one.google.com",
+      "Click 'Manage plan'",
+      "Select 'Cancel subscription'"
+    ],
+    "alternative": {
+      "name": "Gemini Free or Ollama",
+      "description": "Free tier still works. Or run open-source models locally with Ollama.",
+      "url": "https://ollama.ai"
+    }
   }
 ]
