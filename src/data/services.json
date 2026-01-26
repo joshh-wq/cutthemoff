@@ -267,26 +267,7 @@
       "url": "https://www.kanopy.com/en/signup"
     }
   },
-  {
-    "id": "copilot",
-    "name": "Microsoft Copilot Pro",
-    "owner": "Satya Nadella",
-    "category": "AI",
-    "monthlyPrice": 20.00,
-    "reason": "Microsoft bankrolls OpenAI and plays both sides of every political fence. Cut the cord.",
-    "cancelUrl": "https://account.microsoft.com/services",
-    "cancelSteps": [
-      "Go to Microsoft Account services",
-      "Find Copilot Pro subscription",
-      "Click 'Manage' then 'Cancel'"
-    ],
-    "alternative": {
-      "name": "Ollama",
-      "description": "Run powerful open-source AI models locally. Free, private, no Microsoft.",
-      "url": "https://ollama.ai"
-    }
-  },
-  {
+    {
     "id": "youtube-premium",
     "name": "YouTube Premium",
     "owner": "Sundar Pichai",
