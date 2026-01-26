@@ -1,5 +1,5 @@
 /* Global Styles - Mobile First */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lora:wght@400;500;600;700&display=swap');
 
 :root {
   --bg: #FFFBF5;
@@ -50,11 +50,19 @@
 }
 
 html {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
   font-size: 16px;
   line-height: 1.6;
   color: var(--text);
   background-color: var(--bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+button, .btn, input, select {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
