@@ -131,12 +131,10 @@ import services from '../data/services.json';
   }
 
   .goal-callout {
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%);
-    border: 2px solid var(--accent);
-    border-radius: 12px;
-    padding: 1.5rem;
+    border-top: 1px solid var(--border);
+    padding: 1.25rem 0;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
   }
 
   .goal-header {
@@ -144,38 +142,32 @@ import services from '../data/services.json';
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    gap: 0.35rem;
+    margin-bottom: 0.25rem;
   }
 
   .goal-icon {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .goal-label {
-    font-weight: 800;
-    font-size: 1rem;
+    font-weight: 600;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--accent);
+    color: var(--muted);
   }
 
   .goal-target {
-    font-weight: 800;
-    font-size: 1.25rem;
+    font-weight: 700;
+    font-size: 0.95rem;
     color: var(--text);
   }
 
   .goal-subtext {
     margin: 0;
     color: var(--muted);
-    font-size: 1rem;
-  }
-
-  @media (min-width: 640px) {
-    .goal-target {
-      font-size: 1.5rem;
-    }
+    font-size: 0.9rem;
   }
 
   .selector {
