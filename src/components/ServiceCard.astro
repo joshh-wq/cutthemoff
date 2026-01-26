@@ -2,6 +2,7 @@
 interface Props {
   id: string;
   name: string;
+  owner: string;
   category: string;
   monthlyPrice: number;
   reason: string;
@@ -14,14 +15,14 @@ interface Props {
   };
 }
 
-const { id, name, category, monthlyPrice, reason, cancelUrl, cancelSteps, alternative } = Astro.props;
+const { id, name, owner, category, monthlyPrice, reason, cancelUrl, cancelSteps, alternative } = Astro.props;
 const priceDisplay = monthlyPrice > 0 ? `$${monthlyPrice.toFixed(2)}/mo` : null;
 ---
 
 <article class="service-card card" data-category={category} data-id={id}>
   <div class="card-header">
     <div class="service-info">
-      <h3>{name}</h3>
+      <h3>{name} <span class="owner-tag">({owner})</span></h3>
       <span class="category-badge">{category}</span>
     </div>
     {priceDisplay && <span class="price">{priceDisplay}</span>}
@@ -75,6 +76,11 @@ const priceDisplay = monthlyPrice > 0 ? `$${monthlyPrice.toFixed(2)}/mo` : null;
 
   h3 {
     margin: 0;
+  }
+
+  .owner-tag {
+    font-weight: 500;
+    color: var(--muted);
   }
 
   .category-badge {

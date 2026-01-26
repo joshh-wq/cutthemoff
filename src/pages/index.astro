@@ -5,6 +5,15 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import services from '../data/services.json';
+
+// Group services by owner
+const ownerOrder = ['Zuckerberg', 'Musk', 'Ek', 'Hastings', 'Bezos', 'Altman', 'Iger', 'Zaslav', 'Nadella', 'Roberts', 'Ellison', 'Zhang Yiming'];
+const servicesByOwner = ownerOrder
+  .map(owner => ({
+    owner,
+    services: services.filter(s => s.owner === owner)
+  }))
+  .filter(group => group.services.length > 0);
 ---
 
 <BaseLayout title="Cut Them Off">
@@ -27,21 +36,28 @@ import services from '../data/services.json';
   <section class="selector">
     <h2>Which companies will you cut off?</h2>
     <p class="selector-help">Select the ones you want to cancel. We'll show you how.</p>
-    <div class="service-checklist">
-      {services.map((service) => (
-        <label class="service-checkbox">
-          <input type="checkbox" value={service.id} data-price={service.monthlyPrice} />
-          <span class="service-name">{service.name}</span>
-          <span class="service-price">
-            {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
-          </span>
-        </label>
+    <div class="owner-groups">
+      {servicesByOwner.map((group) => (
+        <div class="owner-group">
+          <h3 class="owner-name">{group.owner}</h3>
+          <div class="owner-services">
+            {group.services.map((service) => (
+              <label class="service-checkbox">
+                <input type="checkbox" value={service.id} data-price={service.monthlyPrice} data-owner={service.owner} />
+                <span class="service-name">{service.name}</span>
+                <span class="service-price">
+                  {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
       ))}
     </div>
   </section>
 
   <section class="savings-section hidden">
-    <p class="savings-highlight">Taking back <span id="annual-savings" class="amount">$0/year</span> from these companies</p>
+    <p class="savings-highlight">Taking back <span id="annual-savings" class="amount">$0/year</span> from <span id="owner-count" class="owner-count">0 billionaires</span></p>
   </section>
 
   <section class="results">
@@ -182,21 +198,42 @@ import services from '../data/services.json';
   .selector-help {
     text-align: center;
     color: var(--muted);
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
     font-size: 0.95rem;
   }
 
-  .service-checklist {
+  .owner-groups {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+  }
+
+  .owner-group {
+    display: flex;
+    flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .owner-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .owner-services {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
   }
 
   .service-checkbox {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem;
+    padding: 0.625rem 0.75rem;
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -266,6 +303,11 @@ import services from '../data/services.json';
     font-size: 2rem;
     font-weight: 700;
     color: var(--success);
+  }
+
+  .savings-highlight .owner-count {
+    font-weight: 700;
+    color: var(--text);
   }
 
   .share-section {
@@ -388,7 +430,7 @@ import services from '../data/services.json';
   }
 
   @media (min-width: 640px) {
-    .service-checklist {
+    .owner-groups {
       grid-template-columns: repeat(3, 1fr);
     }
 
@@ -398,7 +440,7 @@ import services from '../data/services.json';
   }
 
   @media (min-width: 1024px) {
-    .service-checklist {
+    .owner-groups {
       grid-template-columns: repeat(4, 1fr);
     }
   }
@@ -426,18 +468,23 @@ import services from '../data/services.json';
 
   function updateResults() {
     const selected = new Set<string>();
+    const selectedOwners = new Set<string>();
     let totalMonthly = 0;
 
     checkboxes.forEach((cb) => {
       if (cb.checked) {
         selected.add(cb.value);
         totalMonthly += parseFloat(cb.dataset.price || '0');
+        if (cb.dataset.owner) {
+          selectedOwners.add(cb.dataset.owner);
+        }
       }
     });
 
     const hasSelection = selected.size > 0;
     const annual = Math.round(totalMonthly * 12);
     const multiplied = annual * 10;
+    const ownerCount = selectedOwners.size;
 
     // Toggle sections
     emptyState?.classList.toggle('hidden', hasSelection);
@@ -447,17 +494,22 @@ import services from '../data/services.json';
 
     // Update savings display and share text
     const annualSavingsEl = document.getElementById('annual-savings');
+    const ownerCountEl = document.getElementById('owner-count');
+
+    if (ownerCountEl) {
+      ownerCountEl.textContent = `${ownerCount} billionaire${ownerCount === 1 ? '' : 's'}`;
+    }
 
     if (annual > 0) {
       if (annualSavingsEl) annualSavingsEl.textContent = `${formatMoney(annual)}/year`;
       if (shareMultipliedEl) shareMultipliedEl.textContent = formatMoney(multiplied);
       if (shareTextEl) {
-        shareTextEl.textContent = `I'm cutting off ${formatMoney(annual)}/year from companies supporting the current regime. If you join me, we multiply the impact. https://cutthemoff.vercel.app`;
+        shareTextEl.textContent = `I'm cutting off ${formatMoney(annual)}/year from ${ownerCount} billionaire${ownerCount === 1 ? '' : 's'}. If you join me, we multiply the impact. https://cutthemoff.vercel.app`;
       }
     } else {
       if (shareMultipliedEl) shareMultipliedEl.textContent = '$0';
       if (shareTextEl) {
-        shareTextEl.textContent = `I'm cutting off companies supporting the current regime. If you join me, we multiply the impact. https://cutthemoff.vercel.app`;
+        shareTextEl.textContent = `I'm cutting off ${ownerCount} billionaire${ownerCount === 1 ? '' : 's'}. If you join me, we multiply the impact. https://cutthemoff.vercel.app`;
       }
     }
 

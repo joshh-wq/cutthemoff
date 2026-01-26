@@ -2,6 +2,7 @@
   {
     "id": "facebook",
     "name": "Facebook",
+    "owner": "Zuckerberg",
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "Zuckerberg killed fact-checking, dined at Mar-a-Lago, and donated $1M to the inauguration. Your data is their product. Take it back.",
@@ -20,6 +21,7 @@
   {
     "id": "instagram",
     "name": "Instagram",
+    "owner": "Zuckerberg",
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "Same company, same Zuckerberg, same complicity. Your attention is their revenue. Cut them off.",
@@ -38,6 +40,7 @@
   {
     "id": "tiktok",
     "name": "TikTok",
+    "owner": "Zhang Yiming",
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "An algorithm designed to keep you scrolling while the world burns. Reclaim your time.",
@@ -56,6 +59,7 @@
   {
     "id": "x",
     "name": "X",
+    "owner": "Musk",
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "Musk runs a federal department now. Every post, like, and view gives him leverage. Walk away.",
@@ -75,6 +79,7 @@
   {
     "id": "spotify",
     "name": "Spotify",
+    "owner": "Ek",
     "category": "Streaming",
     "monthlyPrice": 11.99,
     "reason": "Joe Rogan got $250M. Artists get fractions of a penny. Leadership stays silent. The free tier still works.",
@@ -93,6 +98,7 @@
   {
     "id": "netflix",
     "name": "Netflix",
+    "owner": "Hastings",
     "category": "Streaming",
     "monthlyPrice": 15.49,
     "reason": "Co-founder Reed Hastings bankrolls Republican candidates. Stop funding it.",
@@ -111,6 +117,7 @@
   {
     "id": "amazon-prime",
     "name": "Amazon Prime",
+    "owner": "Bezos",
     "category": "Streaming",
     "monthlyPrice": 14.99,
     "reason": "Bezos owns the Washington Post and met with Trump. Prime funds union-busting and political access. End it.",
@@ -129,6 +136,7 @@
   {
     "id": "chatgpt",
     "name": "ChatGPT Plus",
+    "owner": "Altman",
     "category": "AI",
     "monthlyPrice": 20.00,
     "reason": "Sam Altman made the pilgrimage to Mar-a-Lago. OpenAI spends millions lobbying in DC. You don't have to fund it.",
@@ -147,6 +155,7 @@
   {
     "id": "disney-plus",
     "name": "Disney+",
+    "owner": "Iger",
     "category": "Streaming",
     "monthlyPrice": 13.99,
     "reason": "Bob Iger plays nice with whoever holds power. Disney caves to pressure—make sure it's ours.",
@@ -165,6 +174,7 @@
   {
     "id": "max",
     "name": "Max",
+    "owner": "Zaslav",
     "category": "Streaming",
     "monthlyPrice": 16.99,
     "reason": "David Zaslav gutted HBO, slashed jobs, and stays silent. Keep your $17.",
@@ -183,6 +193,7 @@
   {
     "id": "hulu",
     "name": "Hulu",
+    "owner": "Iger",
     "category": "Streaming",
     "monthlyPrice": 17.99,
     "reason": "Disney owns this too. Canceling Hulu and Disney+ sends the same message twice.",
@@ -201,6 +212,7 @@
   {
     "id": "paramount-plus",
     "name": "Paramount+",
+    "owner": "Ellison",
     "category": "Streaming",
     "monthlyPrice": 12.99,
     "reason": "Paramount's leadership plays it safe while democracy burns. Your subscription funds their silence.",
@@ -219,6 +231,7 @@
   {
     "id": "peacock",
     "name": "Peacock",
+    "owner": "Roberts",
     "category": "Streaming",
     "monthlyPrice": 7.99,
     "reason": "Comcast owns NBC and plays both sides. Your monthly fee funds their access game.",
@@ -237,6 +250,7 @@
   {
     "id": "copilot",
     "name": "Microsoft Copilot Pro",
+    "owner": "Nadella",
     "category": "AI",
     "monthlyPrice": 20.00,
     "reason": "Microsoft bankrolls OpenAI and plays both sides of every political fence. Cut the cord.",
