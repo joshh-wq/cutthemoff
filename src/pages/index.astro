@@ -58,7 +58,8 @@ const deleteGroups = deleteOwnerOrder
   <section class="selector">
     <div class="accent-bar" aria-hidden="true"></div>
     <h2>Defund. Then Delete.</h2>
-    <p class="selector-help">Pick one to start. Not ready to quit forever?<br />90 days is one earnings quarter—enough to hit their numbers.</p>
+    <p class="selector-help">Pick one to start. Not ready to quit forever? Try 90 days.</p>
+    <p class="urgency-callout">Q1 earnings close March 31. Cancel before then to hit their numbers.</p>
 
     <!-- Step 1: Defund -->
     <div class="step-section">
@@ -404,8 +405,16 @@ const deleteGroups = deleteOwnerOrder
   .selector-help {
     text-align: center;
     color: var(--muted);
-    margin: 0 0 2.5rem 0;
+    margin: 0 0 0.75rem 0;
     font-size: 0.95rem;
+  }
+
+  .urgency-callout {
+    text-align: center;
+    font-weight: 600;
+    color: #dc2626;
+    margin: 0 0 2.5rem 0;
+    font-size: 1rem;
   }
 
   /* Step sections */
