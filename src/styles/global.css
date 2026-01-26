@@ -22,14 +22,16 @@
 /* Skip link for keyboard/screen reader users */
 .skip-link {
   position: absolute;
-  top: -40px;
-  left: 0;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--accent);
   color: white;
   padding: 0.5rem 1rem;
   z-index: 1000;
   text-decoration: none;
   font-weight: 600;
+  border-radius: 0 0 8px 8px;
 }
 
 .skip-link:focus {
