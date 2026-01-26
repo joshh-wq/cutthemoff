@@ -12,6 +12,11 @@ const { title, description = "This is how we strike. Cut off the companies suppo
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      if (window.location.hostname !== 'defundbillionaires.org' && window.location.hostname !== 'localhost') {
+        window.location.replace('https://defundbillionaires.org' + window.location.pathname);
+      }
+    </script>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
