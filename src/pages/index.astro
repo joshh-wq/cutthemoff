@@ -47,7 +47,7 @@ const deleteGroups = deleteOwnerOrder
 
 <BaseLayout title="Defund Billionaires">
 
-  <Hero headline="DEFUND<br/>BILLIONAIRES">
+  <Hero headline="<span class='headline-defund'>DEFUND</span><br/><span class='headline-billionaires'>BILLIONAIRES</span>">
     <div class="accent-bar" aria-hidden="true"></div>
     <p class="subtext intro-line">Billionaires bent the knee to this regime because they only care about one thing: their bottom line.</p>
     <p class="subtext punch-line">Fine. We speak that language too.</p>
@@ -291,6 +291,16 @@ const deleteGroups = deleteOwnerOrder
 </BaseLayout>
 
 <style>
+  .headline-defund {
+    display: block;
+    font-size: 1.65em;
+    letter-spacing: 0.02em;
+  }
+
+  .headline-billionaires {
+    display: block;
+  }
+
   .accent-bar {
     width: 80px;
     height: 4px;
