@@ -6,8 +6,8 @@ import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import services from '../data/services.json';
 
-// Group services by owner
-const ownerOrder = ['Zuckerberg', 'Musk', 'Ek', 'Hastings', 'Bezos', 'Altman', 'Iger', 'Zaslav', 'Nadella', 'Roberts', 'Ellison', 'Zhang Yiming'];
+// Group services by owner - priority billionaires first, then rest alphabetically
+const ownerOrder = ['Altman', 'Bezos', 'Ellison', 'Musk', 'Zuckerberg', 'Ek', 'Hastings', 'Iger', 'Nadella', 'Roberts', 'Zaslav', 'Zhang Yiming'];
 const servicesByOwner = ownerOrder
   .map(owner => ({
     owner,
