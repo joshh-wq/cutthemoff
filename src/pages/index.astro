@@ -40,6 +40,11 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
     <h2>Who will you cut off?</h2>
     <p class="selector-help">Start with just one. Select the services you want to cancel or delete, and we'll show you how.</p>
 
+    <div class="tip-box">
+      <span class="tip-label">Tip:</span>
+      <span class="tip-text">Not ready to quit forever? Start with 90 days. That's one earnings quarter—long enough to show up in their numbers and make shareholders nervous.</span>
+    </div>
+
     <div class="priority-section">
       <h3 class="section-label">Biggest Enablers</h3>
       <div class="owner-groups">
@@ -244,8 +249,29 @@ const secondaryServiceCount = secondaryGroups.reduce((acc, g) => acc + g.service
   .selector-help {
     text-align: center;
     color: var(--muted);
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1rem 0;
     font-size: 0.95rem;
+  }
+
+  .tip-box {
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .tip-label {
+    font-weight: 700;
+    color: var(--accent);
+    margin-right: 0.25rem;
+  }
+
+  .tip-text {
+    color: var(--text);
   }
 
   .priority-section {
