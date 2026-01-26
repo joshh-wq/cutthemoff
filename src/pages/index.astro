@@ -51,7 +51,7 @@ import services from '../data/services.json';
     <p class="share-hint-small">Send via text, email, or Signal.</p>
     <button type="button" class="btn btn-success" id="share-btn">Share the strike</button>
     <span class="share-feedback hidden" id="share-feedback">Link copied!</span>
-    <p class="share-text hidden" id="share-text">I'm cutting off $0/year from Big Tech. If you join me, we multiply the impact. https://cutthemoff.vercel.app</p>
+    <p class="share-text hidden" id="share-text">I'm cutting off $0/year from companies supporting the current regime. If you join me, we multiply the impact. https://cutthemoff.vercel.app</p>
   </section>
 
   <Footer slot="footer" />
@@ -322,12 +322,12 @@ import services from '../data/services.json';
       if (annualSavingsEl) annualSavingsEl.textContent = `${formatMoney(annual)}/year`;
       if (shareMultipliedEl) shareMultipliedEl.textContent = formatMoney(multiplied);
       if (shareTextEl) {
-        shareTextEl.textContent = `I'm cutting off ${formatMoney(annual)}/year from Big Tech. If you join me, we multiply the impact. https://cutthemoff.vercel.app`;
+        shareTextEl.textContent = `I'm cutting off ${formatMoney(annual)}/year from companies supporting the current regime. If you join me, we multiply the impact. https://cutthemoff.vercel.app`;
       }
     } else {
       if (shareMultipliedEl) shareMultipliedEl.textContent = '$0';
       if (shareTextEl) {
-        shareTextEl.textContent = `I'm cutting off Big Tech. If you join me, we multiply the impact. https://cutthemoff.vercel.app`;
+        shareTextEl.textContent = `I'm cutting off companies supporting the current regime. If you join me, we multiply the impact. https://cutthemoff.vercel.app`;
       }
     }
 
