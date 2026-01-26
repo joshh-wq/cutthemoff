@@ -225,11 +225,23 @@ const disconnectGroups = disconnectOwnerOrder
   }
 
   .subtext.punch-line {
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--text);
     margin: 1.25rem auto;
     white-space: nowrap;
+  }
+
+  @media (min-width: 400px) {
+    .subtext.punch-line {
+      font-size: 1.35rem;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .subtext.punch-line {
+      font-size: 1.5rem;
+    }
   }
 
   .subtext.cta {
