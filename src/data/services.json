@@ -141,7 +141,7 @@
     "category": "Streaming",
     "monthlyPrice": 14.99,
     "reason": "Bezos owns the Washington Post and met with Trump. Prime funds union-busting and political access. End it.",
-    "cancelUrl": "https://www.amazon.com/hz/mycd/myx#/home/settings/payment",
+    "cancelUrl": "https://www.amazon.com/gp/primecentral?ref_=ya_d_c_prime",
     "cancelSteps": [
       "Go to Prime membership settings",
       "Click 'Update, cancel and more'",
