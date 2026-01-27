@@ -46,13 +46,13 @@ const deleteGroups = deleteOwnerOrder
   <Hero headline="<span class='headline-defund'>DEFUND</span><br/><span class='headline-billionaires'>BILLIONAIRES</span>">
     <div class="accent-bar" aria-hidden="true"></div>
     <p class="subtext intro-line">Every month, <strong><u>money from our subscriptions</u></strong> and <strong><u>ad revenue from our attention</u></strong> flows to Big Tech billionaires.</p>
-    <p class="subtext intro-line">They turn around and write million-dollar checks to Trump and the GOP. That money directly funds the right-wing machine dismantling our democracy.</p>
+    <p class="subtext intro-line">They turn around and write million-dollar checks to Trump, Republicans, and dark-money Super PACs. That money directly funds the right-wing machine that's dismantling our country.</p>
     <div class="pipeline-visual" aria-label="Our subscriptions plus ad revenue flow to billionaires which funds right-wing power">
-      <div class="pipeline-node">Subscriptions</div>
+      <div class="pipeline-node">SUBSCRIPTIONS</div>
       <span class="pipeline-plus">+</span>
-      <div class="pipeline-node">Ad Revenue</div>
+      <div class="pipeline-node">AD REVENUE</div>
       <span class="pipeline-equals">=</span>
-      <div class="pipeline-node pipeline-end">RIGHT-WING POWER</div>
+      <div class="pipeline-node pipeline-end">BILLIONAIRES FUNDING FASCISM</div>
     </div>
     <p class="subtext punch-line">It's time to cut off the pipeline.</p>
   </Hero>
@@ -85,8 +85,8 @@ const deleteGroups = deleteOwnerOrder
   </section>
 
   <div class="defund-delete-header">
-    <h2>Defund &amp; Delete</h2>
-        <p class="bridge-stat">The only thing billionaires understand is money and power. Let's hit them where it hurts.</p>
+    <h2>Defund. Delete. Mobilize.</h2>
+        <p class="bridge-stat">The only thing billionaires understand? Money and power.</p>
         <p class="urgency-callout">Cancel before Q1 earnings close in:</p>
 
     <div class="countdown" id="countdown" aria-label="Time remaining until Q1 earnings close">
@@ -153,17 +153,6 @@ const deleteGroups = deleteOwnerOrder
                     <a href={service.cancelUrl} target="_blank" rel="noopener noreferrer" class="cancel-link">
                       Go to {service.name} <span class="sr-only">(opens in new tab)</span> →
                     </a>
-                    {service.alternative && (
-                      <div class="inline-alt">
-                        <span class="alt-label">Instead:</span>
-                        {service.alternative.url ? (
-                          <a href={service.alternative.url} target="_blank" rel="noopener">{service.alternative.name} <span class="sr-only">(opens in new tab)</span></a>
-                        ) : (
-                          <span>{service.alternative.name}</span>
-                        )}
-                        <span class="alt-desc">— {service.alternative.description}</span>
-                      </div>
-                    )}
                   </div>
                 </div>
               ))}
@@ -200,17 +189,6 @@ const deleteGroups = deleteOwnerOrder
                     <a href={service.cancelUrl} target="_blank" rel="noopener noreferrer" class="cancel-link">
                       Go to {service.name} <span class="sr-only">(opens in new tab)</span> →
                     </a>
-                    {service.alternative && (
-                      <div class="inline-alt">
-                        <span class="alt-label">Instead:</span>
-                        {service.alternative.url ? (
-                          <a href={service.alternative.url} target="_blank" rel="noopener">{service.alternative.name} <span class="sr-only">(opens in new tab)</span></a>
-                        ) : (
-                          <span>{service.alternative.name}</span>
-                        )}
-                        <span class="alt-desc">— {service.alternative.description}</span>
-                      </div>
-                    )}
                   </div>
                 </div>
               ))}
@@ -260,17 +238,6 @@ const deleteGroups = deleteOwnerOrder
                     <a href={service.cancelUrl} target="_blank" rel="noopener noreferrer" class="cancel-link">
                       Go to {service.name} <span class="sr-only">(opens in new tab)</span> →
                     </a>
-                    {service.alternative && (
-                      <div class="inline-alt">
-                        <span class="alt-label">Instead:</span>
-                        {service.alternative.url ? (
-                          <a href={service.alternative.url} target="_blank" rel="noopener">{service.alternative.name} <span class="sr-only">(opens in new tab)</span></a>
-                        ) : (
-                          <span>{service.alternative.name}</span>
-                        )}
-                        <span class="alt-desc">— {service.alternative.description}</span>
-                      </div>
-                    )}
                   </div>
                 </div>
               ))}
@@ -286,14 +253,63 @@ const deleteGroups = deleteOwnerOrder
   </section>
 
 
-  <section class="share-section">
+  <section class="switch-section">
     <div class="step-header">
       <span class="step-number" aria-hidden="true">3</span>
       <div class="step-info">
-        <h3 class="step-title">Mobilize</h3>
-        <p class="step-desc">Share this with everyone you know. The more people who join, the harder we hit.</p>
+        <h3 class="step-title">Switch</h3>
+        <p class="step-desc">Move to platforms that don't fund fascism. Bring your people with you.</p>
       </div>
     </div>
+
+    <div class="switch-grid">
+      <div class="switch-card">
+        <div class="switch-replaces">Replaces Facebook, X, Threads</div>
+        <h4 class="switch-name"><a href="https://bsky.app" target="_blank" rel="noopener">Bluesky</a></h4>
+        <p class="switch-desc">Decentralized, open protocol, no billionaire owner. Where most of Twitter's best users went.</p>
+        <a href="https://www.bluesky-migrate.com" target="_blank" rel="noopener" class="switch-migrate">Easy migrate from X →</a>
+      </div>
+      <div class="switch-card">
+        <div class="switch-replaces">Replaces Instagram</div>
+        <h4 class="switch-name"><a href="https://pixelfed.org" target="_blank" rel="noopener">Pixelfed</a></h4>
+        <p class="switch-desc">Decentralized photo sharing. No algorithm, no ads, no Meta.</p>
+        <a href="https://pixelfed.social/site/kb/import" target="_blank" rel="noopener" class="switch-migrate">Easy migrate from Instagram →</a>
+      </div>
+      <div class="switch-card">
+        <div class="switch-replaces">Replaces Spotify</div>
+        <h4 class="switch-name"><a href="https://tidal.com" target="_blank" rel="noopener">Tidal</a></h4>
+        <p class="switch-desc">Better payouts to musicians, high-quality audio. Artists actually get paid.</p>
+        <a href="https://tidal.com/transfer-music" target="_blank" rel="noopener" class="switch-migrate">Easy migrate from Spotify →</a>
+      </div>
+      <div class="switch-card">
+        <div class="switch-replaces">Replaces ChatGPT, Gemini, Copilot</div>
+        <h4 class="switch-name"><a href="https://ollama.ai" target="_blank" rel="noopener">Ollama</a></h4>
+        <p class="switch-desc">Run AI models locally on your own machine. Free, private, no account needed.</p>
+      </div>
+      <div class="switch-card">
+        <div class="switch-replaces">Replaces Amazon Prime</div>
+        <h4 class="switch-name"><a href="https://bookshop.org" target="_blank" rel="noopener">Bookshop.org</a></h4>
+        <p class="switch-desc">Support indie bookstores. Free shipping on orders over $10.</p>
+      </div>
+      <div class="switch-card">
+        <div class="switch-replaces">Replaces all streaming services</div>
+        <h4 class="switch-name"><a href="https://www.kanopy.com/en/signup" target="_blank" rel="noopener">Kanopy</a></h4>
+        <p class="switch-desc">Free with your library card. Criterion Collection, indie films, documentaries.</p>
+      </div>
+      <div class="switch-card">
+        <div class="switch-replaces">Replaces Amazon</div>
+        <h4 class="switch-name">Shop Local</h4>
+        <p class="switch-desc">Your local hardware store, home goods stores. Buying local helps your neighbors and pisses off Bezos.</p>
+      </div>
+      <div class="switch-card">
+        <div class="switch-replaces">Replaces streaming, Audible, Kindle</div>
+        <h4 class="switch-name">Get a Library Card</h4>
+        <p class="switch-desc">Libraries are havens for the people. They have movies, books, magazines, and other resources.</p>
+      </div>
+    </div>
+
+    <p class="switch-cta">The best way to mobilize? Invite your friends and family to these platforms. The more people who switch, the less power billionaires have.</p>
+
     <div class="share-buttons" role="group" aria-label="Share options">
       <a href="#" id="share-sms" class="share-btn share-sms">
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
@@ -313,7 +329,7 @@ const deleteGroups = deleteOwnerOrder
       </button>
     </div>
     <span class="share-feedback hidden" id="share-feedback" role="status" aria-live="polite">Copied! Now paste in Signal or anywhere.</span>
-    <p class="share-text hidden" id="share-text">I'm cutting off billionaires who bent the knee. Join me. https://defundbillionaires.org</p>
+    <p class="share-text hidden" id="share-text">I'm defunding billionaires who fund fascism. Join me—cancel, delete, switch. https://defundbillionaires.org</p>
   </section>
 
   <!-- Sticky bottom bar for mobile -->
@@ -389,17 +405,16 @@ const deleteGroups = deleteOwnerOrder
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.03em;
-    padding: 0.4rem 0.75rem;
-    border-radius: 6px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
+    padding: 0;
+    background: none;
+    border: none;
     color: var(--text);
   }
 
   .pipeline-end {
-    background: linear-gradient(135deg, #dc2626, #ea580c);
-    border-color: transparent;
-    color: white;
+    background: none;
+    border: none;
+    color: #dc2626;
   }
 
   .pipeline-plus, .pipeline-equals {
@@ -1133,7 +1148,7 @@ const deleteGroups = deleteOwnerOrder
     color: var(--text);
   }
 
-  .share-section {
+  .switch-section {
     margin-top: 0;
     padding: 0 1rem 2rem;
     max-width: 900px;
@@ -1142,9 +1157,79 @@ const deleteGroups = deleteOwnerOrder
   }
 
   @media (min-width: 640px) {
-    .share-section {
+    .switch-section {
       padding: 0 1.5rem 2rem;
     }
+  }
+
+  .switch-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+  }
+
+  @media (min-width: 480px) {
+    .switch-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .switch-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .switch-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+
+  .switch-replaces {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+  }
+
+  .switch-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.35rem 0;
+  }
+
+  .switch-name a {
+    color: var(--accent);
+  }
+
+  .switch-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .switch-migrate {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent);
+    padding: 0.35rem 0.75rem;
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: 6px;
+  }
+
+  .switch-cta {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 1.5rem 0 1rem;
   }
 
   .share-buttons {
