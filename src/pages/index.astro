@@ -49,14 +49,40 @@ const deleteGroups = deleteOwnerOrder
   <Hero headline="<span class='headline-defund'>DEFUND</span><br/><span class='headline-billionaires'>BILLIONAIRES</span>">
     <div class="accent-bar" aria-hidden="true"></div>
     <p class="subtext intro-line">These billionaires have had every opportunity to stand up to this fascist regime. Instead, they bent the knee in the oval office and stay silent while ICE kills Americans in broad daylight.</p>
-    <p class="subtext punch-line">Our <strong>subscriptions</strong> and <strong>attention</strong> are <strong>funding fascism</strong>.<br/>It's time to cut off their power.</p>
+    <p class="subtext punch-line">Our <strong><u>subscriptions</u></strong> and <strong><u>attention</u></strong> are <strong>funding fascism</strong>.<br/>It's time to cut off their power.</p>
     <p class="subtext intro-line last">Every subscription we cancel is <strong>money out of their pockets</strong>. Every account we delete <strong>makes shareholders nervous</strong>.<br/>Let's hit them where it hurts.</p>
   </Hero>
 
+  <section class="proof-section">
+    <div class="proof-header">
+      <div class="accent-bar" aria-hidden="true"></div>
+      <h2>This works.</h2>
+      <p class="proof-context">In September 2025, Disney suspended Jimmy Kimmel Live! People cancelled. Here's what happened in <strong>six days</strong>:</p>
+    </div>
+    <div class="proof-stats">
+      <div class="proof-stat">
+        <span class="proof-number">3M</span>
+        <span class="proof-label">subscriptions cancelled</span>
+      </div>
+      <div class="proof-stat">
+        <span class="proof-number">436%</span>
+        <span class="proof-label">spike in cancellations</span>
+      </div>
+      <div class="proof-stat">
+        <span class="proof-number">$333M</span>
+        <span class="proof-label">annual revenue lost</span>
+      </div>
+      <div class="proof-stat">
+        <span class="proof-number">-3%</span>
+        <span class="proof-label">stock price drop</span>
+      </div>
+    </div>
+    <p class="proof-cta">That was one company, one week. Imagine all of them at once.</p>
+  </section>
+
   <div class="defund-delete-header">
-    <div class="accent-bar" aria-hidden="true"></div>
     <h2>Defund. Then Delete.</h2>
-        <p class="urgency-callout">Q1 earnings close March 31.<br />Cancel before then to hurt their earnings.</p>
+        <p class="urgency-callout">Q1 earnings close in:</p>
 
     <div class="countdown" id="countdown" aria-label="Time remaining until Q1 earnings close">
       <div class="countdown-unit">
@@ -421,6 +447,83 @@ const deleteGroups = deleteOwnerOrder
     margin: 0;
     color: var(--muted);
     font-size: 0.9rem;
+  }
+
+  .proof-section {
+    padding: 0 1rem 2.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .proof-header .accent-bar {
+    margin-bottom: 1rem;
+  }
+
+  .proof-header h2 {
+    font-size: 1.75rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+  }
+
+  .proof-context {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .proof-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .proof-stat {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .proof-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #dc2626;
+    line-height: 1;
+  }
+
+  .proof-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+
+  .proof-cta {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    .proof-section {
+      padding: 3rem 2rem;
+    }
+
+    .proof-stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .proof-header h2 {
+      font-size: 2rem;
+    }
+
+    .proof-number {
+      font-size: 2rem;
+    }
   }
 
   .defund-delete-header {
@@ -842,18 +945,18 @@ const deleteGroups = deleteOwnerOrder
   }
 
   .inline-alt {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--muted);
     margin-top: 0.75rem;
   }
 
   .inline-alt .alt-label {
     font-weight: 600;
-    color: var(--success);
+    color: var(--accent);
   }
 
   .inline-alt a {
-    color: var(--success);
+    color: var(--accent);
     font-weight: 600;
   }
 
