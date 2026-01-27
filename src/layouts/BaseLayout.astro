@@ -1,4 +1,6 @@
 ---
+import Analytics from '@vercel/analytics/astro';
+
 interface Props {
   title: string;
   description?: string;
@@ -28,6 +30,7 @@ const { title, description = "This is how we strike. Cut off the companies suppo
       <slot />
     </main>
     <slot name="footer" />
+    <Analytics />
   </body>
 </html>
 
