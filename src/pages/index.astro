@@ -85,7 +85,7 @@ const deleteGroups = deleteOwnerOrder
   </section>
 
   <div class="defund-delete-header">
-    <h2>Defund. Delete. Mobilize.</h2>
+    <h2>Defund. Delete. Switch.</h2>
         <p class="bridge-stat">The only thing billionaires understand? Money and power.</p>
         <p class="urgency-callout">Cancel before Q1 earnings close in:</p>
 
@@ -332,6 +332,39 @@ const deleteGroups = deleteOwnerOrder
     <p class="share-text hidden" id="share-text">I'm defunding billionaires who fund fascism. Join me—cancel, delete, switch. https://defundbillionaires.org</p>
   </section>
 
+  <section class="toolkit-section">
+    <div class="accent-bar" aria-hidden="true"></div>
+    <h2>Toolkit</h2>
+    <p class="toolkit-desc">Resources to spread the movement offline and online.</p>
+
+    <div class="toolkit-grid">
+      <div class="toolkit-card">
+        <div class="toolkit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Printable Flyer</h3>
+        <p>PDF with QR code. Print and post in your apartment building, coffee shop, or office.</p>
+        <span class="toolkit-coming-soon">Coming soon</span>
+      </div>
+      <div class="toolkit-card">
+        <div class="toolkit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <h3>Social Media Images</h3>
+        <p>Shareable graphics for Instagram stories, Bluesky posts, and group chats.</p>
+        <span class="toolkit-coming-soon">Coming soon</span>
+      </div>
+      <div class="toolkit-card">
+        <div class="toolkit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>Text Templates</h3>
+        <p>Copy-paste messages for group chats, emails, and DMs to get your people on board.</p>
+        <span class="toolkit-coming-soon">Coming soon</span>
+      </div>
+    </div>
+  </section>
+
   <!-- Sticky bottom bar for mobile -->
   <div class="sticky-bar hidden" id="sticky-bar">
     <div class="sticky-content">
@@ -397,6 +430,10 @@ const deleteGroups = deleteOwnerOrder
     gap: 0.5rem;
     flex-wrap: wrap;
     margin: 1.5rem 0 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card-bg);
   }
 
   .pipeline-node {
@@ -1223,6 +1260,81 @@ const deleteGroups = deleteOwnerOrder
     padding: 0.35rem 0.75rem;
     background: rgba(37, 99, 235, 0.08);
     border-radius: 6px;
+  }
+
+  .toolkit-section {
+    padding: 2.5rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border);
+  }
+
+  .toolkit-section h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+  }
+
+  .toolkit-desc {
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .toolkit-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .toolkit-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .toolkit-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  .toolkit-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 auto 0.75rem;
+    color: var(--muted);
+  }
+
+  .toolkit-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .toolkit-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.35rem 0;
+  }
+
+  .toolkit-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.4;
+  }
+
+  .toolkit-coming-soon {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #ea580c;
+    border: 1px solid #ea580c;
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
   }
 
   .switch-cta {
