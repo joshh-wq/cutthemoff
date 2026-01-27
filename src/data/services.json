@@ -103,7 +103,7 @@
     "category": "Streaming",
     "monthlyPrice": 11.99,
     "reason": "Joe Rogan got $250M. Artists get fractions of a penny. Leadership stays silent. The free tier still works.",
-    "cancelUrl": "https://www.spotify.com/account/subscription/",
+    "cancelUrl": "https://www.spotify.com/us/account/subscription/manage/",
     "cancelSteps": [
       "Go to Account page",
       "Click 'Change plan'",
@@ -155,20 +155,20 @@
   },
   {
     "id": "chatgpt",
-    "name": "ChatGPT Plus",
+    "name": "ChatGPT",
     "owner": "Sam Altman",
     "category": "AI",
     "monthlyPrice": 20.00,
     "reason": "Sam Altman made the pilgrimage to Mar-a-Lago. OpenAI spends millions lobbying in DC. You don't have to fund it.",
-    "cancelUrl": "https://help.openai.com/en/articles/7232927-how-do-i-cancel-my-chatgpt-plus-subscription",
+    "cancelUrl": "https://chatgpt.com/#settings/Account",
     "cancelSteps": [
       "Go to Settings in ChatGPT",
       "Click 'Manage my subscription'",
       "Select 'Cancel Plan'"
     ],
     "alternative": {
-      "name": "ChatGPT Free or Ollama",
-      "description": "Free tier still works. Or run open-source models locally with Ollama.",
+      "name": "Ollama",
+      "description": "Run open-source models locally with Ollama.",
       "url": "https://ollama.ai"
     }
   },
@@ -293,7 +293,7 @@
     "category": "AI",
     "monthlyPrice": 19.99,
     "reason": "Same Pichai, same Google. Free tier or open-source alternatives work fine.",
-    "cancelUrl": "https://one.google.com/about/plans",
+    "cancelUrl": "https://one.google.com/settings",
     "cancelSteps": [
       "Go to one.google.com",
       "Click 'Manage plan'",
@@ -302,6 +302,63 @@
     "alternative": {
       "name": "Gemini Free or Ollama",
       "description": "Free tier still works. Or run open-source models locally with Ollama.",
+      "url": "https://ollama.ai"
+    }
+  },
+  {
+    "id": "copilot",
+    "name": "Microsoft Copilot",
+    "owner": "Satya Nadella",
+    "category": "AI",
+    "monthlyPrice": 20.00,
+    "reason": "Microsoft poured $13B into OpenAI. Nadella met with Trump. Your subscription funds both empires.",
+    "cancelUrl": "https://account.microsoft.com/services",
+    "cancelSteps": [
+      "Go to Microsoft Account Services",
+      "Find Copilot Pro subscription",
+      "Click 'Manage' then 'Cancel'"
+    ],
+    "alternative": {
+      "name": "Ollama",
+      "description": "Run open-source models locally. No Microsoft, no OpenAI.",
+      "url": "https://ollama.ai"
+    }
+  },
+    {
+    "id": "grok",
+    "name": "Grok (xAI)",
+    "owner": "Elon Musk",
+    "category": "AI",
+    "monthlyPrice": 16.00,
+    "reason": "Musk's AI trained on X data. Same Musk who runs DOGE. Your subscription funds his political machine.",
+    "cancelUrl": "https://x.com/settings/manage_subscription",
+    "cancelSteps": [
+      "Go to X Settings",
+      "Click 'Manage subscription'",
+      "Cancel your X Premium"
+    ],
+    "alternative": {
+      "name": "Ollama",
+      "description": "Run open-source models locally. No Musk.",
+      "url": "https://ollama.ai"
+    }
+  },
+  {
+    "id": "perplexity",
+    "name": "Perplexity AI",
+    "owner": "Aravind Srinivas",
+    "category": "AI",
+    "monthlyPrice": 20.00,
+    "reason": "VC-funded AI search backed by Jeff Bezos and Nvidia. The billionaire money runs deep.",
+    "cancelUrl": "https://www.perplexity.ai/settings/subscription",
+    "cancelSteps": [
+      "Go to Perplexity Settings",
+      "Click Subscription",
+      "Select 'Cancel subscription'"
+    ],
+    "alternative": {
+      "name": "Ollama + SearXNG",
+      "description": "Local AI plus private search. No VC money, no tracking.",
       "url": "https://ollama.ai"
     }
   },
