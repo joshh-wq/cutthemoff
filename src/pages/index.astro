@@ -12,7 +12,7 @@ const deleteServices = services.filter(s => socialIds.includes(s.id));
 
 // Group defund services by owner - split into initial and more
 const defundInitialOwners = ['Jeff Bezos', 'Sam Altman', 'Sundar Pichai', 'Larry Ellison'];
-const defundMoreOwners = ['Tim Cook', 'Daniel Ek', 'Reed Hastings', 'Bob Iger', 'Brian Roberts', 'David Zaslav'];
+const defundMoreOwners = ['Tim Cook', 'Daniel Ek', 'Brian Roberts'];
 
 const defundInitialGroups = defundInitialOwners
   .map(owner => ({
@@ -32,10 +32,7 @@ const defundMoreGroups = defundMoreOwners
 const deleteOwnerOrder = ['Mark Zuckerberg', 'Elon Musk', 'Zhang Yiming'];
 
 // Snarky nicknames for billionaires
-const nicknames: Record<string, string> = {
-  'Elon Musk': 'Space Karen',
-  'Mark Zuckerberg': 'MAGA Mark',
-};
+const nicknames: Record<string, string> = {};
 const deleteGroups = deleteOwnerOrder
   .map(owner => ({
     owner,
@@ -48,15 +45,21 @@ const deleteGroups = deleteOwnerOrder
 
   <Hero headline="<span class='headline-defund'>DEFUND</span><br/><span class='headline-billionaires'>BILLIONAIRES</span>">
     <div class="accent-bar" aria-hidden="true"></div>
-    <p class="subtext intro-line">These billionaires have had every opportunity to stand up to this fascist regime. Instead, they bent the knee in the oval office and stay silent while ICE kills Americans in broad daylight.</p>
-    <p class="subtext punch-line">Our <strong><u>subscriptions</u></strong> and <strong><u>attention</u></strong> are <strong>funding fascism</strong>.<br/>It's time to cut off their power.</p>
-    <p class="subtext intro-line last">Every subscription we cancel is <strong>money out of their pockets</strong>. Every account we delete <strong>makes shareholders nervous</strong>.<br/>Let's hit them where it hurts.</p>
+    <p class="subtext intro-line">Every month, money from our subscriptions and ad revenue from the attention we give to platforms flow to billionaires—who turn around and write million-dollar checks to Trump and the GOP. That money directly funds the right-wing machine dismantling our democracy.</p>
+    <div class="pipeline-visual" aria-label="Our subscriptions plus ad revenue flow to billionaires which funds right-wing power">
+      <div class="pipeline-node">Subscriptions</div>
+      <span class="pipeline-plus">+</span>
+      <div class="pipeline-node">Ad Revenue</div>
+      <span class="pipeline-equals">=</span>
+      <div class="pipeline-node pipeline-end">RIGHT-WING POWER</div>
+    </div>
+    <p class="subtext punch-line">Our <strong><u>subscriptions</u></strong> and <strong><u>attention</u></strong> are <strong>funding fascism</strong>.<br/>It's time to cut off the pipeline.</p>
   </Hero>
 
   <section class="proof-section">
     <div class="proof-header">
       <div class="accent-bar" aria-hidden="true"></div>
-      <h2>This works.</h2>
+      <h2>People power works.</h2>
       <p class="proof-context">In September 2025, Disney suspended Jimmy Kimmel Live! People cancelled. Here's what happened in <strong>six days</strong>:</p>
     </div>
     <div class="proof-stats">
@@ -82,6 +85,7 @@ const deleteGroups = deleteOwnerOrder
 
   <div class="defund-delete-header">
     <h2>Defund. Then Delete.</h2>
+        <p class="bridge-stat">Billionaire money via our subscriptions and attention (ad revenue) funded Trump's takeover.</p>
         <p class="urgency-callout">Q1 earnings close in:</p>
 
     <div class="countdown" id="countdown" aria-label="Time remaining until Q1 earnings close">
@@ -114,7 +118,17 @@ const deleteGroups = deleteOwnerOrder
         <span class="step-number" aria-hidden="true">1</span>
         <div class="step-info">
           <h3 class="step-title">Defund</h3>
-          <p class="step-desc">Cancel subscriptions. Start with one.</p>
+          <p class="step-desc">Cancel our subscriptions. Start with two.</p>
+        </div>
+      </div>
+      <div class="step-stats">
+        <div class="step-stat">
+          <span class="step-stat-number">$313M</span>
+          <span class="step-stat-label">to Trump/GOP from our subscriptions</span>
+        </div>
+        <div class="step-stat">
+          <span class="step-stat-number">100%</span>
+          <span class="step-stat-label">of these tech CEOs donated to Trump's inauguration or pro-Trump Super PACs</span>
         </div>
       </div>
       <div class="owner-groups">
@@ -158,7 +172,7 @@ const deleteGroups = deleteOwnerOrder
       </div>
 
       <button type="button" class="view-more-btn" id="defund-view-more" aria-expanded="false">
-        View more <span class="view-more-count">({defundMoreGroups.length} more)</span>
+        View more <span class="view-more-count" data-count={defundMoreGroups.length}>({defundMoreGroups.length} more)</span>
         <svg aria-hidden="true" class="view-more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M19 9l-7 7-7-7"/>
         </svg>
@@ -211,7 +225,17 @@ const deleteGroups = deleteOwnerOrder
         <span class="step-number" aria-hidden="true">2</span>
         <div class="step-info">
           <h3 class="step-title">Delete</h3>
-          <p class="step-desc">Delete your accounts. Harder, but it sends a message.</p>
+          <p class="step-desc">Delete our accounts. Ad revenue from our time on these platforms flows straight to right-wing billionaires.</p>
+        </div>
+      </div>
+      <div class="step-stats">
+        <div class="step-stat">
+          <span class="step-stat-number">$391M</span>
+          <span class="step-stat-label">to Trump/GOP from ad platform owners</span>
+        </div>
+        <div class="step-stat">
+          <span class="step-stat-number">2.5 hrs/day</span>
+          <span class="step-stat-label">generates ad revenue for Trump donors</span>
         </div>
       </div>
       <div class="owner-groups">
@@ -354,6 +378,52 @@ const deleteGroups = deleteOwnerOrder
     margin-bottom: 0;
   }
 
+  .pipeline-visual {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .pipeline-node {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .pipeline-end {
+    background: linear-gradient(135deg, #dc2626, #ea580c);
+    border-color: transparent;
+    color: white;
+  }
+
+  .pipeline-plus, .pipeline-equals {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--muted);
+  }
+
+  .pipeline-equals {
+    color: #ea580c;
+    font-size: 1.3rem;
+  }
+
+  @media (min-width: 640px) {
+    .pipeline-node {
+      font-size: 0.85rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+
   .subtext.punch-line {
     font-size: 1.1rem;
     font-weight: 700;
@@ -450,7 +520,7 @@ const deleteGroups = deleteOwnerOrder
   }
 
   .proof-section {
-    padding: 0 1rem 2.5rem;
+    padding: 2rem 1rem 2.5rem;
     max-width: 700px;
     margin: 0 auto;
   }
@@ -767,8 +837,62 @@ const deleteGroups = deleteOwnerOrder
 
   .step-desc {
     margin: 0.25rem 0 0 0;
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     color: var(--muted);
+  }
+
+  .step-stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .step-stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .step-stat-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #dc2626;
+    line-height: 1;
+  }
+
+  .step-stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+    line-height: 1.3;
+  }
+
+  @media (min-width: 640px) {
+    .step-stat-number {
+      font-size: 1.5rem;
+    }
+
+    .step-stat-label {
+      font-size: 0.85rem;
+    }
+  }
+
+  .bridge-stat {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.15rem;
+    font-weight: 600;
+    max-width: 550px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.4;
+  }
+
+  .bridge-stat em {
+    font-style: italic;
   }
 
   .view-more-btn {
@@ -1438,7 +1562,7 @@ const deleteGroups = deleteOwnerOrder
     // Update button text
     const countSpan = defundViewMoreBtn.querySelector('.view-more-count');
     if (countSpan) {
-      countSpan.textContent = isExpanded ? '(6 more)' : '';
+      countSpan.textContent = isExpanded ? `(${countSpan.dataset.count} more)` : '';
     }
     defundViewMoreBtn.childNodes[0].textContent = isExpanded ? 'View more ' : 'View less ';
   });

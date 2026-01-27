@@ -116,25 +116,6 @@
     }
   },
   {
-    "id": "netflix",
-    "name": "Netflix",
-    "owner": "Reed Hastings",
-    "category": "Streaming",
-    "monthlyPrice": 15.49,
-    "reason": "Co-founder Reed Hastings bankrolls Republican candidates. Stop funding it.",
-    "cancelUrl": "https://www.netflix.com/cancelplan",
-    "cancelSteps": [
-      "Go to Account settings",
-      "Click 'Cancel Membership'",
-      "Confirm cancellation"
-    ],
-    "alternative": {
-      "name": "Kanopy",
-      "description": "Free with your library card. Criterion Collection, indie films, documentaries.",
-      "url": "https://www.kanopy.com/en/signup"
-    }
-  },
-  {
     "id": "amazon-prime",
     "name": "Amazon Prime",
     "owner": "Jeff Bezos",
@@ -170,63 +151,6 @@
       "name": "Ollama",
       "description": "Run open-source models locally with Ollama.",
       "url": "https://ollama.ai"
-    }
-  },
-  {
-    "id": "disney-plus",
-    "name": "Disney+",
-    "owner": "Bob Iger",
-    "category": "Streaming",
-    "monthlyPrice": 13.99,
-    "reason": "Bob Iger plays nice with whoever holds power. Disney caves to pressure—make sure it's ours.",
-    "cancelUrl": "https://www.disneyplus.com/account",
-    "cancelSteps": [
-      "Go to Account settings",
-      "Select your subscription",
-      "Click 'Cancel Subscription'"
-    ],
-    "alternative": {
-      "name": "Kanopy + Hoopla",
-      "description": "Both free with your library card. Thousands of films and shows.",
-      "url": "https://www.kanopy.com/en/signup"
-    }
-  },
-  {
-    "id": "max",
-    "name": "Max",
-    "owner": "David Zaslav",
-    "category": "Streaming",
-    "monthlyPrice": 16.99,
-    "reason": "David Zaslav gutted HBO, slashed jobs, and stays silent. Keep your $17.",
-    "cancelUrl": "https://www.max.com/settings/subscription",
-    "cancelSteps": [
-      "Go to Account settings",
-      "Click 'Manage Subscription'",
-      "Select 'Cancel Subscription'"
-    ],
-    "alternative": {
-      "name": "Kanopy",
-      "description": "Quality films, free with your library card. No Zaslav.",
-      "url": "https://www.kanopy.com/en/signup"
-    }
-  },
-  {
-    "id": "hulu",
-    "name": "Hulu",
-    "owner": "Bob Iger",
-    "category": "Streaming",
-    "monthlyPrice": 17.99,
-    "reason": "Disney owns this too. Canceling Hulu and Disney+ sends the same message twice.",
-    "cancelUrl": "https://help.hulu.com/article/hulu-cancel-hulu-subscription",
-    "cancelSteps": [
-      "Go to Your Account page",
-      "Click 'Cancel Your Subscription'",
-      "Follow the prompts to confirm"
-    ],
-    "alternative": {
-      "name": "Kanopy + Hoopla",
-      "description": "Free with your library card. No Disney money.",
-      "url": "https://www.kanopy.com/en/signup"
     }
   },
   {
@@ -302,25 +226,6 @@
     "alternative": {
       "name": "Gemini Free or Ollama",
       "description": "Free tier still works. Or run open-source models locally with Ollama.",
-      "url": "https://ollama.ai"
-    }
-  },
-  {
-    "id": "copilot",
-    "name": "Microsoft Copilot",
-    "owner": "Satya Nadella",
-    "category": "AI",
-    "monthlyPrice": 20.00,
-    "reason": "Microsoft poured $13B into OpenAI. Nadella met with Trump. Your subscription funds both empires.",
-    "cancelUrl": "https://account.microsoft.com/services",
-    "cancelSteps": [
-      "Go to Microsoft Account Services",
-      "Find Copilot Pro subscription",
-      "Click 'Manage' then 'Cancel'"
-    ],
-    "alternative": {
-      "name": "Ollama",
-      "description": "Run open-source models locally. No Microsoft, no OpenAI.",
       "url": "https://ollama.ai"
     }
   },
