@@ -26,7 +26,7 @@ const defundGroups = defundOwners
   .filter(group => group.services.length > 0);
 
 // Group delete services by owner
-const deleteOwnerOrder = ['Mark Zuckerberg', 'Elon Musk', 'Adam Presser'];
+const deleteOwnerOrder = ['Mark Zuckerberg', 'Elon Musk', 'Jeff Yass'];
 
 // Snarky nicknames for billionaires
 const nicknames: Record<string, string> = {};
@@ -40,6 +40,8 @@ const taglines: Record<string, string> = {
   'Tim Cook': 'Made in sweatshops',
   'Mark Zuckerberg': 'Polarization for profit',
   'Elon Musk': 'Space Karen',
+  'Jeff Yass': 'MAGA Mega-donor',
+  'Daniel Ek': 'Streaming for ICE',
 };
 const deleteGroups = deleteOwnerOrder
   .map(owner => ({
@@ -230,7 +232,7 @@ const deleteGroups = deleteOwnerOrder
         <span class="step-number" aria-hidden="true">2</span>
         <div class="step-info">
           <h3 class="step-title">Delete</h3>
-          <p class="step-desc">Every minute on these apps = ad revenue for billionaires who fund fascism. Delete. Deactivate.</p>
+          <p class="step-desc">In 2024, Meta, TikTok, and X made $181 billion in ad revenue. Every scroll funds fascism.</p>
         </div>
       </div>
       <div class="owner-groups">
