@@ -1426,15 +1426,24 @@ const deleteGroups = deleteOwnerOrder
 
   .news-section {
     padding: 2.5rem 1rem;
-    max-width: 900px;
-    margin: 0 auto;
+    background: #0f172a;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    max-width: none;
     border-top: 1px solid var(--border);
+  }
+
+  .news-section > *:not(.accent-bar) {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .news-section h2 {
     font-size: 1.5rem;
     font-weight: 800;
     margin-bottom: 1.5rem;
+    color: white;
   }
 
   .news-grid {
