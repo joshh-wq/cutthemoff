@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { title, description = "This is how we strike. Cut off the companies supporting this regime." } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -14,18 +15,36 @@ const { title, description = "This is how we strike. Cut off the companies suppo
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script is:inline>
-      if (window.location.hostname !== 'defundbillionaires.org' && window.location.hostname !== 'localhost') {
-        window.location.replace('https://defundbillionaires.org' + window.location.pathname);
-      }
-    </script>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content="https://defundbillionaires.org" />
+    <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL('/og-image.svg', Astro.site).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL('/og-image.svg', Astro.site).href} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "Defund Billionaires",
+          "url": "https://defundbillionaires.org"
+        },
+        {
+          "@type": "Organization",
+          "name": "Defund Billionaires",
+          "url": "https://defundbillionaires.org",
+          "description": description
+        }
+      ]
+    })} />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
