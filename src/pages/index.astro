@@ -198,8 +198,10 @@ const deleteGroups = deleteOwnerOrder
       <div class="owner-groups">
         {defundGroups.map((group) => (
           <div class="owner-group">
-            <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
-            {taglines[group.owner] && <p class="owner-tagline">{taglines[group.owner]}</p>}
+            <div class="owner-header">
+              <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
+              {taglines[group.owner] && <span class="owner-tagline">{taglines[group.owner]}</span>}
+            </div>
             <div class="owner-services">
               {group.services.map((service) => (
                 <div class="service-item" data-id={service.id}>
@@ -232,14 +234,16 @@ const deleteGroups = deleteOwnerOrder
         <span class="step-number" aria-hidden="true">2</span>
         <div class="step-info">
           <h3 class="step-title">Delete</h3>
-          <p class="step-desc">In 2024, Meta, TikTok, and X made $181 billion in ad revenue. Every scroll funds fascism.</p>
+          <p class="step-desc">In 2024, Meta, TikTok, and X made <strong>$181 billion in ad revenue</strong>. Every scroll funds fascism.</p>
         </div>
       </div>
       <div class="owner-groups">
         {deleteGroups.map((group) => (
           <div class="owner-group">
-            <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
-            {taglines[group.owner] && <p class="owner-tagline">{taglines[group.owner]}</p>}
+            <div class="owner-header">
+              <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
+              {taglines[group.owner] && <span class="owner-tagline">{taglines[group.owner]}</span>}
+            </div>
             <div class="owner-services">
               {group.services.map((service) => (
                 <div class="service-item" data-id={service.id}>
@@ -1111,6 +1115,19 @@ const deleteGroups = deleteOwnerOrder
     gap: 0.5rem;
   }
 
+  .owner-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 480px) {
+    .owner-header {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
   .owner-name {
     font-size: 1rem;
     font-weight: 700;
@@ -1128,7 +1145,13 @@ const deleteGroups = deleteOwnerOrder
     font-size: 0.85rem;
     font-style: italic;
     color: var(--muted);
-    margin: -0.25rem 0 0;
+    margin: 0;
+  }
+
+  @media (min-width: 480px) {
+    .owner-tagline {
+      margin-top: -0.25rem;
+    }
   }
 
   .owner-services {
