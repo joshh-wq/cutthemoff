@@ -193,7 +193,7 @@
   },
     {
     "id": "youtube-premium",
-    "name": "YouTube Premium",
+    "name": "YouTube",
     "owner": "Sundar Pichai",
     "category": "Streaming",
     "monthlyPrice": 13.99,
@@ -212,7 +212,7 @@
   },
   {
     "id": "gemini",
-    "name": "Google Gemini",
+    "name": "Gemini",
     "owner": "Sundar Pichai",
     "category": "AI",
     "monthlyPrice": 19.99,
