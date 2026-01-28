@@ -64,7 +64,7 @@ const deleteGroups = deleteOwnerOrder
         <p class="intro-equation">Our scrolling = Their Super PAC money</p>
       </div>
 
-      <p class="intro-body intro-congress">Congress can't stop them.</p>
+      <p class="intro-body intro-congress">Politicians won't stop them.</p>
       <p class="intro-we">WE can.</p>
     </div>
 
@@ -416,22 +416,6 @@ const deleteGroups = deleteOwnerOrder
     </form>
   </section>
 
-  <!-- Sticky bottom bar for mobile -->
-  <div class="sticky-bar hidden" id="sticky-bar">
-    <div class="sticky-content">
-      <div class="sticky-total">
-        <span class="sticky-amount" id="sticky-amount">$0</span>
-        <span class="sticky-label">/year</span>
-      </div>
-      <button type="button" class="sticky-share-btn" id="sticky-share">
-        Share
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
-        </svg>
-      </button>
-    </div>
-  </div>
-
   <Footer slot="footer" />
 </BaseLayout>
 
@@ -538,7 +522,7 @@ const deleteGroups = deleteOwnerOrder
     color: var(--orange-bright);
     text-align: center;
     margin-top: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
     letter-spacing: 0.02em;
   }
 
@@ -1718,80 +1702,6 @@ const deleteGroups = deleteOwnerOrder
     }
   }
 
-  /* Sticky bottom bar */
-  .sticky-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--card-bg);
-    border-top: 1px solid var(--border);
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
-    padding: 0.75rem 1rem;
-    z-index: 100;
-    transform: translateY(0);
-    transition: transform 0.3s ease;
-  }
-
-  .sticky-bar.hidden {
-    transform: translateY(100%);
-  }
-
-  .sticky-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .sticky-total {
-    display: flex;
-    align-items: baseline;
-    gap: 0.125rem;
-  }
-
-  .sticky-amount {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--success);
-  }
-
-  .sticky-label {
-    font-size: 0.875rem;
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  .sticky-share-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 1.25rem;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .sticky-share-btn:hover {
-    background: var(--accent-hover);
-  }
-
-  .sticky-share-btn svg {
-    width: 1rem;
-    height: 1rem;
-  }
-
-  /* Add padding to body when sticky bar is visible */
-  body.has-sticky-bar {
-    padding-bottom: 70px;
-  }
-
   /* Testimonials marquee */
   .testimonials-section {
     padding: 0 0 2rem;
@@ -1994,10 +1904,6 @@ const deleteGroups = deleteOwnerOrder
   const shareSignal = document.getElementById('share-signal');
   const shareCopy = document.getElementById('share-copy');
   const shareFeedback = document.getElementById('share-feedback');
-  const stickyBar = document.getElementById('sticky-bar');
-  const stickyAmount = document.getElementById('sticky-amount');
-  const stickyShare = document.getElementById('sticky-share');
-
   let currentDisplayedAmount = 0;
   let animationFrame: number | null = null;
 
@@ -2067,10 +1973,6 @@ const deleteGroups = deleteOwnerOrder
     // Toggle savings section (share section is always visible)
     savingsSection?.classList.toggle('hidden', !hasSelection || annual === 0);
 
-    // Toggle sticky bar
-    stickyBar?.classList.toggle('hidden', !hasSelection);
-    document.body.classList.toggle('has-sticky-bar', hasSelection);
-
     // Update savings display with animation
     const annualSavingsEl = document.getElementById('annual-savings');
     const ownerCountEl = document.getElementById('owner-count');
@@ -2081,14 +1983,12 @@ const deleteGroups = deleteOwnerOrder
 
     if (annual > 0) {
       animateCounter(annual, annualSavingsEl, '/year');
-      if (stickyAmount) stickyAmount.textContent = formatMoney(annual);
       if (shareTextEl) {
         shareTextEl.textContent = `I'm cutting off ${formatMoney(annual)}/year from ${ownerCount} billionaire${ownerCount === 1 ? '' : 's'}. Join me. https://defundbillionaires.org`;
       }
     } else {
       currentDisplayedAmount = 0;
       if (annualSavingsEl) annualSavingsEl.textContent = '$0/year';
-      if (stickyAmount) stickyAmount.textContent = '$0';
       if (shareTextEl) {
         shareTextEl.textContent = `I'm cutting off billionaires who bent the knee. Join me. https://defundbillionaires.org`;
       }
@@ -2100,11 +2000,6 @@ const deleteGroups = deleteOwnerOrder
 
   checkboxes.forEach((cb) => {
     cb.addEventListener('change', updateResults);
-  });
-
-  // Sticky bar share button - scroll to share section
-  stickyShare?.addEventListener('click', () => {
-    shareSection?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 
   // Update share links when selections change
