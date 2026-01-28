@@ -30,6 +30,17 @@ const deleteOwnerOrder = ['Mark Zuckerberg', 'Elon Musk', 'Adam Presser'];
 
 // Snarky nicknames for billionaires
 const nicknames: Record<string, string> = {};
+
+// Taglines for each billionaire
+const taglines: Record<string, string> = {
+  'Jeff Bezos': 'Union buster billionaire',
+  'Sam Altman': 'AI without guardrails',
+  'Sundar Pichai': 'Your data, his profit',
+  'Larry Ellison': 'Database for deportations',
+  'Tim Cook': 'Made in sweatshops',
+  'Mark Zuckerberg': 'Polarization for profit',
+  'Elon Musk': 'Space Karen',
+};
 const deleteGroups = deleteOwnerOrder
   .map(owner => ({
     owner,
@@ -41,22 +52,20 @@ const deleteGroups = deleteOwnerOrder
 <BaseLayout title="Defund Billionaires">
 
   <Hero slot="hero" headline="<span class='headline-defund'>Defund</span><br/><span class='headline-billionaires'>Billionaires</span>">
-    <p class="hero-label" slot="label">A people's movement</p>
-    <div class="beat beat-accusation">
-      <p class="subtext intro-line callout"><strong>Bezos. Zuckerberg. Musk. Altman.</strong></p>
-      <p class="subtext intro-line sans">We hand them money every month.</p>
-      <p class="subtext intro-line callout"><strong>They hand Trump millions.</strong></p>
-    </div>
+    <p class="hero-label" slot="label">Join the People's Strike</p>
+    <div class="intro-content">
+      <p class="intro-body">We've marched. We've called. We've resisted.</p>
 
-    <div class="beat beat-pipeline">
-      <p class="pipeline-line">Our subscriptions <span class="arrow">→</span> Their donations</p>
-      <p class="pipeline-line">Our scrolling <span class="arrow">→</span> Their Super PACs</p>
+      <p class="intro-body intro-next">Here's what we do next:</p>
+      <p class="intro-emphasis">Defund the billionaires that fund fascism.</p>
 
-    </div>
+      <div class="intro-equations">
+        <p class="intro-equation">Our subscriptions = Their donations to Trump</p>
+        <p class="intro-equation">Our scrolling = Their Super PAC money</p>
+      </div>
 
-    <div class="beat beat-cta">
-      <p class="subtext punch-line">Congress can't defund them.</p>
-      <p class="subtext punch-line"><strong>WE</strong> can.</p>
+      <p class="intro-body intro-congress">Congress can't stop them.</p>
+      <p class="intro-we">WE can.</p>
     </div>
 
   </Hero>
@@ -149,7 +158,7 @@ const deleteGroups = deleteOwnerOrder
 
   <div class="defund-delete-header">
     <h2>Defund. Delete. Switch.</h2>
-        <p class="urgency-callout">Cancel now to impact Q1 earnings reports.</p>
+        <p class="urgency-callout">Join the economic strike.<br>Q1 earnings close soon.<br>When they see the losses, they'll panic.<br>Be part of the movement that made them pay.</p>
 
     <div class="countdown" id="countdown" aria-label="Time remaining until Q1 earnings close">
       <div class="countdown-unit">
@@ -181,13 +190,14 @@ const deleteGroups = deleteOwnerOrder
         <span class="step-number" aria-hidden="true">1</span>
         <div class="step-info">
           <h3 class="step-title">Defund</h3>
-          <p class="step-desc">Cancel our subscriptions. Pick one and cancel now. Each takes a minute or less.</p>
+          <p class="step-desc">We can't fund what we claim to fight. Pick at least one subscription. Cancel now. Defund fascism.</p>
         </div>
       </div>
       <div class="owner-groups">
         {defundGroups.map((group) => (
           <div class="owner-group">
             <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
+            {taglines[group.owner] && <p class="owner-tagline">{taglines[group.owner]}</p>}
             <div class="owner-services">
               {group.services.map((service) => (
                 <div class="service-item" data-id={service.id}>
@@ -220,13 +230,14 @@ const deleteGroups = deleteOwnerOrder
         <span class="step-number" aria-hidden="true">2</span>
         <div class="step-info">
           <h3 class="step-title">Delete</h3>
-          <p class="step-desc">Delete our accounts. Ad revenue from our time on these platforms flows straight to right-wing billionaires.</p>
+          <p class="step-desc">Every minute on these apps = ad revenue for billionaires who fund fascism. Delete. Deactivate.</p>
         </div>
       </div>
       <div class="owner-groups">
         {deleteGroups.map((group) => (
           <div class="owner-group">
             <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
+            {taglines[group.owner] && <p class="owner-tagline">{taglines[group.owner]}</p>}
             <div class="owner-services">
               {group.services.map((service) => (
                 <div class="service-item" data-id={service.id}>
@@ -264,7 +275,7 @@ const deleteGroups = deleteOwnerOrder
       <span class="step-number" aria-hidden="true">3</span>
       <div class="step-info">
         <h3 class="step-title">Switch</h3>
-        <p class="step-desc">Move to platforms that don't fund fascism. Bring your people with you.</p>
+        <p class="step-desc">Move to platforms that don't fund fascism. Bring your people with you. Millions are already there.</p>
       </div>
     </div>
 
@@ -461,170 +472,103 @@ const deleteGroups = deleteOwnerOrder
     color: var(--orange-bright);
   }
 
-  .beat-pipeline {
-    border-left-color: var(--orange-bright);
-  }
-
-  .beat .pipeline-line .arrow {
-    color: var(--orange-bright);
-  }
-  .beat .subtext {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  .beat .subtext strong {
-    color: white;
-  }
-
-  .beat .subtext.callout {
-    color: white;
-  }
-
-  .beat .subtext.punch-line {
-    color: white;
-  }
-
-  .beat .subtext.sans {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  .beat-pipeline {
-    border-left-color: var(--orange);
-  }
-
-  .beat .pipeline-line {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
   .defund-delete-header .accent-bar {
     margin: 0 auto 1.5rem;
   }
 
-  .subtext {
-    font-size: 1.25rem;
-    color: var(--muted);
-    max-width: 600px;
-    margin: 0;
-    line-height: 1.6;
-    letter-spacing: -0.01em;
+  /* Hero intro typography system */
+  .intro-content {
+    max-width: 650px;
   }
 
-  .beat {
+  .intro-content p {
+    line-height: 1.6;
+  }
+
+  /* Standard body text */
+  .intro-body {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.1rem;
+    color: white;
     margin-bottom: 1.5rem;
   }
 
-  .beat:last-child {
-    margin-bottom: 0;
+  .intro-body.intro-next {
+    margin-bottom: 1.5rem;
   }
 
-  .beat-pipeline {
-    padding-left: 0.75rem;
-    border-left: 3px solid var(--orange);
+  .intro-body.intro-congress {
+    margin-top: 0;
   }
 
-  .subtext.intro-line {
-    margin-bottom: 0.35rem;
-  }
-
-  .subtext.sans {
+  /* Large orange emphasis: "Defund the billionaires..." */
+  .intro-emphasis {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--orange-bright);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
   }
 
-  .subtext.intro-line.callout {
-    font-size: 1.4rem;
-    margin-top: 0.25rem;
+  /* Equation lines with orange border */
+  .intro-equations {
+    border-left: 3px solid var(--orange-bright);
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
   }
 
-  .pipeline-line {
+  .intro-equation {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
-    color: var(--muted);
-    margin: 0 0 0.3rem 0;
-    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0.25rem;
   }
 
-  .pipeline-equation {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text);
-    margin: 0.5rem 0 0 0;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-
-  @media (min-width: 640px) {
-    .subtext.intro-line.callout {
-      font-size: 1.35rem;
-    }
-
-    .pipeline-line {
-      font-size: 1.05rem;
-    }
-
-    .pipeline-equation {
-      font-size: 0.9rem;
-    }
-  }
-
-  .subtext.intro-line.last {
+  .intro-equation:last-child {
     margin-bottom: 0;
   }
 
-  .pipeline {
-    margin: 0.75rem 0;
-    max-width: 600px;
-  }
-
-  .pipeline-label {
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--orange);
-    margin: 0 0 0.4rem 0;
-    text-decoration: underline;
-    text-underline-offset: 0.25rem;
-  }
-
-  .pipeline-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 0.5rem 0;
-  }
-
-  .pipeline-list li {
-    font-size: 0.95rem;
-    color: var(--muted);
-    padding: 0.2rem 0;
-    line-height: 1.5;
-  }
-
-  .arrow {
-    color: var(--orange);
-    font-weight: 700;
-  }
-
-  .pipeline-sum {
-    font-size: 0.95rem;
-    color: var(--muted);
-    margin: 0;
-    padding-top: 0.4rem;
+  /* Huge orange "WE can." */
+  .intro-we {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--orange-bright);
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
   }
 
   @media (min-width: 640px) {
-    .pipeline-label {
+    .intro-body {
+      font-size: 1.2rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .intro-body.intro-next {
+      margin-bottom: 1.75rem;
+    }
+
+    .intro-emphasis {
+      font-size: 1.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .intro-equations {
+      margin-bottom: 1.75rem;
+    }
+
+    .intro-equation {
       font-size: 1.1rem;
     }
 
-    .pipeline-list li,
-    .pipeline-sum {
-      font-size: 1.1rem;
-    }
-
-    .pipeline {
-      margin: 1.25rem 0;
+    .intro-we {
+      font-size: 2.75rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
     }
   }
 
@@ -675,32 +619,6 @@ const deleteGroups = deleteOwnerOrder
       font-size: 0.85rem;
       padding: 0.5rem 1rem;
     }
-  }
-
-  .subtext.punch-line {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text);
-    margin: 0.75rem 0 0;
-    white-space: normal;
-  }
-
-  @media (min-width: 400px) {
-    .subtext.punch-line {
-      font-size: 1.65rem;
-    }
-  }
-
-  @media (min-width: 640px) {
-    .subtext.punch-line {
-      font-size: 1.85rem;
-    }
-  }
-
-  .subtext.cta {
-    margin-top: 1rem;
-    font-size: 1.25rem;
-    color: var(--text);
   }
 
   .facts {
@@ -1220,6 +1138,13 @@ const deleteGroups = deleteOwnerOrder
     font-weight: 500;
     font-style: italic;
     color: var(--muted);
+  }
+
+  .owner-tagline {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--muted);
+    margin: 0.25rem 0 0.5rem;
   }
 
   .owner-services {
