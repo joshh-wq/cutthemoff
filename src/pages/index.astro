@@ -1116,13 +1116,6 @@ const deleteGroups = deleteOwnerOrder
     font-weight: 700;
     color: var(--text);
     margin: 0;
-    padding-bottom: 0.25rem;
-    border-bottom: 2px solid var(--accent);
-  }
-
-  .owner-name:has(+ .owner-tagline) {
-    border-bottom: none;
-    padding-bottom: 0;
   }
 
   .owner-name .nickname {
@@ -1135,9 +1128,7 @@ const deleteGroups = deleteOwnerOrder
     font-size: 0.85rem;
     font-style: italic;
     color: var(--muted);
-    margin: 0.125rem 0 0;
-    padding-bottom: 0.375rem;
-    border-bottom: 2px solid var(--accent);
+    margin: -0.25rem 0 0;
   }
 
   .owner-services {
@@ -1226,14 +1217,14 @@ const deleteGroups = deleteOwnerOrder
   }
 
   .service-checkbox .service-name {
-    flex: 1;
     font-weight: 500;
     font-size: 1rem;
   }
 
   .service-checkbox .service-price {
     font-size: 0.9rem;
-    color: var(--muted);
+    color: var(--orange-bright);
+    font-weight: 600;
   }
 
   .service-item {
@@ -1706,7 +1697,7 @@ const deleteGroups = deleteOwnerOrder
 
   @media (min-width: 640px) {
     .owner-groups {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .services-grid.active {
@@ -1716,7 +1707,7 @@ const deleteGroups = deleteOwnerOrder
 
   @media (min-width: 1024px) {
     .owner-groups {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
