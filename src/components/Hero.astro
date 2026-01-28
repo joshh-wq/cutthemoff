@@ -4,60 +4,65 @@ interface Props {
   subheadline?: string;
 }
 
-const { headline, subheadline } = Astro.props;
+const { headline, subheadline, label } = Astro.props;
 ---
 
-<section class="hero">
-  <h1 set:html={headline} />
-  {subheadline && <p class="subheadline">{subheadline}</p>}
-  <slot />
-</section>
+<div class="hero-wrapper">
+  <section class="hero">
+    <slot name="label" />
+    <h1 set:html={headline} />
+    {subheadline && <p class="subheadline">{subheadline}</p>}
+    <slot />
+  </section>
+</div>
 
 <style>
+  .hero-wrapper {
+    background: #0f172a;
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+
   .hero {
     text-align: left;
-    padding: 2rem 1rem 0;
+    padding: 3.5rem 0 3.5rem;
     max-width: 700px;
     margin: 0 auto;
+    color: #f1f5f9;
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: clamp(2.5rem, 10vw, 7.5rem);
     font-weight: 900;
     letter-spacing: -0.04em;
     line-height: 0.9;
     margin-bottom: 1.25rem;
-  }
-
-  @media (min-width: 400px) {
-    h1 {
-      font-size: 3.25rem;
-    }
+    color: white;
   }
 
   @media (min-width: 640px) {
-    h1 {
-      font-size: 4.5rem;
+    .hero-wrapper {
+      padding: 0 1.5rem;
+    }
+
+    .hero {
+      padding: 4rem 0 4rem;
     }
   }
 
   @media (min-width: 1024px) {
-    h1 {
-      font-size: 5.5rem;
+    .hero-wrapper {
+      padding: 0 2rem;
     }
   }
 
   .subheadline {
     font-size: 1.25rem;
-    color: var(--muted);
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 2rem;
   }
 
   @media (min-width: 640px) {
-    .hero {
-      padding: 3rem 2rem 0;
-    }
-
     .subheadline {
       font-size: 1.5rem;
     }

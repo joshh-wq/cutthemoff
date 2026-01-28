@@ -40,15 +40,25 @@ const deleteGroups = deleteOwnerOrder
 
 <BaseLayout title="Defund Billionaires">
 
-  <Hero headline="<span class='headline-defund'>DEFUND</span><br/><span class='headline-billionaires'>BILLIONAIRES</span>">
-    <div class="accent-bar" aria-hidden="true"></div>
-    <p class="subtext intro-line"><strong>Bezos. Zuckerberg. Musk. Altman.</strong></p>
-    <p class="subtext intro-line">We hand them $20, $50, $100 a month.</p>
-    <p class="subtext intro-line"><strong>They hand Trump millions.</strong></p>
-    <p class="subtext intro-line">Our Prime subscriptions. Our Instagram scrolling. Our ChatGPT prompts.</p>
-    <p class="subtext intro-line">They fund Republican campaigns, right-wing Super PACs, and the fascist machine dismantling our country.</p>
-    <p class="subtext punch-line">Congress can't defund these billionaires. But we can.</p>
-    <p class="subtext intro-line">We're the ones paying them—with our money and our scrolling. When we stop, they feel it. Immediately.</p>
+  <Hero slot="hero" headline="<span class='headline-defund'>Defund</span><br/><span class='headline-billionaires'>Billionaires</span>">
+    <p class="hero-label" slot="label">A people's movement</p>
+    <div class="beat beat-accusation">
+      <p class="subtext intro-line callout"><strong>Bezos. Zuckerberg. Musk. Altman.</strong></p>
+      <p class="subtext intro-line sans">We hand them money every month.</p>
+      <p class="subtext intro-line callout"><strong>They hand Trump millions.</strong></p>
+    </div>
+
+    <div class="beat beat-pipeline">
+      <p class="pipeline-line">Our subscriptions <span class="arrow">→</span> Their donations</p>
+      <p class="pipeline-line">Our scrolling <span class="arrow">→</span> Their Super PACs</p>
+
+    </div>
+
+    <div class="beat beat-cta">
+      <p class="subtext punch-line">Congress can't defund them.</p>
+      <p class="subtext punch-line"><strong>WE</strong> can.</p>
+    </div>
+
   </Hero>
 
   <section class="proof-section">
@@ -407,14 +417,27 @@ const deleteGroups = deleteOwnerOrder
 </BaseLayout>
 
 <style>
+  .hero-label {
+    display: block;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #f97316;
+    margin-bottom: 1rem;
+  }
+
   .headline-defund {
     display: block;
     font-size: 1.65em;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.05em;
   }
 
   .headline-billionaires {
     display: block;
+    letter-spacing: -0.02em;
   }
 
   .accent-bar {
@@ -425,12 +448,41 @@ const deleteGroups = deleteOwnerOrder
     border-radius: 2px;
   }
 
+  /* Hero dark background overrides */
+  .beat .subtext {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .beat .subtext strong {
+    color: white;
+  }
+
+  .beat .subtext.callout {
+    color: white;
+  }
+
+  .beat .subtext.punch-line {
+    color: white;
+  }
+
+  .beat .subtext.sans {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .beat-pipeline {
+    border-left-color: #f97316;
+  }
+
+  .beat .pipeline-line {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
   .defund-delete-header .accent-bar {
     margin: 0 auto 1.5rem;
   }
 
   .subtext {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: var(--muted);
     max-width: 600px;
     margin: 0;
@@ -438,12 +490,123 @@ const deleteGroups = deleteOwnerOrder
     letter-spacing: -0.01em;
   }
 
+  .beat {
+    margin-bottom: 1.5rem;
+  }
+
+  .beat:last-child {
+    margin-bottom: 0;
+  }
+
+  .beat-pipeline {
+    padding-left: 0.75rem;
+    border-left: 3px solid #dc2626;
+  }
+
   .subtext.intro-line {
-    margin-bottom: 1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .subtext.sans {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .subtext.intro-line.callout {
+    font-size: 1.4rem;
+    margin-top: 0.25rem;
+  }
+
+  .pipeline-line {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--muted);
+    margin: 0 0 0.3rem 0;
+    letter-spacing: 0.01em;
+  }
+
+  .pipeline-equation {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0.5rem 0 0 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  @media (min-width: 640px) {
+    .subtext.intro-line.callout {
+      font-size: 1.35rem;
+    }
+
+    .pipeline-line {
+      font-size: 1.05rem;
+    }
+
+    .pipeline-equation {
+      font-size: 0.9rem;
+    }
   }
 
   .subtext.intro-line.last {
     margin-bottom: 0;
+  }
+
+  .pipeline {
+    margin: 0.75rem 0;
+    max-width: 600px;
+  }
+
+  .pipeline-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #dc2626;
+    margin: 0 0 0.4rem 0;
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+  }
+
+  .pipeline-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .pipeline-list li {
+    font-size: 0.95rem;
+    color: var(--muted);
+    padding: 0.2rem 0;
+    line-height: 1.5;
+  }
+
+  .arrow {
+    color: #dc2626;
+    font-weight: 700;
+  }
+
+  .pipeline-sum {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin: 0;
+    padding-top: 0.4rem;
+  }
+
+  @media (min-width: 640px) {
+    .pipeline-label {
+      font-size: 1.1rem;
+    }
+
+    .pipeline-list li,
+    .pipeline-sum {
+      font-size: 1.1rem;
+    }
+
+    .pipeline {
+      margin: 1.25rem 0;
+    }
   }
 
   .pipeline-visual {
@@ -496,22 +659,22 @@ const deleteGroups = deleteOwnerOrder
   }
 
   .subtext.punch-line {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--text);
-    margin: 1.25rem 0 0.5rem;
+    margin: 0.75rem 0 0;
     white-space: normal;
   }
 
   @media (min-width: 400px) {
     .subtext.punch-line {
-      font-size: 1.2rem;
+      font-size: 1.65rem;
     }
   }
 
   @media (min-width: 640px) {
     .subtext.punch-line {
-      font-size: 1.3rem;
+      font-size: 1.85rem;
     }
   }
 
@@ -597,11 +760,11 @@ const deleteGroups = deleteOwnerOrder
   }
 
   .proof-header .accent-bar {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   .proof-header h2 {
-    font-size: 1.75rem;
+    font-size: 2.25rem;
     font-weight: 900;
     margin-bottom: 0.5rem;
   }
@@ -659,7 +822,7 @@ const deleteGroups = deleteOwnerOrder
     }
 
     .proof-header h2 {
-      font-size: 2rem;
+      font-size: 2.75rem;
     }
 
     .proof-number {
