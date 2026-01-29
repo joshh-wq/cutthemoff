@@ -16,7 +16,7 @@ const defundServices = services.filter(s => !socialIds.includes(s.id));
 const deleteServices = services.filter(s => socialIds.includes(s.id));
 
 // Group defund services by owner
-const defundOwners = ['Jeff Bezos', 'Sam Altman', 'Sundar Pichai', 'Larry Ellison', 'Tim Cook', 'Daniel Ek'];
+const defundOwners = ['Jeff Bezos', 'Sam Altman', 'Sundar Pichai', 'Larry Ellison', 'Daniel Ek'];
 
 const defundGroups = defundOwners
   .map(owner => ({
@@ -37,7 +37,6 @@ const taglines: Record<string, string> = {
   'Sam Altman': 'AI without guardrails',
   'Sundar Pichai': 'Your data, his profit',
   'Larry Ellison': 'Database for deportations',
-  'Tim Cook': 'Made in sweatshops',
   'Mark Zuckerberg': 'Polarization for profit',
   'Elon Musk': 'Space Karen',
   'Jeff Yass': 'MAGA Mega-donor',
