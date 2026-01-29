@@ -56,6 +56,33 @@ const { headline, subheadline, label } = Astro.props;
     }
   }
 
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(1.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero > :global(*) {
+    opacity: 0;
+    animation: fadeSlideUp 0.6s ease-out forwards;
+  }
+
+  .hero > :global(:nth-child(1)) { animation-delay: 0.1s; }
+  .hero > :global(:nth-child(2)) { animation-delay: 0.3s; }
+  .hero > :global(:nth-child(3)) { animation-delay: 0.5s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero > :global(*) {
+      opacity: 1;
+      animation: none;
+    }
+  }
+
   .subheadline {
     font-size: 1.25rem;
     color: rgba(255, 255, 255, 0.7);
