@@ -44,7 +44,7 @@
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "Meta's Twitter clone. Same Zuckerberg, same data harvesting, same complicity. Bluesky exists.",
-    "cancelUrl": "https://help.instagram.com/articles/679607907498750",
+    "cancelUrl": "https://www.threads.com/settings/deactivate",
     "cancelSteps": [
       "Open Threads app",
       "Go to Settings > Account",
