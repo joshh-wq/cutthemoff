@@ -47,13 +47,13 @@
     "cancelUrl": "https://www.threads.com/settings/deactivate",
     "cancelSteps": [
       "Open the Threads app",
-      "Tap Profile or your profile picture in the bottom right",
-      "Tap Menu in the top right",
-      "Tap Accounts Center, then tap Personal details",
-      "Tap Account ownership and control, then tap Deletion",
+      "Tap <strong>Profile</strong> or your profile picture in the bottom right to go to your profile",
+      "Tap <strong>Menu</strong> in the top right",
+      "Tap <strong>Accounts Center</strong>, then tap <strong>Personal details</strong>",
+      "Tap <strong>Account ownership and control</strong>, then tap <strong>Deactivation or deletion</strong>",
       "Tap the account you'd like to permanently delete",
-      "Tap Delete account",
-      "Select the reason to delete your account, then tap Continue"
+      "Tap <strong>Delete account</strong>",
+      "Select the reason to delete your account, then tap <strong>Continue</strong>"
     ],
     "alternative": {
       "name": "Bluesky",

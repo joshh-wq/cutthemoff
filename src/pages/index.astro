@@ -239,7 +239,7 @@ const deleteGroups = deleteOwnerOrder
                     </a>
                     <p class="steps-label">Or cancel step-by-step:</p>
                     <ol>
-                      {service.cancelSteps.map((step) => <li>{step}</li>)}
+                      {service.cancelSteps.map((step) => <li set:html={step} />)}
                     </ol>
                   </div>
                 </div>
@@ -282,7 +282,7 @@ const deleteGroups = deleteOwnerOrder
                     </a>
                     <p class="steps-label">Or cancel step-by-step:</p>
                     <ol>
-                      {service.cancelSteps.map((step) => <li>{step}</li>)}
+                      {service.cancelSteps.map((step) => <li set:html={step} />)}
                     </ol>
                   </div>
                 </div>
