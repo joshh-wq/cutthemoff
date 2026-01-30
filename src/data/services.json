@@ -25,7 +25,7 @@
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "Same company, same Zuckerberg, same complicity. Your attention is their revenue. Cut them off.",
-    "cancelUrl": "https://www.instagram.com/accounts/remove/request/permanent/",
+    "cancelUrl": "https://accountscenter.instagram.com/manage/",
     "cancelSteps": [
       "Go to Settings > Account",
       "Tap 'Delete account'",
@@ -64,7 +64,7 @@
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "An algorithm designed to keep you scrolling while the world burns. Reclaim your time.",
-    "cancelUrl": "https://support.tiktok.com/en/account-and-privacy/deleting-an-account",
+    "cancelUrl": "https://www.tiktok.com/setting",
     "cancelSteps": [
       "Go to Settings and privacy",
       "Tap 'Manage account'",
