@@ -75,6 +75,19 @@ const deleteGroups = deleteOwnerOrder
 
   </Hero>
 
+  <section class="why-strike-section">
+    <div class="why-strike-content">
+      <div class="accent-bar" aria-hidden="true"></div>
+      <h2>A strike you can join without risking your job</h2>
+      <p>General strikes require people to walk off jobs they can't afford to lose. Essential services shut down. Communities get hurt. That's why they're so hard to pull off.</p>
+      <p class="why-strike-emphasis">This is different.</p>
+      <p>You cancel subscriptions from your couch. Delete apps from your phone. Save money. Keep your job. No one gets hurt.</p>
+      <p>But when millions of us do it at once? Their Q1 earnings reports show the damage. Stock prices drop. Investors panic. Billionaires lose leverage.</p>
+      <p class="why-strike-emphasis">It's economic warfare from your living room. Death by a thousand cuts.</p>
+      <p>And unlike a traditional strike, you don't need everyone to coordinate on the same day. Every person who cancels, whenever they cancel, adds to the cumulative damage.</p>
+    </div>
+  </section>
+
   <section class="proof-section">
     <div class="proof-header">
       <div class="accent-bar" aria-hidden="true"></div>
@@ -485,6 +498,45 @@ const deleteGroups = deleteOwnerOrder
   /* Hero dark background overrides - use bright orange on dark bg */
   .hero-label {
     color: #f2b5d4;
+  }
+
+  .why-strike-section {
+    padding: 2.5rem 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .why-strike-content .accent-bar {
+    margin-bottom: 1.5rem;
+  }
+
+  .why-strike-section h2 {
+    font-size: 2.25rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+
+  .why-strike-section p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .why-strike-emphasis {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+    color: var(--text) !important;
+    font-size: 1.15rem !important;
+  }
+
+  @media (min-width: 640px) {
+    .why-strike-section {
+      padding: 3rem 2rem;
+    }
+
+    .why-strike-section h2 {
+      font-size: 2.75rem;
+    }
   }
 
   .defund-delete-header .accent-bar {
