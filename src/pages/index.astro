@@ -366,6 +366,20 @@ const deleteGroups = deleteOwnerOrder
     <p class="share-text hidden" id="share-text">I'm defunding billionaires who fund fascism. Join me—cancel, delete, switch. https://defundbillionaires.org</p>
   </section>
 
+  <section class="email-signup">
+    <h2>Join the strike</h2>
+    <p class="email-signup-desc">Ready to watch some oligarchs sweat? Toss over your email. We'll send updates when our cancellations tank their earnings reports. Should be fun.</p>
+    <form
+      action="https://buttondown.com/api/emails/embed-subscribe/defundbillionaires"
+      method="post"
+      target="popupwindow"
+      class="email-signup-form"
+    >
+      <input type="email" name="email" placeholder="Your email" required />
+      <button type="submit">I'm in</button>
+    </form>
+  </section>
+
   <section class="news-section">
     <div class="accent-bar" aria-hidden="true"></div>
     <h2>Why we're doing this</h2>
@@ -1764,6 +1778,67 @@ const deleteGroups = deleteOwnerOrder
 
   .share-feedback.hidden {
     display: none;
+  }
+
+  .email-signup {
+    background: #0f172a;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    max-width: none;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+
+  .email-signup h2 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+  }
+
+  .email-signup-desc {
+    color: #cbd5e1;
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .email-signup-form {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .email-signup-form input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background: #1e293b;
+    color: white;
+    font-size: 1rem;
+  }
+
+  .email-signup-form input::placeholder {
+    color: #64748b;
+  }
+
+  .email-signup-form button {
+    padding: 0.75rem 1.5rem;
+    background: #f2b5d4;
+    color: #0f172a;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .email-signup-form button:hover {
+    background: #e898c0;
   }
 
   .services-grid {
