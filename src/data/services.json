@@ -46,10 +46,14 @@
     "reason": "Meta's Twitter clone. Same Zuckerberg, same data harvesting, same complicity. Bluesky exists.",
     "cancelUrl": "https://www.threads.com/settings/deactivate",
     "cancelSteps": [
-      "Open Threads app",
-      "Go to Settings > Account",
-      "Tap 'Deactivate or delete profile'",
-      "Choose delete (note: deleting Threads can affect Instagram)"
+      "Open the Threads app",
+      "Tap Profile or your profile picture in the bottom right",
+      "Tap Menu in the top right",
+      "Tap Accounts Center, then tap Personal details",
+      "Tap Account ownership and control, then tap Deletion",
+      "Tap the account you'd like to permanently delete",
+      "Tap Delete account",
+      "Select the reason to delete your account, then tap Continue"
     ],
     "alternative": {
       "name": "Bluesky",
@@ -66,9 +70,10 @@
     "reason": "An algorithm designed to keep you scrolling while the world burns. Reclaim your time.",
     "cancelUrl": "https://www.tiktok.com/support/faq_detail?id=7543538137965058566",
     "cancelSteps": [
-      "Go to Settings and privacy",
-      "Tap 'Manage account'",
-      "Select 'Delete account'"
+      "In the TikTok app, tap Profile at the bottom",
+      "Tap the Menu ☰ button at the top",
+      "Tap Settings and privacy",
+      "Tap Account, then tap Delete account, and follow the instructions"
     ],
     "alternative": {
       "name": "Your free time",
