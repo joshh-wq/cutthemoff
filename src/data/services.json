@@ -6,7 +6,7 @@
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "Zuckerberg killed fact-checking, dined at Mar-a-Lago, and donated $1M to the inauguration. Your data is their product. Take it back.",
-    "cancelUrl": "https://www.facebook.com/deactivate",
+    "cancelUrl": "https://m.facebook.com/deactivate",
     "cancelSteps": [
       "Go to Settings & Privacy",
       "Click 'Deactivation and deletion'",
@@ -64,7 +64,7 @@
     "category": "Social Media",
     "monthlyPrice": 0,
     "reason": "An algorithm designed to keep you scrolling while the world burns. Reclaim your time.",
-    "cancelUrl": "https://www.tiktok.com/setting",
+    "cancelUrl": "https://www.tiktok.com/support/faq_detail?id=7543538137965058566",
     "cancelSteps": [
       "Go to Settings and privacy",
       "Tap 'Manage account'",
