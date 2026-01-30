@@ -29,21 +29,16 @@ const defundGroups = defundOwners
 const deleteOwnerOrder = ['Mark Zuckerberg', 'Elon Musk', 'Jeff Yass'];
 
 // Snarky nicknames for billionaires
-const nicknames: Record<string, string> = {
-  'Jeff Bezos': 'Rocket Boy Bezos',
-  'Sam Altman': 'AI Altman',
-  'Elon Musk': 'Ketamine King Elon',
-  'Larry Ellison': 'Island Hoarder Larry',
-};
+const nicknames: Record<string, string> = {};
 
 // Taglines for each billionaire
 const taglines: Record<string, string> = {
-  'Jeff Bezos': 'Union buster billionaire',
-  'Sam Altman': 'AI without guardrails',
+  'Jeff Bezos': 'Rocket Boy Bezos',
+  'Sam Altman': 'AI Altman',
   'Sundar Pichai': 'Your data, his profit',
-  'Larry Ellison': 'Database for deportations',
+  'Larry Ellison': 'Island Hoarder Larry',
   'Mark Zuckerberg': 'Polarization for profit',
-  'Elon Musk': 'Space Karen',
+  'Elon Musk': 'Ketamine King Elon',
   'Jeff Yass': 'MAGA Mega-donor',
   'Daniel Ek': 'Streaming for ICE',
 };
@@ -1189,7 +1184,6 @@ const deleteGroups = deleteOwnerOrder
 
   .owner-tagline {
     font-size: 0.85rem;
-    font-style: italic;
     color: var(--muted);
     margin: 0;
   }
