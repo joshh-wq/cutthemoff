@@ -26,7 +26,7 @@ const defundGroups = defundOwners
   .filter(group => group.services.length > 0);
 
 // Group delete services by owner
-const deleteOwnerOrder = ['Mark Zuckerberg', 'Elon Musk', 'Jeff Yass'];
+const deleteOwnerOrder = ['Mark Zuckerberg', 'Elon Musk', 'Larry Ellison'];
 
 // Snarky nicknames for billionaires
 const nicknames: Record<string, string> = {};
@@ -39,8 +39,12 @@ const taglines: Record<string, string> = {
   'Larry Ellison': 'Island Hoarder Larry',
   'Mark Zuckerberg': 'Big Bunker Mark',
   'Elon Musk': 'Neo-Nazi Baby Daddy',
-  'Jeff Yass': 'Pennsylvania\'s Nasty Yass',
   'Daniel Ek': 'ICE ICE, Eky',
+};
+
+// Per-section tagline overrides
+const deleteTaglines: Record<string, string> = {
+  'Larry Ellison': '🤮',
 };
 const deleteGroups = deleteOwnerOrder
   .map(owner => ({
@@ -242,7 +246,7 @@ const deleteGroups = deleteOwnerOrder
           <div class="owner-group">
             <div class="owner-header">
               <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
-              {taglines[group.owner] && <span class="owner-tagline">{taglines[group.owner]}</span>}
+              {(deleteTaglines[group.owner] || taglines[group.owner]) && <span class="owner-tagline">{deleteTaglines[group.owner] || taglines[group.owner]}</span>}
             </div>
             <div class="owner-services">
               {group.services.map((service) => (
