@@ -7,11 +7,7 @@
     "monthlyPrice": 0,
     "reason": "Zuckerberg killed fact-checking, dined at Mar-a-Lago, and donated $1M to the inauguration. Your data is their product. Take it back.",
     "cancelUrl": "https://m.facebook.com/deactivate",
-    "cancelSteps": [
-      "Go to Settings & Privacy",
-      "Click 'Deactivation and deletion'",
-      "Choose delete or deactivate"
-    ],
+    "helpUrl": "https://www.facebook.com/help/224562897555674",
     "alternative": {
       "name": "Bluesky",
       "description": "Decentralized, no algorithm manipulation, no billionaire owner",
@@ -26,11 +22,7 @@
     "monthlyPrice": 0,
     "reason": "Same company, same Zuckerberg, same complicity. Your attention is their revenue. Cut them off.",
     "cancelUrl": "https://accountscenter.instagram.com/manage/",
-    "cancelSteps": [
-      "Go to Settings > Account",
-      "Tap 'Delete account'",
-      "Select reason and confirm"
-    ],
+    "helpUrl": "https://help.instagram.com/139886812848894/?helpref=uf_share",
     "alternative": {
       "name": "Pixelfed",
       "description": "Decentralized, ad-free photo sharing. No algorithm, no ads, no Meta.",
@@ -45,16 +37,7 @@
     "monthlyPrice": 0,
     "reason": "Meta's Twitter clone. Same Zuckerberg, same data harvesting, same complicity. Bluesky exists.",
     "cancelUrl": "https://www.threads.com/settings/deactivate",
-    "cancelSteps": [
-      "Open the Threads app",
-      "Tap <strong>Profile</strong> or your profile picture in the bottom right to go to your profile",
-      "Tap <strong>Menu</strong> in the top right",
-      "Tap <strong>Accounts Center</strong>, then tap <strong>Personal details</strong>",
-      "Tap <strong>Account ownership and control</strong>, then tap <strong>Deactivation or deletion</strong>",
-      "Tap the account you'd like to permanently delete",
-      "Tap <strong>Delete account</strong>",
-      "Select the reason to delete your account, then tap <strong>Continue</strong>"
-    ],
+    "helpUrl": "https://help.instagram.com/313703828012423/",
     "alternative": {
       "name": "Bluesky",
       "description": "Decentralized, open protocol, no Zuckerberg.",
@@ -69,12 +52,7 @@
     "monthlyPrice": 0,
     "reason": "An algorithm designed to keep you scrolling while the world burns. Reclaim your time.",
     "cancelUrl": "https://www.tiktok.com/support/faq_detail?id=7543538137965058566",
-    "cancelSteps": [
-      "In the TikTok app, tap Profile at the bottom",
-      "Tap the Menu ☰ button at the top",
-      "Tap Settings and privacy",
-      "Tap Account, then tap Delete account, and follow the instructions"
-    ],
+    "helpUrl": "https://www.tiktok.com/support/faq_detail?id=7543538137965058566",
     "alternative": {
       "name": "Your free time",
       "description": "You'll be amazed what you do with an extra hour a day",
@@ -89,12 +67,7 @@
     "monthlyPrice": 0,
     "reason": "Musk runs a federal department now. Every post, like, and view gives him leverage. Walk away.",
     "cancelUrl": "https://x.com/settings/deactivate",
-    "cancelSteps": [
-      "Go to Settings and privacy",
-      "Click 'Your account'",
-      "Select 'Deactivate your account'",
-      "Confirm deactivation (deleted after 30 days)"
-    ],
+    "helpUrl": "https://help.x.com/en/forms/account-access/deactivate-or-close-account",
     "alternative": {
       "name": "Bluesky",
       "description": "Where most of Twitter's best users went. Open protocol, no Musk.",
@@ -109,11 +82,7 @@
     "monthlyPrice": 11.99,
     "reason": "Joe Rogan got $250M. Artists get fractions of a penny. Leadership stays silent. The free tier still works.",
     "cancelUrl": "https://www.spotify.com/us/account/subscription/manage/",
-    "cancelSteps": [
-      "Go to Account page",
-      "Click 'Change plan'",
-      "Select 'Cancel Premium'"
-    ],
+    "helpUrl": "https://support.spotify.com/us/article/cancel-premium/",
     "alternative": {
       "name": "Tidal",
       "description": "Artist-owned, better payouts to musicians, high-quality audio.",
@@ -128,11 +97,7 @@
     "monthlyPrice": 14.99,
     "reason": "Bezos owns the Washington Post and met with Trump. Prime funds union-busting and political access. End it.",
     "cancelUrl": "https://www.amazon.com/gp/primecentral?ref_=ya_d_c_prime",
-    "cancelSteps": [
-      "Go to Prime membership settings",
-      "Click 'Update, cancel and more'",
-      "Select 'End membership'"
-    ],
+    "helpUrl": "https://www.amazon.com/gp/help/customer/display.html?nodeId=GTJQ7QZY7QL2HK4Y",
     "alternative": {
       "name": "Your local library + Bookshop.org",
       "description": "Library for free, Bookshop.org to support indie bookstores when you buy.",
@@ -147,11 +112,7 @@
     "monthlyPrice": 20.00,
     "reason": "Sam Altman made the pilgrimage to Mar-a-Lago. OpenAI spends millions lobbying in DC. You don't have to fund it.",
     "cancelUrl": "https://chatgpt.com/#settings/Account",
-    "cancelSteps": [
-      "Go to Settings in ChatGPT",
-      "Click 'Manage my subscription'",
-      "Select 'Cancel Plan'"
-    ],
+    "helpUrl": "https://help.openai.com/en/articles/7232927-how-do-i-cancel-my-chatgpt-subscription",
     "alternative": {
       "name": "Ollama",
       "description": "Run open-source models locally with Ollama.",
@@ -166,11 +127,7 @@
     "monthlyPrice": 12.99,
     "reason": "Paramount's leadership plays it safe while democracy burns. Your subscription funds their silence.",
     "cancelUrl": "https://www.paramountplus.com/account/",
-    "cancelSteps": [
-      "Go to Account settings",
-      "Click 'Cancel Subscription'",
-      "Confirm cancellation"
-    ],
+    "helpUrl": "https://support.paramountplus.com/s/article/PI-How-do-I-cancel-my-subscription",
     "alternative": {
       "name": "Kanopy",
       "description": "Free with your library card. Quality content, no corporate silence.",
@@ -185,18 +142,14 @@
     "monthlyPrice": 7.99,
     "reason": "Comcast owns NBC and plays both sides. Your monthly fee funds their access game.",
     "cancelUrl": "https://www.peacocktv.com/account/",
-    "cancelSteps": [
-      "Go to Account settings",
-      "Click 'Cancel Plan'",
-      "Confirm cancellation"
-    ],
+    "helpUrl": "https://www.peacocktv.com/account/",
     "alternative": {
       "name": "Kanopy + Hoopla",
       "description": "Free with your library card. No Comcast money.",
       "url": "https://www.kanopy.com/en/signup"
     }
   },
-    {
+  {
     "id": "youtube-premium",
     "name": "YouTube",
     "owner": "Sundar Pichai",
@@ -204,11 +157,7 @@
     "monthlyPrice": 13.99,
     "reason": "Google's CEO met with Trump and stays quiet while cashing your checks. The free tier still works—just with ads.",
     "cancelUrl": "https://www.youtube.com/paid_memberships",
-    "cancelSteps": [
-      "Go to youtube.com/paid_memberships",
-      "Click 'Manage membership'",
-      "Select 'Deactivate' or 'Cancel'"
-    ],
+    "helpUrl": "https://support.google.com/youtube/answer/6308278",
     "alternative": {
       "name": "YouTube Free + uBlock Origin",
       "description": "Free tier with an ad blocker. Same content, no money to Google.",
@@ -223,18 +172,14 @@
     "monthlyPrice": 19.99,
     "reason": "Same Pichai, same Google. Free tier or open-source alternatives work fine.",
     "cancelUrl": "https://one.google.com/settings",
-    "cancelSteps": [
-      "Go to one.google.com",
-      "Click 'Manage plan'",
-      "Select 'Cancel subscription'"
-    ],
+    "helpUrl": "https://support.google.com/a/answer/13969753?hl=en",
     "alternative": {
       "name": "Gemini Free or Ollama",
       "description": "Free tier still works. Or run open-source models locally with Ollama.",
       "url": "https://ollama.ai"
     }
   },
-    {
+  {
     "id": "grok",
     "name": "Grok (xAI)",
     "owner": "Elon Musk",
@@ -242,11 +187,7 @@
     "monthlyPrice": 16.00,
     "reason": "Musk's AI trained on X data. Same Musk who runs DOGE. Your subscription funds his political machine.",
     "cancelUrl": "https://x.com/settings/manage_subscription",
-    "cancelSteps": [
-      "Go to X Settings",
-      "Click 'Manage subscription'",
-      "Cancel your X Premium"
-    ],
+    "helpUrl": "https://x.com/settings/manage_subscription",
     "alternative": {
       "name": "Ollama",
       "description": "Run open-source models locally. No Musk.",
@@ -261,11 +202,7 @@
     "monthlyPrice": 20.00,
     "reason": "VC-funded AI search backed by Jeff Bezos and Nvidia. The billionaire money runs deep.",
     "cancelUrl": "https://www.perplexity.ai/settings/subscription",
-    "cancelSteps": [
-      "Go to Perplexity Settings",
-      "Click Subscription",
-      "Select 'Cancel subscription'"
-    ],
+    "helpUrl": "https://www.perplexity.ai/settings/subscription",
     "alternative": {
       "name": "Ollama + SearXNG",
       "description": "Local AI plus private search. No VC money, no tracking.",

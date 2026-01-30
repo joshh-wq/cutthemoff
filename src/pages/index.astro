@@ -235,12 +235,11 @@ const deleteGroups = deleteOwnerOrder
                   </label>
                   <div class="inline-steps hidden">
                     <a href={service.cancelUrl} target="_blank" rel="noopener noreferrer" class="cancel-link">
-                      Go to {service.name} <span class="sr-only">(opens in new tab)</span> →
+                      Cancel {service.name} <span class="sr-only">(opens in new tab)</span> →
                     </a>
-                    <p class="steps-label">Or cancel step-by-step:</p>
-                    <ol>
-                      {service.cancelSteps.map((step) => <li set:html={step} />)}
-                    </ol>
+                    <a href={service.helpUrl || service.cancelUrl} target="_blank" rel="noopener noreferrer" class="help-link">
+                      How to cancel — {service.name} Help Center <span class="sr-only">(opens in new tab)</span> →
+                    </a>
                   </div>
                 </div>
               ))}
@@ -278,12 +277,11 @@ const deleteGroups = deleteOwnerOrder
                   </label>
                   <div class="inline-steps hidden">
                     <a href={service.cancelUrl} target="_blank" rel="noopener noreferrer" class="cancel-link">
-                      Go to {service.name} <span class="sr-only">(opens in new tab)</span> →
+                      Cancel {service.name} <span class="sr-only">(opens in new tab)</span> →
                     </a>
-                    <p class="steps-label">Or cancel step-by-step:</p>
-                    <ol>
-                      {service.cancelSteps.map((step) => <li set:html={step} />)}
-                    </ol>
+                    <a href={service.helpUrl || service.cancelUrl} target="_blank" rel="noopener noreferrer" class="help-link">
+                      How to cancel — {service.name} Help Center <span class="sr-only">(opens in new tab)</span> →
+                    </a>
                   </div>
                 </div>
               ))}
@@ -1445,11 +1443,16 @@ const deleteGroups = deleteOwnerOrder
     text-decoration: none;
   }
 
-  .steps-label {
-    font-size: 0.85rem;
+  .help-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
     color: var(--muted);
-    margin: 0.75rem 0 0.25rem;
-    font-weight: 500;
+    text-decoration: underline;
+  }
+
+  .help-link:hover {
+    color: var(--text);
   }
 
   .inline-alt {
