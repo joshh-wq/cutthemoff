@@ -28,24 +28,24 @@ const defundGroups = defundOwners
 // Group delete services by owner
 const deleteOwnerOrder = ['Mark Zuckerberg', 'Elon Musk', 'Larry Ellison'];
 
+// Why reasons for each billionaire
+const whyReasons: Record<string, string> = {
+  'Jeff Bezos': "Spiked the Washington Post's Harris endorsement. Paid $40M for a Melania documentary. Spends millions crushing unions—workers get fired by text.",
+  'Mark Zuckerberg': "Enabled Cambridge Analytica's voter manipulation in 2016. Killed fact-checking and handed policy to Trump allies.",
+  'Sam Altman': 'Donated $1M to Trump\'s inauguration. Called Trump the leader who will bring America "into the age of AI."',
+  'Sundar Pichai': "Google donated $1M to Trump's inauguration. Sat with the other tech CEOs at Trump's right hand.",
+  'Larry Ellison': "$30M+ to Republicans. Trump handed him TikTok's algorithm. His son now controls CBS and Paramount.",
+  'Daniel Ek': "Hosted Ben Shapiro at a Trump inauguration brunch. Also runs an AI military drone company.",
+};
+
 // Snarky nicknames for billionaires
 const nicknames: Record<string, string> = {};
 
 // Taglines for each billionaire
-const taglines: Record<string, string> = {
-  'Jeff Bezos': 'Rocket Boy Bezos',
-  'Sam Altman': 'Boy Genius!',
-  'Sundar Pichai': 'Who?',
-  'Larry Ellison': 'Island Hoarder Larry',
-  'Mark Zuckerberg': 'Big Bunker Mark',
-  'Elon Musk': 'Neo-Nazi Baby Daddy',
-  'Daniel Ek': 'ICE ICE, Eky',
-};
+const taglines: Record<string, string> = {};
 
 // Per-section tagline overrides
-const deleteTaglines: Record<string, string> = {
-  'Larry Ellison': '🤮',
-};
+const deleteTaglines: Record<string, string> = {};
 const deleteGroups = deleteOwnerOrder
   .map(owner => ({
     owner,
@@ -221,8 +221,14 @@ const deleteGroups = deleteOwnerOrder
           <div class="owner-group">
             <div class="owner-header">
               <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
+              {whyReasons[group.owner] && <button class="why-toggle" type="button">Why?</button>}
               {taglines[group.owner] && <span class="owner-tagline">{taglines[group.owner]}</span>}
             </div>
+            {whyReasons[group.owner] && (
+              <div class="why-content hidden">
+                <p>{whyReasons[group.owner]}</p>
+              </div>
+            )}
             <div class="owner-services">
               {group.services.map((service) => (
                 <div class="service-item" data-id={service.id}>
@@ -238,7 +244,7 @@ const deleteGroups = deleteOwnerOrder
                       Cancel {service.name} <span class="sr-only">(opens in new tab)</span> →
                     </a>
                     <a href={service.helpUrl || service.cancelUrl} target="_blank" rel="noopener noreferrer" class="help-link">
-                      How to cancel — {service.name} Help Center <span class="sr-only">(opens in new tab)</span> →
+                      How to cancel — {service.name} Help Center <span class="sr-only">(opens in new tab)</span>
                     </a>
                   </div>
                 </div>
@@ -263,8 +269,14 @@ const deleteGroups = deleteOwnerOrder
           <div class="owner-group">
             <div class="owner-header">
               <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
+              {whyReasons[group.owner] && <button class="why-toggle" type="button">Why?</button>}
               {(deleteTaglines[group.owner] || taglines[group.owner]) && <span class="owner-tagline">{deleteTaglines[group.owner] || taglines[group.owner]}</span>}
             </div>
+            {whyReasons[group.owner] && (
+              <div class="why-content hidden">
+                <p>{whyReasons[group.owner]}</p>
+              </div>
+            )}
             <div class="owner-services">
               {group.services.map((service) => (
                 <div class="service-item" data-id={service.id}>
@@ -280,7 +292,7 @@ const deleteGroups = deleteOwnerOrder
                       Cancel {service.name} <span class="sr-only">(opens in new tab)</span> →
                     </a>
                     <a href={service.helpUrl || service.cancelUrl} target="_blank" rel="noopener noreferrer" class="help-link">
-                      How to cancel — {service.name} Help Center <span class="sr-only">(opens in new tab)</span> →
+                      How to cancel — {service.name} Help Center <span class="sr-only">(opens in new tab)</span>
                     </a>
                   </div>
                 </div>
@@ -1292,6 +1304,38 @@ const deleteGroups = deleteOwnerOrder
     .owner-tagline {
       margin-top: -0.25rem;
     }
+  }
+
+  .why-toggle {
+    background: none;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--orange);
+    cursor: pointer;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  .why-toggle:hover {
+    background: rgba(234, 88, 12, 0.1);
+  }
+
+  .why-content {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.5;
+    padding: 0.25rem 0 0.5rem;
+    animation: slideDown 0.2s ease;
+  }
+
+  .why-content.hidden {
+    display: none;
+  }
+
+  .why-content p {
+    margin: 0;
   }
 
   .owner-services {
@@ -2323,6 +2367,15 @@ const deleteGroups = deleteOwnerOrder
 
   testimonialScroll?.addEventListener('click', () => {
     setTestimonialsPaused(true);
+  });
+
+  // Why? toggle buttons
+  document.querySelectorAll('.why-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const ownerGroup = btn.closest('.owner-group');
+      const whyContent = ownerGroup?.querySelector('.why-content');
+      whyContent?.classList.toggle('hidden');
+    });
   });
 
   // Initialize share links on page load
