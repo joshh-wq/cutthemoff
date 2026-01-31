@@ -35,6 +35,7 @@ const whyReasons: Record<string, string> = {
   'Sam Altman': 'Donated $1M to Trump\'s inauguration. Called Trump the leader who will bring America "into the age of AI."',
   'Sundar Pichai': "Google donated $1M to Trump's inauguration. Sat with the other tech CEOs at Trump's right hand.",
   'Larry Ellison': "$30M+ to Republicans. Trump handed him TikTok's algorithm. His son now controls CBS and Paramount.",
+  'Elon Musk': '$277 million to elect Trump. "Ran" DOGE from inside the White House. Turned Twitter into a right-wing megaphone, reinstated banned accounts, and gutted content moderation. The billionaire cosplaying as a free speech warrior while cozying up to authoritarians. Oh, and amplifies white supremacists.',
   'Daniel Ek': "Hosted Ben Shapiro at a Trump inauguration brunch. Also runs an AI military drone company.",
 };
 
@@ -43,6 +44,50 @@ const nicknames: Record<string, string> = {};
 
 // Taglines for each billionaire
 const taglines: Record<string, string> = {};
+
+// Switch categories
+const switchCategories = [
+  {
+    label: 'Social',
+    services: [
+      { name: 'Bluesky', replaces: 'Facebook, X, Threads', desc: 'Decentralized, open protocol, no billionaire owner. Where most of Twitter\'s best users went.', url: 'https://bsky.app', migrateUrl: 'https://www.bluesky-migrate.com', migrateLabel: 'Easy migrate from X →' },
+      { name: 'Pixelfed', replaces: 'Instagram', desc: 'Decentralized photo sharing. No algorithm, no ads, no Meta.', url: 'https://pixelfed.org', migrateUrl: 'https://pixelfed.social/site/kb/import', migrateLabel: 'Easy migrate from Instagram →' },
+      { name: 'Signal', replaces: 'WhatsApp', desc: 'End-to-end encrypted messaging. Open source, nonprofit, no ads.', url: 'https://signal.org' },
+      { name: 'Kith & Kin', replaces: 'Instagram', desc: 'Photos, Gratitude, & more. With the people you care about most.', comingSoon: true },
+    ],
+  },
+  {
+    label: 'AI',
+    services: [
+      { name: 'Claude', replaces: 'ChatGPT, Gemini, Copilot', desc: 'Powerful AI assistant from Anthropic. No OpenAI, no Google, no Microsoft.', url: 'https://claude.ai' },
+    ],
+  },
+  {
+    label: 'Music',
+    services: [
+      { name: 'Tidal', replaces: 'Spotify', desc: 'Better payouts to musicians, high-quality audio. Artists actually get paid.', url: 'https://tidal.com', migrateUrl: 'https://tidal.com/transfer-music', migrateLabel: 'Easy migrate from Spotify →' },
+      { name: 'Apple Music', replaces: 'Spotify', desc: 'Better artist payouts than Spotify. Lossless audio included.', url: 'https://music.apple.com' },
+      { name: 'Bandcamp', replaces: 'Spotify', desc: 'Buy music directly from artists. They keep 80-85% of every sale.', url: 'https://bandcamp.com' },
+    ],
+  },
+  {
+    label: 'Streaming',
+    services: [
+      { name: 'Kanopy', replaces: 'all streaming services', desc: 'Free with your library card. Criterion Collection, indie films, documentaries.', url: 'https://www.kanopy.com/en/signup' },
+      { name: 'MUBI', replaces: 'Netflix, Prime Video', desc: 'Curated indie and classic films. A new film every day, hand-picked by humans.', url: 'https://mubi.com' },
+      { name: 'Get a Library Card', replaces: 'streaming, Audible, Kindle', desc: 'Libraries are havens for the people. They have movies, books, magazines, and other resources.' },
+    ],
+  },
+  {
+    label: 'Shopping',
+    services: [
+      { name: 'Bookshop.org', replaces: 'Amazon', desc: 'Support indie bookstores. Free shipping on orders over $10.', url: 'https://bookshop.org' },
+      { name: 'Costco', replaces: 'Amazon, Walmart', desc: 'Worker-friendly, pays living wages, resisted MAGA pressure. Bulk shopping done right.', url: 'https://www.costco.com' },
+      { name: 'Buy Direct', replaces: 'Amazon', desc: 'Most brands sell direct on their own websites. Cut out the Bezos middleman.' },
+      { name: 'Local Shops', replaces: 'Amazon', desc: 'Your local hardware store, home goods stores. Buying local helps your neighbors and pisses off Bezos.' },
+    ],
+  },
+];
 
 // Per-section tagline overrides
 const deleteTaglines: Record<string, string> = {};
@@ -320,61 +365,54 @@ const deleteGroups = deleteOwnerOrder
       <span class="step-number" aria-hidden="true">3</span>
       <div class="step-info">
         <h3 class="step-title">Switch</h3>
-        <p class="step-desc">Move to platforms that don't fund fascism. Bring your people with you. Millions are already there.</p>
+        <p class="step-desc">Better tools that don't fund fascism. Bring your people with you.</p>
       </div>
     </div>
 
-    <div class="switch-grid">
-      <div class="switch-card">
-        <div class="switch-replaces">Replaces Facebook, X, Threads</div>
-        <h4 class="switch-name"><a href="https://bsky.app" target="_blank" rel="noopener">Bluesky</a></h4>
-        <p class="switch-desc">Decentralized, open protocol, no billionaire owner. Where most of Twitter's best users went.</p>
-        <a href="https://www.bluesky-migrate.com" target="_blank" rel="noopener" class="switch-migrate">Easy migrate from X →</a>
-      </div>
-      <div class="switch-card">
-        <div class="switch-replaces">Replaces Instagram</div>
-        <h4 class="switch-name"><a href="https://pixelfed.org" target="_blank" rel="noopener">Pixelfed</a></h4>
-        <p class="switch-desc">Decentralized photo sharing. No algorithm, no ads, no Meta.</p>
-        <a href="https://pixelfed.social/site/kb/import" target="_blank" rel="noopener" class="switch-migrate">Easy migrate from Instagram →</a>
-      </div>
-      <div class="switch-card">
-        <div class="switch-replaces">Replaces Spotify</div>
-        <h4 class="switch-name"><a href="https://tidal.com" target="_blank" rel="noopener">Tidal</a></h4>
-        <p class="switch-desc">Better payouts to musicians, high-quality audio. Artists actually get paid.</p>
-        <a href="https://tidal.com/transfer-music" target="_blank" rel="noopener" class="switch-migrate">Easy migrate from Spotify →</a>
-      </div>
-      <div class="switch-card">
-        <div class="switch-replaces">Replaces ChatGPT, Gemini, Copilot</div>
-        <h4 class="switch-name"><a href="https://ollama.ai" target="_blank" rel="noopener">Ollama</a></h4>
-        <p class="switch-desc">Run AI models locally on your own machine. Free, private, no account needed.</p>
-      </div>
-      <div class="switch-card">
-        <div class="switch-replaces">Replaces Amazon Prime</div>
-        <h4 class="switch-name"><a href="https://bookshop.org" target="_blank" rel="noopener">Bookshop.org</a></h4>
-        <p class="switch-desc">Support indie bookstores. Free shipping on orders over $10.</p>
-      </div>
-      <div class="switch-card">
-        <div class="switch-replaces">Replaces Instagram</div>
-        <h4 class="switch-name">Kith & Kin</h4>
-        <p class="switch-desc">Photos, Gratitude, & more. With the people you care about most.</p>
-        <span class="switch-coming-soon">Coming Soon</span>
-      </div>
-      <div class="switch-card">
-        <div class="switch-replaces">Replaces all streaming services</div>
-        <h4 class="switch-name"><a href="https://www.kanopy.com/en/signup" target="_blank" rel="noopener">Kanopy</a></h4>
-        <p class="switch-desc">Free with your library card. Criterion Collection, indie films, documentaries.</p>
-      </div>
-      <div class="switch-card">
-        <div class="switch-replaces">Replaces Amazon</div>
-        <h4 class="switch-name">Shop Local</h4>
-        <p class="switch-desc">Your local hardware store, home goods stores. Buying local helps your neighbors and pisses off Bezos.</p>
-      </div>
-      <div class="switch-card">
-        <div class="switch-replaces">Replaces streaming, Audible, Kindle</div>
-        <h4 class="switch-name">Get a Library Card</h4>
-        <p class="switch-desc">Libraries are havens for the people. They have movies, books, magazines, and other resources.</p>
-      </div>
+    <div class="switch-tabs" role="tablist">
+      {switchCategories.map((cat, i) => (
+        <button
+          class={`switch-tab${i === 0 ? ' active' : ''}`}
+          role="tab"
+          aria-selected={i === 0 ? 'true' : 'false'}
+          aria-controls={`switch-panel-${i}`}
+          id={`switch-tab-${i}`}
+        >
+          {cat.label}
+        </button>
+      ))}
     </div>
+
+    {switchCategories.map((cat, i) => (
+      <div
+        class={`switch-panel${i === 0 ? ' active' : ''}`}
+        role="tabpanel"
+        id={`switch-panel-${i}`}
+        aria-labelledby={`switch-tab-${i}`}
+      >
+        <div class="switch-grid">
+          {cat.services.map((svc) => (
+            <div class="switch-card">
+              <div class="switch-replaces">Replaces {svc.replaces}</div>
+              <h4 class="switch-name">
+                {svc.url ? (
+                  <a href={svc.url} target="_blank" rel="noopener">{svc.name}</a>
+                ) : (
+                  svc.name
+                )}
+              </h4>
+              <p class="switch-desc">{svc.desc}</p>
+              {svc.migrateUrl && (
+                <a href={svc.migrateUrl} target="_blank" rel="noopener" class="switch-migrate">{svc.migrateLabel}</a>
+              )}
+              {svc.comingSoon && (
+                <span class="switch-coming-soon">Coming Soon</span>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
 
     <div class="share-callout">
       <div class="accent-bar" aria-hidden="true"></div>
@@ -1583,11 +1621,57 @@ const deleteGroups = deleteOwnerOrder
     }
   }
 
+  .switch-tabs {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-bottom: 1.25rem;
+  }
+
+  .switch-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .switch-tab {
+    flex-shrink: 0;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--card-bg);
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .switch-tab:hover {
+    border-color: var(--orange);
+    color: var(--text);
+  }
+
+  .switch-tab.active {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: white;
+  }
+
+  .switch-panel {
+    display: none;
+  }
+
+  .switch-panel.active {
+    display: block;
+  }
+
   .switch-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.75rem;
-    margin: 1.25rem 0;
+    margin: 0;
   }
 
   @media (min-width: 480px) {
@@ -2423,6 +2507,21 @@ const deleteGroups = deleteOwnerOrder
   // Update immediately and then every second
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // Switch tabs
+  document.querySelectorAll('.switch-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.switch-tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.switch-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      const panelId = tab.getAttribute('aria-controls');
+      if (panelId) document.getElementById(panelId)?.classList.add('active');
+    });
+  });
 
   // View more button functionality
   const defundViewMoreBtn = document.getElementById('defund-view-more');
