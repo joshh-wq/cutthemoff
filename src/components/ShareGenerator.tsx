@@ -18,13 +18,13 @@ export default function DefundShareGenerator() {
 
   const platforms = [
     { id: 'amazon', name: 'Amazon Prime', billionaire: 'Bezos', verb: 'CANCELLED', action: 'cancel' },
-    { id: 'meta', name: 'Instagram', billionaire: 'Zuckerberg', verb: 'LEFT', action: 'leave' },
-    { id: 'facebook', name: 'Facebook', billionaire: 'Zuckerberg', verb: 'LEFT', action: 'leave' },
-    { id: 'whatsapp', name: 'WhatsApp', billionaire: 'Zuckerberg', verb: 'LEFT', action: 'leave' },
     { id: 'chatgpt', name: 'ChatGPT', billionaire: 'Altman', verb: 'CANCELLED', action: 'cancel' },
+    { id: 'facebook', name: 'Facebook', billionaire: 'Zuckerberg', verb: 'LEFT', action: 'leave' },
+    { id: 'meta', name: 'Instagram', billionaire: 'Zuckerberg', verb: 'LEFT', action: 'leave' },
+    { id: 'threads', name: 'Threads', billionaire: 'Zuckerberg', verb: 'LEFT', action: 'leave' },
     { id: 'tiktok', name: 'TikTok', billionaire: 'Ellison', verb: 'LEFT', action: 'leave' },
-    { id: 'x', name: 'X', billionaire: 'Musk', verb: 'LEFT', action: 'leave' },
-    { id: 'threads', name: 'Threads', billionaire: 'Zuckerberg', verb: 'LEFT', action: 'leave' }
+    { id: 'whatsapp', name: 'WhatsApp', billionaire: 'Zuckerberg', verb: 'LEFT', action: 'leave' },
+    { id: 'x', name: 'X', billionaire: 'Musk', verb: 'LEFT', action: 'leave' }
   ];
 
   useEffect(() => {
@@ -84,8 +84,10 @@ export default function DefundShareGenerator() {
     ctx.font = `${baseFontSize * 0.55}px Georgia, serif`;
 
     if (messageType === 'custom' && (customReason || customAction)) {
-      const reason = customReason || `${platform.billionaire} chose fascism.`;
-      const action = customAction || `I chose to ${platform.action}.`;
+      const reasonRaw = customReason || `${platform.billionaire} chose fascism.`;
+      const actionRaw = customAction || `I chose to ${platform.action}.`;
+      const reason = reasonRaw.endsWith('.') ? reasonRaw : reasonRaw + '.';
+      const action = actionRaw.endsWith('.') ? actionRaw : actionRaw + '.';
       ctx.fillText(reason, canvas.width / 2, centerY + baseFontSize * 1.4);
       ctx.fillText(action, canvas.width / 2, centerY + baseFontSize * 2.15);
     } else {
@@ -112,34 +114,39 @@ export default function DefundShareGenerator() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0f172a', padding: '2rem' }}>
-      <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <a href="/" style={{ color: 'white', textDecoration: 'none', fontSize: '0.875rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', marginBottom: '0.75rem', opacity: 0.8, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          Back
-        </a>
-        <header style={{ marginBottom: '2rem' }}>
-          <h1 style={{ fontSize: 'clamp(3.25rem, 14vw, 5rem)', fontWeight: 900, color: 'white', marginBottom: '0.5rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", letterSpacing: '-0.04em', lineHeight: 0.9, WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}>
+    <div style={{ minHeight: '100vh' }}>
+      <div style={{ background: '#0f172a', padding: '2rem 2rem 2.5rem' }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+          <a href="/" style={{ color: 'white', textDecoration: 'none', fontSize: '0.875rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', marginBottom: '0.75rem', opacity: 0.8, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Back
+          </a>
+          <h1 style={{ fontSize: 'clamp(3.25rem, 14vw, 5rem)', fontWeight: 900, color: 'white', marginBottom: 0, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", letterSpacing: '-0.04em', lineHeight: 0.9, WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}>
             Defund Billionaires
           </h1>
-        </header>
+          <p style={{ color: '#94a3b8', fontSize: '1rem', marginTop: '0.75rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
+            Show the world what you're cancelling.
+          </p>
+        </div>
+      </div>
 
+      <div style={{ background: 'white', padding: '2rem' }}>
         <main style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '600px', margin: '0 auto' }}>
-          <div style={{ background: 'white', borderRadius: '1rem', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', padding: '2rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#1f2937', marginBottom: '1.5rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
+          <div>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#1f2937', marginBottom: '1rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
               What are you cancelling?
             </h2>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '1rem' }}>
               {platforms.map((platform) => (
                 <button
                   key={platform.id}
                   onClick={() => setSelectedPlatform(platform.id)}
                   style={{
-                    padding: '1rem',
+                    padding: '0.5rem',
                     borderRadius: '0.5rem',
                     fontWeight: 700,
-                    fontSize: '1rem',
+                    fontSize: '0.8rem',
                     border: selectedPlatform === platform.id ? '2px solid #0f172a' : '2px solid #d1d5db',
                     cursor: 'pointer',
                     background: selectedPlatform === platform.id ? '#0f172a' : 'white',
@@ -154,13 +161,13 @@ export default function DefundShareGenerator() {
             </div>
 
             {selectedPlatform && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#1f2937', marginBottom: '1rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 900, color: '#1f2937', marginBottom: '0.5rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
                     Message style
                   </h3>
                   
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '1rem' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.5rem' }}>
                     <button
                       onClick={() => setMessageType('standard')}
                       style={{
@@ -199,40 +206,52 @@ export default function DefundShareGenerator() {
 
                   {messageType === 'custom' && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                      <input
-                        type="text"
-                        value={customReason}
-                        onChange={(e) => setCustomReason(e.target.value)}
-                        placeholder="They chose... (e.g. Bezos chose profits over people)"
-                        maxLength={50}
-                        style={{
-                          width: '100%',
-                          padding: '0.5rem 0.75rem',
-                          border: '2px solid #9ca3af',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.875rem'
-                        }}
-                      />
-                      <input
-                        type="text"
-                        value={customAction}
-                        onChange={(e) => setCustomAction(e.target.value)}
-                        placeholder="I chose... (e.g. I chose my local bookstore)"
-                        maxLength={50}
-                        style={{
-                          width: '100%',
-                          padding: '0.5rem 0.75rem',
-                          border: '2px solid #9ca3af',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.875rem'
-                        }}
-                      />
+                      <div>
+                        <input
+                          type="text"
+                          value={customReason}
+                          onChange={(e) => setCustomReason(e.target.value)}
+                          placeholder="They chose... (e.g. Bezos chose profits over people)"
+                          maxLength={50}
+                          style={{
+                            width: '100%',
+                            padding: '0.5rem 0.75rem',
+                            border: '2px solid #9ca3af',
+                            borderRadius: '0.5rem',
+                            fontSize: '0.875rem',
+                            boxSizing: 'border-box'
+                          }}
+                        />
+                        <div style={{ textAlign: 'right', fontSize: '0.75rem', color: customReason.length >= 45 ? '#c2185b' : '#9ca3af', marginTop: '0.25rem', fontFamily: "'Inter', sans-serif" }}>
+                          {customReason.length}/50
+                        </div>
+                      </div>
+                      <div>
+                        <input
+                          type="text"
+                          value={customAction}
+                          onChange={(e) => setCustomAction(e.target.value)}
+                          placeholder="I chose... (e.g. I chose my local bookstore)"
+                          maxLength={50}
+                          style={{
+                            width: '100%',
+                            padding: '0.5rem 0.75rem',
+                            border: '2px solid #9ca3af',
+                            borderRadius: '0.5rem',
+                            fontSize: '0.875rem',
+                            boxSizing: 'border-box'
+                          }}
+                        />
+                        <div style={{ textAlign: 'right', fontSize: '0.75rem', color: customAction.length >= 45 ? '#c2185b' : '#9ca3af', marginTop: '0.25rem', fontFamily: "'Inter', sans-serif" }}>
+                          {customAction.length}/50
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
 
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#1f2937', marginBottom: '1rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 900, color: '#1f2937', marginBottom: '0.5rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
                     Choose image size
                   </h3>
                   
@@ -305,8 +324,8 @@ export default function DefundShareGenerator() {
 
         <canvas ref={canvasRef} style={{ display: 'none' }} />
 
-        <footer style={{ marginTop: '2rem', textAlign: 'center' }}>
-          <p style={{ color: 'white', fontSize: '0.875rem' }}>
+        <footer style={{ marginTop: '2rem', textAlign: 'center', paddingBottom: '1rem' }}>
+          <p style={{ color: '#6b7280', fontSize: '0.875rem' }}>
             Built to defund billionaires.
           </p>
         </footer>
