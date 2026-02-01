@@ -114,7 +114,7 @@ export default function DefundShareGenerator() {
   };
 
   return (
-    <div style={{ minHeight: '100vh' }}>
+    <div style={{ minHeight: '100vh', overflowX: 'hidden' }}>
       <div style={{ background: '#0f172a', padding: '2rem 2rem 2.5rem' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
           <a href="/" style={{ color: 'white', textDecoration: 'none', fontSize: '0.875rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', marginBottom: '0.75rem', opacity: 0.8, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
@@ -130,14 +130,14 @@ export default function DefundShareGenerator() {
         </div>
       </div>
 
-      <div style={{ background: 'white', padding: '2rem' }}>
-        <main style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '600px', margin: '0 auto' }}>
+      <div style={{ background: 'white', padding: '1.5rem' }}>
+        <main style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '600px', margin: '0 auto', width: '100%' }}>
           <div>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#1f2937', marginBottom: '1rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
               What are you cancelling?
             </h2>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '1rem', width: '100%' }}>
               {platforms.map((platform) => (
                 <button
                   key={platform.id}
