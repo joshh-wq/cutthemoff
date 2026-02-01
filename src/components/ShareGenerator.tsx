@@ -126,8 +126,7 @@ export default function DefundShareGenerator() {
         text: `I'm defunding billionaires. Join me at defundbillionaires.org`,
       });
     } catch (e) {
-      // User cancelled or share failed — fall back to download
-      downloadImage();
+      // User cancelled — do nothing
     }
   };
 
