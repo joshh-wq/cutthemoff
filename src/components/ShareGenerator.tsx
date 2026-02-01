@@ -114,14 +114,14 @@ export default function DefundShareGenerator() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', overflowX: 'hidden' }}>
+    <div style={{ minHeight: '100vh', overflowX: 'hidden', maxWidth: '100vw', width: '100%' }}>
       <div style={{ background: '#0f172a', padding: '2rem 2rem 2.5rem' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
           <a href="/" style={{ color: 'white', textDecoration: 'none', fontSize: '0.875rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', marginBottom: '0.75rem', opacity: 0.8, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
             Back
           </a>
-          <h1 style={{ fontSize: 'clamp(3.25rem, 14vw, 5rem)', fontWeight: 900, color: 'white', marginBottom: 0, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", letterSpacing: '-0.04em', lineHeight: 0.9, WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 10vw, 5rem)', fontWeight: 900, color: 'white', marginBottom: 0, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", letterSpacing: '-0.04em', lineHeight: 0.9, WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}>
             Defund Billionaires
           </h1>
           <p style={{ color: '#94a3b8', fontSize: '1rem', marginTop: '0.75rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
