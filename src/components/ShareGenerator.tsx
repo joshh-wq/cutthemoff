@@ -95,10 +95,11 @@ export default function DefundShareGenerator() {
       ctx.fillText(`I chose to ${platform.action}.`, canvas.width / 2, centerY + baseFontSize * 2.15);
     }
 
-    // Website
+    // Website or hashtag
     ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
     ctx.font = `600 ${baseFontSize * 0.45}px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`;
-    ctx.fillText('defundbillionaires.org', canvas.width / 2, centerY + baseFontSize * 3.3);
+    const footerText = messageType === 'custom' ? '#defundbillionaires' : 'defundbillionaires.org';
+    ctx.fillText(footerText, canvas.width / 2, centerY + baseFontSize * 3.3);
     
     setGeneratedImage(canvas.toDataURL('image/png'));
   };
