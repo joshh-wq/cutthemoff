@@ -4,11 +4,7 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import services from '../data/services.json';
-import newsItems from '../data/news.json';
 
-const sortedNews = [...newsItems]
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-  .slice(0, 6);
 
 // Split services into Defund (paid) and Delete (social/free)
 const socialIds = ['facebook', 'instagram', 'threads', 'tiktok', 'x'];
@@ -470,19 +466,6 @@ const deleteGroups = deleteOwnerOrder
     </form>
   </section>
 
-  <section class="news-section">
-    <div class="accent-bar" aria-hidden="true"></div>
-    <h2>Why we're doing this</h2>
-    <div class="news-grid">
-      {sortedNews.map((item) => (
-        <a href={item.url} target="_blank" rel="noopener noreferrer" class="news-card">
-          <span class="news-tag">{item.tag}</span>
-          <h3 class="news-title">{item.title}</h3>
-          <span class="news-meta">{item.source} &middot; {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-        </a>
-      ))}
-    </div>
-  </section>
 
   <section class="toolkit-section">
     <div class="accent-bar" aria-hidden="true"></div>
@@ -1768,90 +1751,6 @@ const deleteGroups = deleteOwnerOrder
     border-radius: 6px;
   }
 
-  .news-section {
-    padding: 2.5rem 1rem;
-    background: #0f172a;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    max-width: none;
-    border-top: 1px solid var(--border);
-  }
-
-  .news-section > *:not(.accent-bar) {
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .news-section h2 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    color: white;
-  }
-
-  .news-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  @media (min-width: 640px) {
-    .news-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 900px) {
-    .news-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .news-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem;
-    text-decoration: none;
-    transition: border-color 0.2s, transform 0.1s;
-  }
-
-  .news-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
-    text-decoration: none;
-  }
-
-  .news-tag {
-    display: inline-block;
-    align-self: flex-start;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    color: var(--orange);
-    background: rgba(234, 88, 12, 0.1);
-    border-radius: 999px;
-    padding: 0.2rem 0.6rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .news-title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text);
-    margin: 0 0 0.5rem 0;
-    line-height: 1.4;
-  }
-
-  .news-meta {
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin-top: auto;
-  }
 
   .toolkit-section {
     padding: 2.5rem 1rem;
