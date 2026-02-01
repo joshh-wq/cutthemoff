@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Download, Share2 } from 'lucide-react';
+import { Download } from 'lucide-react';
 
 export default function DefundShareGenerator() {
   const [selectedPlatform, setSelectedPlatform] = useState(null);
@@ -11,9 +11,9 @@ export default function DefundShareGenerator() {
   const canvasRef = useRef(null);
 
   const sizes = [
-    { id: 'square', name: 'Square', width: 1080, height: 1080, desc: 'Instagram/Facebook feed' },
-    { id: 'story', name: 'Story', width: 1080, height: 1920, desc: 'Instagram/Facebook story' },
-    { id: 'twitter', name: 'Wide', width: 1200, height: 675, desc: 'Twitter/X post' }
+    { id: 'square', name: 'Square', width: 1080, height: 1080, desc: 'Instagram/\nFacebook' },
+    { id: 'story', name: 'Story', width: 1080, height: 1920, desc: 'Instagram\nstory' },
+    { id: 'twitter', name: 'Wide', width: 1200, height: 675, desc: 'Twitter/\nX post' }
   ];
 
   const platforms = [
@@ -23,7 +23,7 @@ export default function DefundShareGenerator() {
     { id: 'whatsapp', name: 'WhatsApp', billionaire: 'Zuckerberg', verb: 'LEFT', action: 'leave' },
     { id: 'chatgpt', name: 'ChatGPT', billionaire: 'Altman', verb: 'CANCELLED', action: 'cancel' },
     { id: 'tiktok', name: 'TikTok', billionaire: 'Ellison', verb: 'LEFT', action: 'leave' },
-    { id: 'twitter', name: 'X', billionaire: 'Musk', verb: 'LEFT', action: 'leave' },
+    { id: 'x', name: 'X', billionaire: 'Musk', verb: 'LEFT', action: 'leave' },
     { id: 'threads', name: 'Threads', billionaire: 'Zuckerberg', verb: 'LEFT', action: 'leave' }
   ];
 
@@ -42,49 +42,47 @@ export default function DefundShareGenerator() {
     canvas.width = size.width;
     canvas.height = size.height;
     
-    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    gradient.addColorStop(0, '#2f5192');
-    gradient.addColorStop(1, '#1a3055');
-    ctx.fillStyle = gradient;
+    // Solid dark navy background
+    ctx.fillStyle = '#0f172a';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
+
     const baseFontSize = Math.min(canvas.width, canvas.height) / 10;
     const centerY = canvas.height / 2;
-    
-    // Main text - Sans-serif, bold like platform name
+
+    // Main text
     ctx.fillStyle = '#FFFFFF';
     ctx.font = `900 ${baseFontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`;
     ctx.textAlign = 'center';
     ctx.fillText(`I ${platform.verb}`, canvas.width / 2, centerY - baseFontSize * 1.6);
-    
-    // Platform name - Sans-serif, larger
-    ctx.fillStyle = '#FFB6C1';
+
+    // Platform name - bold magenta accent from main site
+    ctx.fillStyle = '#c2185b';
     const platformFontSize = baseFontSize * 1.2;
     ctx.font = `900 ${platformFontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`;
-    
+
     let platformText = platform.name.toUpperCase();
     let textWidth = ctx.measureText(platformText).width;
     const maxWidth = canvas.width * 0.85;
-    
+
     if (textWidth > maxWidth) {
       const scale = maxWidth / textWidth;
       ctx.font = `900 ${platformFontSize * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`;
     }
-    
+
     ctx.fillText(platformText, canvas.width / 2, centerY - baseFontSize * 0.1);
-    
+
     // Divider line
-    ctx.strokeStyle = '#FFB6C1';
-    ctx.lineWidth = 4;
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(canvas.width * 0.2, centerY + baseFontSize * 0.6);
-    ctx.lineTo(canvas.width * 0.8, centerY + baseFontSize * 0.6);
+    ctx.moveTo(canvas.width * 0.25, centerY + baseFontSize * 0.6);
+    ctx.lineTo(canvas.width * 0.75, centerY + baseFontSize * 0.6);
     ctx.stroke();
-    
-    // Reason text - Serif for elegance
-    ctx.fillStyle = '#FFFFFF';
+
+    // Reason text
+    ctx.fillStyle = '#e2e8f0';
     ctx.font = `${baseFontSize * 0.55}px Georgia, serif`;
-    
+
     if (messageType === 'custom' && (customReason || customAction)) {
       const reason = customReason || `${platform.billionaire} chose fascism.`;
       const action = customAction || `I chose to ${platform.action}.`;
@@ -94,11 +92,11 @@ export default function DefundShareGenerator() {
       ctx.fillText(`${platform.billionaire} chose fascism.`, canvas.width / 2, centerY + baseFontSize * 1.4);
       ctx.fillText(`I chose to ${platform.action}.`, canvas.width / 2, centerY + baseFontSize * 2.15);
     }
-    
-    // Website - Sans-serif, clean
-    ctx.fillStyle = '#E8E8E8';
-    ctx.font = `600 ${baseFontSize * 0.5}px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`;
-    ctx.fillText('DefundBillionaires.org', canvas.width / 2, centerY + baseFontSize * 3.3);
+
+    // Website
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+    ctx.font = `600 ${baseFontSize * 0.45}px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`;
+    ctx.fillText('defundbillionaires.org', canvas.width / 2, centerY + baseFontSize * 3.3);
     
     setGeneratedImage(canvas.toDataURL('image/png'));
   };
@@ -114,18 +112,21 @@ export default function DefundShareGenerator() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(to bottom right, #2f5192, #1a3055)', padding: '2rem' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <header style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <h1 style={{ fontSize: '3rem', fontWeight: 'bold', color: 'white', marginBottom: '0.5rem' }}>
-            Defund <span style={{ color: '#FFB6C1' }}>Billionaires</span>
+    <div style={{ minHeight: '100vh', background: '#0f172a', padding: '2rem' }}>
+      <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+        <a href="/" style={{ color: 'white', textDecoration: 'none', fontSize: '0.875rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', marginBottom: '0.75rem', opacity: 0.8, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Back
+        </a>
+        <header style={{ marginBottom: '2rem' }}>
+          <h1 style={{ fontSize: 'clamp(3.25rem, 14vw, 5rem)', fontWeight: 900, color: 'white', marginBottom: '0.5rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", letterSpacing: '-0.04em', lineHeight: 0.9, WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}>
+            Defund Billionaires
           </h1>
-          <p style={{ color: '#b3d4fc', fontSize: '1.125rem' }}>Share how you're striking</p>
         </header>
 
-        <main style={{ display: 'grid', gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr', gap: '2rem' }}>
+        <main style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '600px', margin: '0 auto' }}>
           <div style={{ background: 'white', borderRadius: '1rem', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', padding: '2rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '1.5rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#1f2937', marginBottom: '1.5rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
               What are you cancelling?
             </h2>
             
@@ -137,13 +138,14 @@ export default function DefundShareGenerator() {
                   style={{
                     padding: '1rem',
                     borderRadius: '0.5rem',
-                    fontWeight: 'bold',
-                    fontSize: '0.875rem',
-                    border: 'none',
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    border: selectedPlatform === platform.id ? '2px solid #0f172a' : '2px solid #d1d5db',
                     cursor: 'pointer',
-                    background: selectedPlatform === platform.id ? '#2f5192' : '#f3f4f6',
-                    color: selectedPlatform === platform.id ? 'white' : '#1f2937',
-                    outline: selectedPlatform === platform.id ? '4px solid rgba(47, 81, 146, 0.3)' : 'none'
+                    background: selectedPlatform === platform.id ? '#0f172a' : 'white',
+                    color: selectedPlatform === platform.id ? 'white' : '#0f172a',
+                    outline: 'none',
+                    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
                   }}
                 >
                   {platform.name}
@@ -154,7 +156,7 @@ export default function DefundShareGenerator() {
             {selectedPlatform && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '1rem' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#1f2937', marginBottom: '1rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
                     Message style
                   </h3>
                   
@@ -164,13 +166,14 @@ export default function DefundShareGenerator() {
                       style={{
                         padding: '0.75rem 1rem',
                         borderRadius: '0.5rem',
-                        fontWeight: '600',
+                        fontWeight: 700,
                         fontSize: '0.875rem',
-                        border: 'none',
+                        border: messageType === 'standard' ? '2px solid #0f172a' : '2px solid #d1d5db',
                         cursor: 'pointer',
-                        background: messageType === 'standard' ? '#2f5192' : '#f3f4f6',
-                        color: messageType === 'standard' ? 'white' : '#1f2937',
-                        outline: messageType === 'standard' ? '2px solid rgba(47, 81, 146, 0.3)' : 'none'
+                        background: messageType === 'standard' ? '#0f172a' : 'white',
+                        color: messageType === 'standard' ? 'white' : '#0f172a',
+                        outline: 'none',
+                        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
                       }}
                     >
                       Standard
@@ -180,13 +183,14 @@ export default function DefundShareGenerator() {
                       style={{
                         padding: '0.75rem 1rem',
                         borderRadius: '0.5rem',
-                        fontWeight: '600',
+                        fontWeight: 700,
                         fontSize: '0.875rem',
-                        border: 'none',
+                        border: messageType === 'custom' ? '2px solid #0f172a' : '2px solid #d1d5db',
                         cursor: 'pointer',
-                        background: messageType === 'custom' ? '#2f5192' : '#f3f4f6',
-                        color: messageType === 'custom' ? 'white' : '#1f2937',
-                        outline: messageType === 'custom' ? '2px solid rgba(47, 81, 146, 0.3)' : 'none'
+                        background: messageType === 'custom' ? '#0f172a' : 'white',
+                        color: messageType === 'custom' ? 'white' : '#0f172a',
+                        outline: 'none',
+                        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
                       }}
                     >
                       Custom
@@ -228,7 +232,7 @@ export default function DefundShareGenerator() {
                 </div>
 
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '1rem' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#1f2937', marginBottom: '1rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
                     Choose image size
                   </h3>
                   
@@ -240,28 +244,39 @@ export default function DefundShareGenerator() {
                         style={{
                           padding: '0.75rem 0.5rem',
                           borderRadius: '0.5rem',
-                          fontWeight: '600',
+                          fontWeight: 700,
                           fontSize: '0.75rem',
-                          border: 'none',
+                          border: selectedSize === size.id ? '2px solid #0f172a' : '2px solid #d1d5db',
                           cursor: 'pointer',
-                          background: selectedSize === size.id ? '#2f5192' : '#f3f4f6',
-                          color: selectedSize === size.id ? 'white' : '#1f2937',
-                          outline: selectedSize === size.id ? '2px solid rgba(47, 81, 146, 0.3)' : 'none',
-                          textAlign: 'center'
+                          background: selectedSize === size.id ? '#0f172a' : 'white',
+                          color: selectedSize === size.id ? 'white' : '#0f172a',
+                          outline: 'none',
+                          textAlign: 'center',
+                          fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
                         }}
                       >
                         <div>{size.name}</div>
-                        <div style={{ fontSize: '0.625rem', opacity: 0.75 }}>{size.desc}</div>
+                        <div style={{ fontSize: '0.75rem', opacity: 0.75, whiteSpace: 'pre-line' }}>{size.desc}</div>
                       </button>
                     ))}
                   </div>
                 </div>
 
+                {generatedImage && (
+                  <div style={{ background: '#f9fafb', borderRadius: '0.75rem', padding: '1rem' }}>
+                    <img
+                      src={generatedImage}
+                      alt="Generated share graphic"
+                      style={{ width: '100%', borderRadius: '0.5rem', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
+                    />
+                  </div>
+                )}
+
                 <button
                   onClick={downloadImage}
                   style={{
                     width: '100%',
-                    background: '#d946c6',
+                    background: '#c2185b',
                     color: 'white',
                     fontWeight: 'bold',
                     padding: '1rem 1.5rem',
@@ -275,59 +290,24 @@ export default function DefundShareGenerator() {
                     boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)',
                     fontSize: '1rem'
                   }}
-                  onMouseOver={(e) => e.currentTarget.style.background = '#b81ea3'}
-                  onMouseOut={(e) => e.currentTarget.style.background = '#d946c6'}
+                  onMouseOver={(e) => e.currentTarget.style.background = '#a11548'}
+                  onMouseOut={(e) => e.currentTarget.style.background = '#c2185b'}
                 >
                   <Download size={20} />
                   Download image
                 </button>
 
-                <div style={{ background: '#eff6ff', border: '2px solid #2f5192', borderRadius: '0.5rem', padding: '1rem' }}>
-                  <p style={{ fontSize: '0.875rem', color: '#374151', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-                    Next steps:
-                  </p>
-                  <ol style={{ fontSize: '0.875rem', color: '#6b7280', paddingLeft: '1.5rem', margin: 0 }}>
-                    <li>Download your image</li>
-                    <li>Post to Instagram, Facebook, X, or Bluesky</li>
-                    <li>Tag friends to join the movement</li>
-                  </ol>
-                </div>
               </div>
             )}
           </div>
 
-          <div style={{ background: 'white', borderRadius: '1rem', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', padding: '2rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '1.5rem' }}>Preview</h2>
-            
-            {!selectedPlatform ? (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '600px', background: '#f9fafb', borderRadius: '0.75rem' }}>
-                <div style={{ textAlign: 'center' }}>
-                  <Share2 size={64} style={{ margin: '0 auto 1rem', color: '#d1d5db' }} />
-                  <p style={{ color: '#6b7280' }}>Select a platform to see your shareable image</p>
-                </div>
-              </div>
-            ) : (
-              <div style={{ background: '#f9fafb', borderRadius: '0.75rem', padding: '1rem' }}>
-                {generatedImage && (
-                  <img 
-                    src={generatedImage} 
-                    alt="Generated share graphic" 
-                    style={{ width: '100%', borderRadius: '0.5rem', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
-                  />
-                )}
-              </div>
-            )}
-          </div>
         </main>
 
         <canvas ref={canvasRef} style={{ display: 'none' }} />
 
         <footer style={{ marginTop: '2rem', textAlign: 'center' }}>
-          <p style={{ color: '#b3d4fc', fontSize: '0.875rem' }}>
-            Built to defund billionaires.{' '}
-            <a href="/" style={{ textDecoration: 'underline', color: '#b3d4fc' }}>
-              Visit DefundBillionaires.org
-            </a>
+          <p style={{ color: 'white', fontSize: '0.875rem' }}>
+            Built to defund billionaires.
           </p>
         </footer>
       </div>
