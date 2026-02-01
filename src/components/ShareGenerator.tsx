@@ -136,14 +136,14 @@ export default function DefundShareGenerator() {
     <div style={{ minHeight: '100vh', overflowX: 'hidden', maxWidth: '100vw', width: '100%' }}>
       <div style={{ background: '#0f172a', padding: '2rem 2rem 2.5rem' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <a href="/" style={{ color: 'white', textDecoration: 'none', fontSize: '0.875rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', marginBottom: '0.75rem', opacity: 0.8, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
+          <a href="/" aria-label="Back to main site" style={{ color: 'white', textDecoration: 'none', fontSize: '0.875rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', marginBottom: '0.75rem', opacity: 0.8, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
             Back
           </a>
           <h1 style={{ fontSize: 'clamp(2.5rem, 10vw, 5rem)', fontWeight: 900, color: 'white', marginBottom: 0, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", letterSpacing: '-0.04em', lineHeight: 0.9, WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}>
             Defund Billionaires
           </h1>
-          <p style={{ color: '#94a3b8', fontSize: '1rem', marginTop: '0.75rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
+          <p style={{ color: '#cbd5e1', fontSize: '1rem', marginTop: '0.75rem', fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
             Show the world what you're cancelling.
           </p>
         </div>
@@ -156,13 +156,14 @@ export default function DefundShareGenerator() {
               What are you cancelling?
             </h2>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '1rem', width: '100%' }}>
+            <div role="group" aria-label="Select a platform" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '1rem', width: '100%' }}>
               {platforms.map((platform) => (
                 <button
                   key={platform.id}
+                  aria-pressed={selectedPlatform === platform.id}
                   onClick={() => setSelectedPlatform(platform.id)}
                   style={{
-                    padding: '0.5rem',
+                    padding: '0.75rem 0.5rem',
                     borderRadius: '0.5rem',
                     fontWeight: 700,
                     fontSize: '0.8rem',
@@ -186,8 +187,9 @@ export default function DefundShareGenerator() {
                     Message style
                   </h3>
                   
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                  <div role="group" aria-label="Message style" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.5rem' }}>
                     <button
+                      aria-pressed={messageType === 'standard'}
                       onClick={() => setMessageType('standard')}
                       style={{
                         padding: '0.75rem 1rem',
@@ -205,6 +207,7 @@ export default function DefundShareGenerator() {
                       Standard
                     </button>
                     <button
+                      aria-pressed={messageType === 'custom'}
                       onClick={() => setMessageType('custom')}
                       style={{
                         padding: '0.75rem 1rem',
@@ -228,6 +231,7 @@ export default function DefundShareGenerator() {
                       <div>
                         <input
                           type="text"
+                          aria-label="Custom reason"
                           value={customReason}
                           onChange={(e) => setCustomReason(e.target.value)}
                           placeholder="They chose... (e.g. Bezos chose profits over people)"
@@ -237,17 +241,18 @@ export default function DefundShareGenerator() {
                             padding: '0.5rem 0.75rem',
                             border: '2px solid #9ca3af',
                             borderRadius: '0.5rem',
-                            fontSize: '0.875rem',
+                            fontSize: '1rem',
                             boxSizing: 'border-box'
                           }}
                         />
-                        <div style={{ textAlign: 'right', fontSize: '0.75rem', color: customReason.length >= 45 ? '#c2185b' : '#9ca3af', marginTop: '0.25rem', fontFamily: "'Inter', sans-serif" }}>
+                        <div style={{ textAlign: 'right', fontSize: '0.75rem', color: customReason.length >= 45 ? '#c2185b' : '#6b7280', marginTop: '0.25rem', fontFamily: "'Inter', sans-serif" }}>
                           {customReason.length}/50
                         </div>
                       </div>
                       <div>
                         <input
                           type="text"
+                          aria-label="Custom action"
                           value={customAction}
                           onChange={(e) => setCustomAction(e.target.value)}
                           placeholder="I chose... (e.g. I chose my local bookstore)"
@@ -257,11 +262,11 @@ export default function DefundShareGenerator() {
                             padding: '0.5rem 0.75rem',
                             border: '2px solid #9ca3af',
                             borderRadius: '0.5rem',
-                            fontSize: '0.875rem',
+                            fontSize: '1rem',
                             boxSizing: 'border-box'
                           }}
                         />
-                        <div style={{ textAlign: 'right', fontSize: '0.75rem', color: customAction.length >= 45 ? '#c2185b' : '#9ca3af', marginTop: '0.25rem', fontFamily: "'Inter', sans-serif" }}>
+                        <div style={{ textAlign: 'right', fontSize: '0.75rem', color: customAction.length >= 45 ? '#c2185b' : '#6b7280', marginTop: '0.25rem', fontFamily: "'Inter', sans-serif" }}>
                           {customAction.length}/50
                         </div>
                       </div>
@@ -274,10 +279,11 @@ export default function DefundShareGenerator() {
                     Choose image size
                   </h3>
                   
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem' }}>
+                  <div role="group" aria-label="Image size" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem' }}>
                     {sizes.map((size) => (
                       <button
                         key={size.id}
+                        aria-pressed={selectedSize === size.id}
                         onClick={() => setSelectedSize(size.id)}
                         style={{
                           padding: '0.75rem 0.5rem',
@@ -294,7 +300,7 @@ export default function DefundShareGenerator() {
                         }}
                       >
                         <div>{size.name}</div>
-                        <div style={{ fontSize: '0.75rem', opacity: 0.75, whiteSpace: 'pre-line' }}>{size.desc}</div>
+                        <div style={{ fontSize: '0.75rem', opacity: 0.85, whiteSpace: 'pre-line' }}>{size.desc}</div>
                       </button>
                     ))}
                   </div>
@@ -309,6 +315,10 @@ export default function DefundShareGenerator() {
                     />
                   </div>
                 )}
+
+                <p style={{ fontSize: '0.8rem', color: '#6b7280', textAlign: 'center', fontFamily: "'Inter', sans-serif" }}>
+                  Use <strong style={{ color: '#0f172a' }}>#DefundBillionaires</strong> when you post
+                </p>
 
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
                   {canShare && (
@@ -374,7 +384,7 @@ export default function DefundShareGenerator() {
         <canvas ref={canvasRef} style={{ display: 'none' }} />
 
         <footer style={{ marginTop: '2rem', textAlign: 'center', paddingBottom: '1rem' }}>
-          <p style={{ color: '#6b7280', fontSize: '0.875rem' }}>
+          <p style={{ color: '#4b5563', fontSize: '0.875rem' }}>
             Built to defund billionaires.
           </p>
         </footer>

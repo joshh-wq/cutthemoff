@@ -429,6 +429,14 @@ const deleteGroups = deleteOwnerOrder
       <h3 class="share-headline">Spread the word</h3>
       <p class="share-subtext">The best way to mobilize? Invite your friends and family. The more people who switch, the less power billionaires have.</p>
 
+      <div class="generator-card">
+        <h4 class="generator-card-title">Create a shareable graphic</h4>
+        <p class="generator-card-desc">Show the world what you cancelled. Pick a platform, generate an image, and post it everywhere.</p>
+        <a href="/share" class="generator-card-link">Create your graphic &rarr;</a>
+      </div>
+
+      <p class="share-or">Or share this site directly</p>
+
       <div class="share-buttons" role="group" aria-label="Share options">
         <a href="#" id="share-sms" class="share-btn share-sms">
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
@@ -1854,6 +1862,55 @@ const deleteGroups = deleteOwnerOrder
     margin-left: auto;
     margin-right: auto;
     line-height: 1.5;
+  }
+
+  .generator-card {
+    background: #0f172a;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+    text-align: left;
+  }
+
+  .generator-card-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: white;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .generator-card-desc {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
+  }
+
+  .generator-card-link {
+    display: inline-block;
+    background: #c2185b;
+    color: white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .generator-card-link:hover {
+    background: #a11548;
+  }
+
+  .share-or {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 1rem;
   }
 
   .share-buttons {
