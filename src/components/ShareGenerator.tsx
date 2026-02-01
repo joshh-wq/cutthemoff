@@ -299,8 +299,8 @@ export default function DefundShareGenerator() {
                           fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
                         }}
                       >
-                        <div>{size.name}</div>
-                        <div style={{ fontSize: '0.75rem', opacity: 0.85, whiteSpace: 'pre-line' }}>{size.desc}</div>
+                        <div style={{ fontSize: '0.875rem', fontWeight: 800, marginBottom: '0.15rem' }}>{size.name}</div>
+                        <div style={{ fontSize: '0.65rem', opacity: 0.7, whiteSpace: 'pre-line', fontWeight: 500 }}>{size.desc}</div>
                       </button>
                     ))}
                   </div>

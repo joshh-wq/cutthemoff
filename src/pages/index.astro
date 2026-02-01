@@ -489,14 +489,14 @@ const deleteGroups = deleteOwnerOrder
         <p>PDF with QR code. Print and post in your apartment building, coffee shop, or office.</p>
         <span class="toolkit-coming-soon">Coming soon</span>
       </div>
-      <div class="toolkit-card">
+      <a href="/share" class="toolkit-card toolkit-card-link">
         <div class="toolkit-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
         </div>
         <h3>Social Media Images</h3>
-        <p>Shareable graphics for Instagram stories, Bluesky posts, and group chats.</p>
-        <span class="toolkit-coming-soon">Coming soon</span>
-      </div>
+        <p>Create shareable graphics for Instagram, Bluesky, X, and more.</p>
+        <span class="toolkit-available">Try it now &rarr;</span>
+      </a>
       <div class="toolkit-card">
         <div class="toolkit-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -1833,6 +1833,26 @@ const deleteGroups = deleteOwnerOrder
     border: 1px solid var(--orange);
     border-radius: 4px;
     padding: 0.2rem 0.6rem;
+  }
+
+  .toolkit-available {
+    display: inline-block;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: auto;
+  }
+
+  a.toolkit-card-link {
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.1s;
+  }
+
+  a.toolkit-card-link:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    text-decoration: none;
   }
 
   .share-callout {

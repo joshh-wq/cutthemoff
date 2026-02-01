@@ -4,6 +4,7 @@
 <header>
   <nav>
     <a href="/" class="logo">Cut Them Off</a>
+    <a href="/share" class="nav-link">Share Generator</a>
   </nav>
 </header>
 
@@ -34,5 +35,24 @@
   .logo:hover {
     text-decoration: none;
     color: var(--accent);
+  }
+
+  .nav-link {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.375rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .nav-link:hover {
+    background: var(--card-bg);
+    border-color: var(--accent);
+    text-decoration: none;
   }
 </style>
