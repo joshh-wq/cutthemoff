@@ -113,6 +113,26 @@ export default function DefundShareGenerator() {
     }
   };
 
+  const shareImage = async () => {
+    if (!generatedImage) return;
+    try {
+      const res = await fetch(generatedImage);
+      const blob = await res.blob();
+      const platform = platforms.find(p => p.id === selectedPlatform);
+      const file = new File([blob], `defunded-${platform.id}-${selectedSize}.png`, { type: 'image/png' });
+      await navigator.share({
+        files: [file],
+        title: 'Defund Billionaires',
+        text: `I'm defunding billionaires. Join me at defundbillionaires.org`,
+      });
+    } catch (e) {
+      // User cancelled or share failed — fall back to download
+      downloadImage();
+    }
+  };
+
+  const canShare = typeof navigator !== 'undefined' && !!navigator.share && !!navigator.canShare;
+
   return (
     <div style={{ minHeight: '100vh', overflowX: 'hidden', maxWidth: '100vw', width: '100%' }}>
       <div style={{ background: '#0f172a', padding: '2rem 2rem 2.5rem' }}>
@@ -291,30 +311,60 @@ export default function DefundShareGenerator() {
                   </div>
                 )}
 
-                <button
-                  onClick={downloadImage}
-                  style={{
-                    width: '100%',
-                    background: '#c2185b',
-                    color: 'white',
-                    fontWeight: 'bold',
-                    padding: '1rem 1.5rem',
-                    borderRadius: '0.75rem',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '0.5rem',
-                    boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)',
-                    fontSize: '1rem'
-                  }}
-                  onMouseOver={(e) => e.currentTarget.style.background = '#a11548'}
-                  onMouseOut={(e) => e.currentTarget.style.background = '#c2185b'}
-                >
-                  <Download size={20} />
-                  Download image
-                </button>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  {canShare && (
+                    <button
+                      onClick={shareImage}
+                      style={{
+                        flex: 1,
+                        background: '#c2185b',
+                        color: 'white',
+                        fontWeight: 'bold',
+                        padding: '1rem 1.5rem',
+                        borderRadius: '0.75rem',
+                        border: 'none',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.5rem',
+                        boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)',
+                        fontSize: '1rem',
+                        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+                      }}
+                      onMouseOver={(e) => e.currentTarget.style.background = '#a11548'}
+                      onMouseOut={(e) => e.currentTarget.style.background = '#c2185b'}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                      Share
+                    </button>
+                  )}
+                  <button
+                    onClick={downloadImage}
+                    style={{
+                      flex: 1,
+                      background: canShare ? '#0f172a' : '#c2185b',
+                      color: 'white',
+                      fontWeight: 'bold',
+                      padding: '1rem 1.5rem',
+                      borderRadius: '0.75rem',
+                      border: 'none',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '0.5rem',
+                      boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)',
+                      fontSize: '1rem',
+                      fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+                    }}
+                    onMouseOver={(e) => e.currentTarget.style.background = canShare ? '#1e293b' : '#a11548'}
+                    onMouseOut={(e) => e.currentTarget.style.background = canShare ? '#0f172a' : '#c2185b'}
+                  >
+                    <Download size={20} />
+                    Download
+                  </button>
+                </div>
 
               </div>
             )}
