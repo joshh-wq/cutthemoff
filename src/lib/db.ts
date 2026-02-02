@@ -4,8 +4,8 @@ let sql: ReturnType<typeof postgres>;
 
 function getDb() {
   if (!sql) {
-    const env = process.env;
-    const url = env.DATABASE_URL || import.meta.env.DATABASE_URL;
+    const key = 'DATABASE_URL';
+    const url = globalThis.process?.env?.[key] || import.meta.env[key];
     if (!url) throw new Error('DATABASE_URL environment variable is not set');
     sql = postgres(url, { ssl: 'require' });
   }
