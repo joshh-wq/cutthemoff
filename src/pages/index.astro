@@ -281,7 +281,7 @@ const deleteGroups = deleteOwnerOrder
         {defundGroups.map((group) => (
           <div class={`owner-group${group.owner === focusedOwner ? ' owner-group-focused' : ' owner-group-collapsed'}`}>
             {group.owner === focusedOwner && <span class="focus-badge">Current Focus</span>}
-            {group.owner === focusedOwner && <p class="focus-note">We're focusing on one billionaire at a time.<br/><strong class="focus-name">January – June: Jeff Bezos.</strong></p>}
+            {group.owner === focusedOwner && <p class="focus-note">We're focusing on one billionaire at a time.<br/><strong class="focus-name">January – June 2026.</strong></p>}
             <div class={`owner-header${group.owner !== focusedOwner ? ' owner-header-collapsed' : ''}`} role={group.owner !== focusedOwner ? 'button' : undefined} tabindex={group.owner !== focusedOwner ? '0' : undefined}>
               {whyReasons[group.owner] ? (
                 <h4 class="owner-name owner-name-clickable" role="button" tabindex="0">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
@@ -292,7 +292,7 @@ const deleteGroups = deleteOwnerOrder
               {group.owner !== focusedOwner && <span class="expand-icon" aria-hidden="true">▸</span>}
             </div>
             {whyReasons[group.owner] && (
-              <div class="why-content hidden">
+              <div class={`why-content${group.owner === focusedOwner ? '' : ' hidden'}`}>
                 <p>{whyReasons[group.owner]}</p>
               </div>
             )}
@@ -318,7 +318,7 @@ const deleteGroups = deleteOwnerOrder
               ))}
             </div>
             {group.owner === focusedOwner && (
-              <p class="bezos-total">That's <strong>$679/year</strong> going straight to Bezos.</p>
+              <p class="bezos-total">That's <strong>$679/year</strong> going straight to Bezos.<br/><span class="bezos-plus">(plus all the stuff you buy on Amazon)</span></p>
             )}
           </div>
         ))}
@@ -1354,6 +1354,11 @@ const deleteGroups = deleteOwnerOrder
     text-align: center;
     margin-top: 0.75rem;
     margin-bottom: 0;
+  }
+
+  .bezos-plus {
+    font-size: 0.85rem;
+    color: var(--muted);
   }
 
   .owner-header-collapsed {
