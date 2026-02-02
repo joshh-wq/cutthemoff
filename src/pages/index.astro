@@ -281,7 +281,7 @@ const deleteGroups = deleteOwnerOrder
         {defundGroups.map((group) => (
           <div class={`owner-group${group.owner === focusedOwner ? ' owner-group-focused' : ' owner-group-collapsed'}`}>
             {group.owner === focusedOwner && <span class="focus-badge">Current Focus</span>}
-            {group.owner === focusedOwner && <p class="focus-note">We're focusing on one billionaire at a time.<br/><strong>January – June: Jeff Bezos.</strong></p>}
+            {group.owner === focusedOwner && <p class="focus-note">We're focusing on one billionaire at a time.<br/><strong class="focus-name">January – June: Jeff Bezos.</strong></p>}
             <div class={`owner-header${group.owner !== focusedOwner ? ' owner-header-collapsed' : ''}`} role={group.owner !== focusedOwner ? 'button' : undefined} tabindex={group.owner !== focusedOwner ? '0' : undefined}>
               {whyReasons[group.owner] ? (
                 <h4 class="owner-name owner-name-clickable" role="button" tabindex="0">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
@@ -303,7 +303,7 @@ const deleteGroups = deleteOwnerOrder
                     <input type="checkbox" value={service.id} data-price={service.monthlyPrice} data-owner={service.owner} />
                     <span class="service-name">{service.name}</span>
                     <span class="service-price">
-                      {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
+                      {service.yearlyPrice ? `$${service.yearlyPrice}/yr` : service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
                     </span>
                   </label>
                   <div class="inline-steps hidden">
@@ -317,6 +317,9 @@ const deleteGroups = deleteOwnerOrder
                 </div>
               ))}
             </div>
+            {group.owner === focusedOwner && (
+              <p class="bezos-total">That's <strong>$679/year</strong> going straight to Bezos.</p>
+            )}
           </div>
         ))}
       </div>
@@ -346,7 +349,7 @@ const deleteGroups = deleteOwnerOrder
       <span class="step-number" aria-hidden="true">2</span>
       <div class="step-info">
         <h3 class="step-title">Switch</h3>
-        <p class="step-desc">Better habits, stores, services, and subscriptions. Ones that don't fund fascism.</p>
+        <p class="step-desc">Better stores, services, and subscriptions. Ones that don't fund fascism.</p>
       </div>
     </div>
 
@@ -1338,6 +1341,19 @@ const deleteGroups = deleteOwnerOrder
     font-size: 0.9rem;
     color: var(--muted);
     margin-bottom: 1rem;
+  }
+
+  .focus-name {
+    font-size: 1.15rem;
+    color: var(--text);
+  }
+
+  .bezos-total {
+    font-size: 1rem;
+    color: var(--accent, #e74c3c);
+    text-align: center;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
   }
 
   .owner-header-collapsed {
