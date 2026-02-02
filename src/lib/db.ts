@@ -6,7 +6,7 @@ function getDb() {
   if (!sql) {
     const url = import.meta.env.DATABASE_URL || process.env.DATABASE_URL;
     if (!url) throw new Error('DATABASE_URL environment variable is not set');
-    sql = postgres(url);
+    sql = postgres(url, { ssl: 'require' });
   }
   return sql;
 }
