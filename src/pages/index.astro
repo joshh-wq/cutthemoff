@@ -49,6 +49,9 @@ const switchCategories = [
     services: [
       { name: 'Bookshop.org', replaces: 'Amazon', desc: 'Support indie bookstores. Free shipping on orders over $10.', url: 'https://bookshop.org' },
       { name: 'Costco', replaces: 'Amazon, Walmart', desc: 'Worker-friendly, pays living wages, resisted MAGA pressure. Bulk shopping done right.', url: 'https://www.costco.com' },
+      { name: 'Thrive Market', replaces: 'Amazon groceries', desc: 'Sustainable groceries, carbon-neutral shipping. Supports families in need.', url: 'https://thrivemarket.com' },
+      { name: 'Uncommon Goods', replaces: 'Amazon gifts', desc: 'Certified B Corp. One-of-a-kind items from independent artisans.', url: 'https://www.uncommongoods.com' },
+      { name: 'Etsy', replaces: 'Amazon', desc: 'Handmade and vintage goods direct from artisans. Powered by renewable energy.', url: 'https://www.etsy.com' },
       { name: 'Buy Direct', replaces: 'Amazon', desc: 'Most brands sell direct on their own websites. Cut out the Bezos middleman.' },
       { name: 'Local Shops', replaces: 'Amazon', desc: 'Your local hardware store, home goods stores. Buying local helps your neighbors and pisses off Bezos.' },
     ],
@@ -236,7 +239,7 @@ const deleteGroups = deleteOwnerOrder
   </section>
 
   <div class="defund-delete-header">
-    <h2>Defund. Upgrade.</h2>
+    <h2>Defund. Switch.</h2>
         <p class="urgency-callout">Every Friday at noon, we cancel together.<br>Waves of cancellations, every week.<br>Inspired by <a href="https://cancelfriday.com" target="_blank" rel="noopener noreferrer" class="cancel-friday-link">CancelFriday.com</a></p>
 
     <div class="countdown" id="countdown" aria-label="Countdown to next Cancel Friday">
@@ -306,7 +309,7 @@ const deleteGroups = deleteOwnerOrder
                       Cancel {service.name} <span class="sr-only">(opens in new tab)</span> →
                     </a>
                     <a href={service.helpUrl || service.cancelUrl} target="_blank" rel="noopener noreferrer" class="help-link">
-                      How to cancel — {service.name} Help Center <span class="sr-only">(opens in new tab)</span>
+                      How to cancel <span class="sr-only">— {service.name} (opens in new tab)</span>
                     </a>
                   </div>
                 </div>
@@ -340,8 +343,8 @@ const deleteGroups = deleteOwnerOrder
     <div class="step-header">
       <span class="step-number" aria-hidden="true">2</span>
       <div class="step-info">
-        <h3 class="step-title">Upgrade</h3>
-        <p class="step-desc">Better habits, services, and subscriptions. Ones that don't fund fascism. Millions use them. Bring your people with you.</p>
+        <h3 class="step-title">Switch</h3>
+        <p class="step-desc">Better habits, stores, services, and subscriptions. Ones that don't fund fascism.</p>
       </div>
     </div>
 
@@ -1350,7 +1353,7 @@ const deleteGroups = deleteOwnerOrder
   }
 
   .cancel-friday-link {
-    color: var(--accent, #e74c3c);
+    color: #fff;
     text-decoration: underline;
   }
 
