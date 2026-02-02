@@ -275,7 +275,7 @@ const deleteGroups = deleteOwnerOrder
           <p class="step-desc">Why are we still paying these assholes to bankroll fascism? Cancel one. Er, them all. Feel the relief.</p>
         </div>
       </div>
-      <p class="focus-note">We're focusing on one billionaire at a time. This month: <strong>Jeff Bezos</strong>. Feel free to cancel across the board.</p>
+      <p class="focus-note">We're focusing on one billionaire at a time. January – June: <strong>Jeff Bezos</strong>. But feel free to cancel other subscriptions and services too.</p>
       <div class="owner-groups">
         {defundGroups.map((group) => (
           <div class={`owner-group${group.owner === focusedOwner ? ' owner-group-focused' : ' owner-group-collapsed'}`}>
@@ -1525,6 +1525,9 @@ const deleteGroups = deleteOwnerOrder
   }
 
   .inline-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     padding: 0 0.5rem 1rem 2.25rem;
     animation: slideDown 0.2s ease;
   }
@@ -1574,8 +1577,8 @@ const deleteGroups = deleteOwnerOrder
 
   .help-link {
     display: inline-block;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
+    margin-top: 0;
+    font-size: 0.8rem;
     color: var(--muted);
     text-decoration: underline;
   }
@@ -2562,13 +2565,13 @@ const deleteGroups = deleteOwnerOrder
   const secondsEl = document.getElementById('countdown-seconds');
   const countdownEl = document.getElementById('countdown');
 
-  function getNextFridayNoonCST() {
-    // Friday noon CST = Friday 18:00 UTC
+  function getNextFridayNoonEST() {
+    // Friday noon EST = Friday 17:00 UTC
     const now = new Date();
     const nowUTC = now.getTime();
-    // Find next Friday 18:00 UTC
+    // Find next Friday 17:00 UTC
     const target = new Date(now);
-    target.setUTCHours(18, 0, 0, 0);
+    target.setUTCHours(17, 0, 0, 0);
     // Day of week: 0=Sun, 5=Fri
     const day = target.getUTCDay();
     let daysUntilFriday = (5 - day + 7) % 7;
@@ -2580,7 +2583,7 @@ const deleteGroups = deleteOwnerOrder
     return target.getTime();
   }
 
-  let fridayTarget = getNextFridayNoonCST();
+  let fridayTarget = getNextFridayNoonEST();
   let goMessageTimeout: ReturnType<typeof setTimeout> | null = null;
 
   function updateCountdown() {
@@ -2596,7 +2599,7 @@ const deleteGroups = deleteOwnerOrder
       if (countdownEl) countdownEl.setAttribute('aria-label', 'Cancel Friday is NOW! Cancel now!');
       if (!goMessageTimeout) {
         goMessageTimeout = setTimeout(() => {
-          fridayTarget = getNextFridayNoonCST();
+          fridayTarget = getNextFridayNoonEST();
           goMessageTimeout = null;
           if (countdownEl) countdownEl.setAttribute('aria-label', 'Countdown to next Cancel Friday');
         }, 5000);

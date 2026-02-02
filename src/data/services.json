@@ -111,7 +111,7 @@
     "category": "Streaming",
     "monthlyPrice": 11.99,
     "reason": "Amazon's book subscription locks you into their ecosystem. Libraries are free and don't fund union-busting.",
-    "cancelUrl": "https://www.amazon.com/hz/mycd/myx#/home/settings/payment",
+    "cancelUrl": "https://www.amazon.com/gp/kindle/ku/ku_central?ref_=nav_AccountFlyout_ku",
     "helpUrl": "https://www.amazon.com/gp/help/customer/display.html?nodeId=GFP9CGT3TGQL5WMF",
     "alternative": {
       "name": "Libby + your library card",
@@ -126,7 +126,7 @@
     "category": "Streaming",
     "monthlyPrice": 8.99,
     "reason": "Standalone Prime Video still funds Bezos. Cancel and switch to indie streaming.",
-    "cancelUrl": "https://www.amazon.com/gp/video/settings/",
+    "cancelUrl": "https://www.amazon.com/hz5/yourmembershipsandsubscriptions?ref_=nav_AccountFlyout_digital_subscriptions&searchTerm=&status=Active&sorting=FEATURED_SORT-DESCENDING&offset=0",
     "helpUrl": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G9JKLSYZQ2XZAEX8",
     "alternative": {
       "name": "Kanopy + Criterion Channel",
@@ -141,7 +141,7 @@
     "category": "Streaming",
     "monthlyPrice": 10.99,
     "reason": "Amazon Music funds the same empire. Switch to services that pay artists fairly.",
-    "cancelUrl": "https://music.amazon.com/settings",
+    "cancelUrl": "https://music.amazon.com/subscription-management?ref=dp_amp_settings_yasettings_click&language=en_US",
     "helpUrl": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G6MRQ25YSR42YHLV",
     "alternative": {
       "name": "Tidal",
@@ -156,7 +156,7 @@
     "category": "Streaming",
     "monthlyPrice": 14.95,
     "reason": "Audible is Amazon. Your audiobook habit funds Bezos. Libby has free audiobooks from your library.",
-    "cancelUrl": "https://www.audible.com/account/overview",
+    "cancelUrl": "https://www.audible.com/account/overview?",
     "helpUrl": "https://help.audible.com/s/article/how-do-i-cancel-my-membership",
     "alternative": {
       "name": "Libby + Libro.fm",
