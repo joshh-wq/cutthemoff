@@ -24,7 +24,8 @@ export const GET: APIRoute = async ({ url, redirect }) => {
 
   // Add to Buttondown if they opted in
   if (row.subscribed) {
-    const buttondownKey = import.meta.env.BUTTONDOWN_API_KEY || process.env.BUTTONDOWN_API_KEY;
+    const env = process.env;
+    const buttondownKey = env.BUTTONDOWN_API_KEY || import.meta.env.BUTTONDOWN_API_KEY;
     if (buttondownKey) {
       try {
         await fetch('https://api.buttondown.com/v1/subscribers', {
