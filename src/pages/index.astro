@@ -277,11 +277,11 @@ const deleteGroups = deleteOwnerOrder
           <p class="step-desc">Why are we still paying these assholes to bankroll fascism? Cancel one. Er, them all. Feel the relief.</p>
         </div>
       </div>
-      <p class="focus-note">We're focusing on one billionaire at a time. January – June: <strong>Jeff Bezos</strong>. But feel free to cancel other subscriptions and services too.</p>
       <div class="owner-groups">
         {defundGroups.map((group) => (
           <div class={`owner-group${group.owner === focusedOwner ? ' owner-group-focused' : ' owner-group-collapsed'}`}>
             {group.owner === focusedOwner && <span class="focus-badge">Current Focus</span>}
+            {group.owner === focusedOwner && <p class="focus-note">We're focusing on one billionaire at a time.<br/><strong>January – June: Jeff Bezos.</strong></p>}
             <div class={`owner-header${group.owner !== focusedOwner ? ' owner-header-collapsed' : ''}`} role={group.owner !== focusedOwner ? 'button' : undefined} tabindex={group.owner !== focusedOwner ? '0' : undefined}>
               {whyReasons[group.owner] ? (
                 <h4 class="owner-name owner-name-clickable" role="button" tabindex="0">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
