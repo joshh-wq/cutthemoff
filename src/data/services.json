@@ -105,6 +105,66 @@
     }
   },
   {
+    "id": "kindle-unlimited",
+    "name": "Kindle Unlimited",
+    "owner": "Jeff Bezos",
+    "category": "Streaming",
+    "monthlyPrice": 11.99,
+    "reason": "Amazon's book subscription locks you into their ecosystem. Libraries are free and don't fund union-busting.",
+    "cancelUrl": "https://www.amazon.com/hz/mycd/myx#/home/settings/payment",
+    "helpUrl": "https://www.amazon.com/gp/help/customer/display.html?nodeId=GFP9CGT3TGQL5WMF",
+    "alternative": {
+      "name": "Libby + your library card",
+      "description": "Free ebooks and audiobooks from your local library via the Libby app.",
+      "url": "https://libbyapp.com"
+    }
+  },
+  {
+    "id": "prime-video",
+    "name": "Prime Video",
+    "owner": "Jeff Bezos",
+    "category": "Streaming",
+    "monthlyPrice": 8.99,
+    "reason": "Standalone Prime Video still funds Bezos. Cancel and switch to indie streaming.",
+    "cancelUrl": "https://www.amazon.com/gp/video/settings/",
+    "helpUrl": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G9JKLSYZQ2XZAEX8",
+    "alternative": {
+      "name": "Kanopy + Criterion Channel",
+      "description": "Kanopy is free with a library card. Criterion Channel is $11/mo for the best films.",
+      "url": "https://www.kanopy.com/en/signup"
+    }
+  },
+  {
+    "id": "music-unlimited",
+    "name": "Amazon Music Unlimited",
+    "owner": "Jeff Bezos",
+    "category": "Streaming",
+    "monthlyPrice": 10.99,
+    "reason": "Amazon Music funds the same empire. Switch to services that pay artists fairly.",
+    "cancelUrl": "https://music.amazon.com/settings",
+    "helpUrl": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G6MRQ25YSR42YHLV",
+    "alternative": {
+      "name": "Tidal",
+      "description": "Better payouts to musicians, high-quality audio. Artists actually get paid.",
+      "url": "https://tidal.com"
+    }
+  },
+  {
+    "id": "audible",
+    "name": "Audible",
+    "owner": "Jeff Bezos",
+    "category": "Streaming",
+    "monthlyPrice": 14.95,
+    "reason": "Audible is Amazon. Your audiobook habit funds Bezos. Libby has free audiobooks from your library.",
+    "cancelUrl": "https://www.audible.com/account/overview",
+    "helpUrl": "https://help.audible.com/s/article/how-do-i-cancel-my-membership",
+    "alternative": {
+      "name": "Libby + Libro.fm",
+      "description": "Libby for free library audiobooks. Libro.fm supports indie bookstores.",
+      "url": "https://libro.fm"
+    }
+  },
+  {
     "id": "chatgpt",
     "name": "ChatGPT",
     "owner": "Sam Altman",

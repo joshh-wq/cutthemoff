@@ -13,6 +13,7 @@ const deleteServices = services.filter(s => socialIds.includes(s.id));
 
 // Group defund services by owner
 const defundOwners = ['Jeff Bezos', 'Sam Altman', 'Sundar Pichai', 'Larry Ellison', 'Daniel Ek'];
+const focusedOwner = 'Jeff Bezos';
 
 const defundGroups = defundOwners
   .map(owner => ({
@@ -44,14 +45,29 @@ const taglines: Record<string, string> = {};
 // Switch categories
 const switchCategories = [
   {
-    label: 'Connection',
+    label: 'Shopping',
     services: [
-      { name: 'Text people directly', replaces: 'doomscrolling stories', desc: '"What\'s new?" beats scrolling through 47 stories hoping to catch up.' },
-      { name: 'Schedule recurring hangouts', replaces: 'passive social media', desc: 'Weekly coffee. Monthly calls. Actual plans with actual humans.' },
-      { name: 'Send photos via text', replaces: 'posting to an algorithm', desc: 'Revolutionary concept: Send the pic to people who care instead of posting to an algorithm.' },
-      { name: 'Start group chats', replaces: 'social media feeds', desc: 'Signal. iMessage. No ads. No algorithm. Just your people.' },
-      { name: 'Call people on birthdays', replaces: 'a wall post', desc: 'Remember when that was normal?' },
-      { name: 'Accept that some connections will fade', replaces: 'algorithmic friendships', desc: 'If the only thing keeping you "friends" was an algorithm showing you their face occasionally, were you really friends?' },
+      { name: 'Bookshop.org', replaces: 'Amazon', desc: 'Support indie bookstores. Free shipping on orders over $10.', url: 'https://bookshop.org' },
+      { name: 'Costco', replaces: 'Amazon, Walmart', desc: 'Worker-friendly, pays living wages, resisted MAGA pressure. Bulk shopping done right.', url: 'https://www.costco.com' },
+      { name: 'Buy Direct', replaces: 'Amazon', desc: 'Most brands sell direct on their own websites. Cut out the Bezos middleman.' },
+      { name: 'Local Shops', replaces: 'Amazon', desc: 'Your local hardware store, home goods stores. Buying local helps your neighbors and pisses off Bezos.' },
+    ],
+  },
+  {
+    label: 'Streaming',
+    services: [
+      { name: 'Kanopy', replaces: 'all streaming services', desc: 'Free with your library card. Criterion Collection, indie films, documentaries.', url: 'https://www.kanopy.com/en/signup' },
+      { name: 'Criterion Channel', replaces: 'Prime Video, Paramount+', desc: 'The gold standard for film lovers. $11/month.', url: 'https://criterionchannel.com' },
+      { name: 'MUBI', replaces: 'Netflix, Prime Video', desc: 'Curated indie and classic films. A new film every day, hand-picked by humans.', url: 'https://mubi.com' },
+      { name: 'Get a Library Card', replaces: 'streaming, Audible, Kindle', desc: 'Libraries are havens for the people. They have movies, books, magazines, and other resources.' },
+    ],
+  },
+  {
+    label: 'Music',
+    services: [
+      { name: 'Tidal', replaces: 'Spotify', desc: 'Better payouts to musicians, high-quality audio. Artists actually get paid.', url: 'https://tidal.com', migrateUrl: 'https://tidal.com/transfer-music', migrateLabel: 'Easy migrate from Spotify →' },
+      { name: 'Apple Music', replaces: 'Spotify', desc: 'Better artist payouts than Spotify. Lossless audio included.', url: 'https://music.apple.com' },
+      { name: 'Bandcamp', replaces: 'Spotify', desc: 'Buy music directly from artists. They keep 80-85% of every sale.', url: 'https://bandcamp.com' },
     ],
   },
   {
@@ -71,29 +87,14 @@ const switchCategories = [
     ],
   },
   {
-    label: 'Music',
+    label: 'Connection',
     services: [
-      { name: 'Tidal', replaces: 'Spotify', desc: 'Better payouts to musicians, high-quality audio. Artists actually get paid.', url: 'https://tidal.com', migrateUrl: 'https://tidal.com/transfer-music', migrateLabel: 'Easy migrate from Spotify →' },
-      { name: 'Apple Music', replaces: 'Spotify', desc: 'Better artist payouts than Spotify. Lossless audio included.', url: 'https://music.apple.com' },
-      { name: 'Bandcamp', replaces: 'Spotify', desc: 'Buy music directly from artists. They keep 80-85% of every sale.', url: 'https://bandcamp.com' },
-    ],
-  },
-  {
-    label: 'Streaming',
-    services: [
-      { name: 'Kanopy', replaces: 'all streaming services', desc: 'Free with your library card. Criterion Collection, indie films, documentaries.', url: 'https://www.kanopy.com/en/signup' },
-      { name: 'Criterion Channel', replaces: 'Prime Video, Paramount+', desc: 'The gold standard for film lovers. $11/month.', url: 'https://criterionchannel.com' },
-      { name: 'MUBI', replaces: 'Netflix, Prime Video', desc: 'Curated indie and classic films. A new film every day, hand-picked by humans.', url: 'https://mubi.com' },
-      { name: 'Get a Library Card', replaces: 'streaming, Audible, Kindle', desc: 'Libraries are havens for the people. They have movies, books, magazines, and other resources.' },
-    ],
-  },
-  {
-    label: 'Shopping',
-    services: [
-      { name: 'Bookshop.org', replaces: 'Amazon', desc: 'Support indie bookstores. Free shipping on orders over $10.', url: 'https://bookshop.org' },
-      { name: 'Costco', replaces: 'Amazon, Walmart', desc: 'Worker-friendly, pays living wages, resisted MAGA pressure. Bulk shopping done right.', url: 'https://www.costco.com' },
-      { name: 'Buy Direct', replaces: 'Amazon', desc: 'Most brands sell direct on their own websites. Cut out the Bezos middleman.' },
-      { name: 'Local Shops', replaces: 'Amazon', desc: 'Your local hardware store, home goods stores. Buying local helps your neighbors and pisses off Bezos.' },
+      { name: 'Text people directly', replaces: 'doomscrolling stories', desc: '"What\'s new?" beats scrolling through 47 stories hoping to catch up.' },
+      { name: 'Schedule recurring hangouts', replaces: 'passive social media', desc: 'Weekly coffee. Monthly calls. Actual plans with actual humans.' },
+      { name: 'Send photos via text', replaces: 'posting to an algorithm', desc: 'Revolutionary concept: Send the pic to people who care instead of posting to an algorithm.' },
+      { name: 'Start group chats', replaces: 'social media feeds', desc: 'Signal. iMessage. No ads. No algorithm. Just your people.' },
+      { name: 'Call people on birthdays', replaces: 'a wall post', desc: 'Remember when that was normal?' },
+      { name: 'Accept that some connections will fade', replaces: 'algorithmic friendships', desc: 'If the only thing keeping you "friends" was an algorithm showing you their face occasionally, were you really friends?' },
     ],
   },
 ];
@@ -235,10 +236,10 @@ const deleteGroups = deleteOwnerOrder
   </section>
 
   <div class="defund-delete-header">
-    <h2>Defund. Reclaim. Upgrade.</h2>
-        <p class="urgency-callout">Join the economic strike.<br>Q1 earnings close soon.<br>When they see the losses, they'll panic.</p>
+    <h2>Defund. Upgrade.</h2>
+        <p class="urgency-callout">Every Friday at noon, we cancel together.<br>Waves of cancellations, every week.<br>Inspired by <a href="https://cancelfriday.com" target="_blank" rel="noopener noreferrer" class="cancel-friday-link">CancelFriday.com</a></p>
 
-    <div class="countdown" id="countdown" aria-label="Time remaining until Q1 earnings close">
+    <div class="countdown" id="countdown" aria-label="Countdown to next Cancel Friday">
       <div class="countdown-unit">
         <span class="countdown-number" id="countdown-days">--</span>
         <span class="countdown-label">days</span>
@@ -271,23 +272,26 @@ const deleteGroups = deleteOwnerOrder
           <p class="step-desc">Why are we still paying these assholes to bankroll fascism? Cancel one. Er, them all. Feel the relief.</p>
         </div>
       </div>
+      <p class="focus-note">We're focusing on one billionaire at a time. This month: <strong>Jeff Bezos</strong>. Feel free to cancel across the board.</p>
       <div class="owner-groups">
         {defundGroups.map((group) => (
-          <div class="owner-group">
-            <div class="owner-header">
+          <div class={`owner-group${group.owner === focusedOwner ? ' owner-group-focused' : ' owner-group-collapsed'}`}>
+            {group.owner === focusedOwner && <span class="focus-badge">Current Focus</span>}
+            <div class={`owner-header${group.owner !== focusedOwner ? ' owner-header-collapsed' : ''}`} role={group.owner !== focusedOwner ? 'button' : undefined} tabindex={group.owner !== focusedOwner ? '0' : undefined}>
               {whyReasons[group.owner] ? (
                 <h4 class="owner-name owner-name-clickable" role="button" tabindex="0">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
               ) : (
                 <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
               )}
               {taglines[group.owner] && <span class="owner-tagline">{taglines[group.owner]}</span>}
+              {group.owner !== focusedOwner && <span class="expand-icon" aria-hidden="true">▸</span>}
             </div>
             {whyReasons[group.owner] && (
               <div class="why-content hidden">
                 <p>{whyReasons[group.owner]}</p>
               </div>
             )}
-            <div class="owner-services">
+            <div class={`owner-services${group.owner !== focusedOwner ? ' hidden' : ''}`}>
               {group.services.map((service) => (
                 <div class="service-item" data-id={service.id}>
                   <label class="service-checkbox">
@@ -313,7 +317,8 @@ const deleteGroups = deleteOwnerOrder
       </div>
     </div>
 
-    <!-- Step 2: Delete -->
+    <!-- Step 2: Reclaim (hidden for now) -->
+    <!--
     <div class="step-section">
       <div class="step-header">
         <span class="step-number" aria-hidden="true">2</span>
@@ -322,47 +327,8 @@ const deleteGroups = deleteOwnerOrder
           <p class="step-desc">Reclaim your time and attention. Instagram, TikTok, and X made $181 billion in ad revenue in 2024. Every scroll funds their fascist agenda. Delete and try 30 days to start. It's freeing.</p>
         </div>
       </div>
-      <div class="owner-groups">
-        {deleteGroups.map((group) => (
-          <div class="owner-group">
-            <div class="owner-header">
-              {whyReasons[group.owner] ? (
-                <h4 class="owner-name owner-name-clickable" role="button" tabindex="0">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
-              ) : (
-                <h4 class="owner-name">{group.owner}{nicknames[group.owner] && <span class="nickname"> ({nicknames[group.owner]})</span>}</h4>
-              )}
-              {(deleteTaglines[group.owner] || taglines[group.owner]) && <span class="owner-tagline">{deleteTaglines[group.owner] || taglines[group.owner]}</span>}
-            </div>
-            {whyReasons[group.owner] && (
-              <div class="why-content hidden">
-                <p>{whyReasons[group.owner]}</p>
-              </div>
-            )}
-            <div class="owner-services">
-              {group.services.map((service) => (
-                <div class="service-item" data-id={service.id}>
-                  <label class="service-checkbox">
-                    <input type="checkbox" value={service.id} data-price={service.monthlyPrice} data-owner={service.owner} />
-                    <span class="service-name">{service.name}</span>
-                    <span class="service-price">
-                      {service.monthlyPrice > 0 ? `$${service.monthlyPrice.toFixed(2)}/mo` : ''}
-                    </span>
-                  </label>
-                  <div class="inline-steps hidden">
-                    <a href={service.cancelUrl} target="_blank" rel="noopener noreferrer" class="cancel-link">
-                      Leave {service.name} <span class="sr-only">(opens in new tab)</span> →
-                    </a>
-                    <a href={service.helpUrl || service.cancelUrl} target="_blank" rel="noopener noreferrer" class="help-link">
-                      How to leave — {service.name} Help Center <span class="sr-only">(opens in new tab)</span>
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
+    -->
   </section>
 
   <section class="savings-section hidden" aria-live="polite" aria-atomic="true">
@@ -372,7 +338,7 @@ const deleteGroups = deleteOwnerOrder
 
   <section class="switch-section">
     <div class="step-header">
-      <span class="step-number" aria-hidden="true">3</span>
+      <span class="step-number" aria-hidden="true">2</span>
       <div class="step-info">
         <h3 class="step-title">Upgrade</h3>
         <p class="step-desc">Better habits, services, and subscriptions. Ones that don't fund fascism. Millions use them. Bring your people with you.</p>
@@ -1319,7 +1285,7 @@ const deleteGroups = deleteOwnerOrder
     gap: 1.5rem 1rem;
   }
 
-  @media (min-width: 480px) {
+  @media (min-width: 1024px) {
     .owner-groups {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -1329,6 +1295,63 @@ const deleteGroups = deleteOwnerOrder
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .owner-group-focused {
+    border: 2px solid var(--accent, #e74c3c);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    position: relative;
+  }
+
+  .owner-group-collapsed {
+    opacity: 0.6;
+    border: 1px solid var(--border, #333);
+    border-radius: 0.75rem;
+    padding: 1rem;
+  }
+
+  .owner-group-collapsed.expanded {
+    opacity: 1;
+  }
+
+  .focus-badge {
+    position: absolute;
+    top: -0.7rem;
+    left: 1rem;
+    background: var(--accent, #e74c3c);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.6rem;
+    border-radius: 0.25rem;
+  }
+
+  .focus-note {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .owner-header-collapsed {
+    cursor: pointer;
+  }
+
+  .expand-icon {
+    margin-left: auto;
+    font-size: 0.85rem;
+    transition: transform 0.2s;
+  }
+
+  .owner-group-collapsed.expanded .expand-icon {
+    transform: rotate(90deg);
+  }
+
+  .cancel-friday-link {
+    color: var(--accent, #e74c3c);
+    text-decoration: underline;
   }
 
   .owner-header {
@@ -2508,26 +2531,73 @@ const deleteGroups = deleteOwnerOrder
     });
   });
 
+  // Collapsed owner groups expand/collapse
+  document.querySelectorAll('.owner-header-collapsed').forEach((header) => {
+    const toggle = () => {
+      const group = header.closest('.owner-group-collapsed');
+      if (!group) return;
+      group.classList.toggle('expanded');
+      const services = group.querySelector('.owner-services');
+      services?.classList.toggle('hidden');
+    };
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', (e) => {
+      if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+
   // Initialize share links on page load
   updateShareLinks();
 
-  // Countdown timer to Q1 end (March 31, 2026 at midnight)
-  const q1End = new Date('2026-03-31T23:59:59').getTime();
+  // Countdown timer to next Friday at noon CST (UTC-6)
   const daysEl = document.getElementById('countdown-days');
   const hoursEl = document.getElementById('countdown-hours');
   const minutesEl = document.getElementById('countdown-minutes');
   const secondsEl = document.getElementById('countdown-seconds');
+  const countdownEl = document.getElementById('countdown');
+
+  function getNextFridayNoonCST() {
+    // Friday noon CST = Friday 18:00 UTC
+    const now = new Date();
+    const nowUTC = now.getTime();
+    // Find next Friday 18:00 UTC
+    const target = new Date(now);
+    target.setUTCHours(18, 0, 0, 0);
+    // Day of week: 0=Sun, 5=Fri
+    const day = target.getUTCDay();
+    let daysUntilFriday = (5 - day + 7) % 7;
+    // If it's Friday but past noon CST, go to next Friday
+    if (daysUntilFriday === 0 && nowUTC >= target.getTime()) {
+      daysUntilFriday = 7;
+    }
+    target.setUTCDate(target.getUTCDate() + daysUntilFriday);
+    return target.getTime();
+  }
+
+  let fridayTarget = getNextFridayNoonCST();
+  let goMessageTimeout: ReturnType<typeof setTimeout> | null = null;
 
   function updateCountdown() {
     const now = new Date().getTime();
-    const distance = q1End - now;
+    const distance = fridayTarget - now;
 
-    if (distance < 0) {
-      // Q1 is over
-      if (daysEl) daysEl.textContent = '00';
-      if (hoursEl) hoursEl.textContent = '00';
-      if (minutesEl) minutesEl.textContent = '00';
-      if (secondsEl) secondsEl.textContent = '00';
+    if (distance <= 0) {
+      // Show "GO!" message briefly, then reset
+      if (daysEl) daysEl.textContent = 'GO';
+      if (hoursEl) hoursEl.textContent = '!!';
+      if (minutesEl) minutesEl.textContent = '--';
+      if (secondsEl) secondsEl.textContent = '--';
+      if (countdownEl) countdownEl.setAttribute('aria-label', 'Cancel Friday is NOW! Cancel now!');
+      if (!goMessageTimeout) {
+        goMessageTimeout = setTimeout(() => {
+          fridayTarget = getNextFridayNoonCST();
+          goMessageTimeout = null;
+          if (countdownEl) countdownEl.setAttribute('aria-label', 'Countdown to next Cancel Friday');
+        }, 5000);
+      }
       return;
     }
 
