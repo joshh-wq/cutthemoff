@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+export const prerender = false;
+---
+<BaseLayout title="Cancellation Confirmed — Defund Billionaires">
+  <main class="confirm-page">
+    <div class="confirm-content" id="confirm-content">
+      <div id="msg-success" class="confirm-msg hidden">
+        <h1>You've been counted.</h1>
+        <p>Your Amazon Prime cancellation is now part of the movement. Every dollar withdrawn is power reclaimed.</p>
+      </div>
+      <div id="msg-already" class="confirm-msg hidden">
+        <h1>Already counted.</h1>
+        <p>Your cancellation was already confirmed. Thank you for being part of this.</p>
+      </div>
+      <div id="msg-error" class="confirm-msg hidden">
+        <h1>Something went wrong.</h1>
+        <p>We couldn't verify your confirmation link. It may have expired. Try reporting your cancellation again.</p>
+      </div>
+    </div>
+    <a href="/" class="confirm-back">← Back to defundbillionaires.org</a>
+  </main>
+</BaseLayout>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const status = params.get('status') || 'error';
+  const el = document.getElementById(`msg-${status}`) || document.getElementById('msg-error');
+  el?.classList.remove('hidden');
+</script>
+
+<style>
+  .confirm-page {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .confirm-content {
+    max-width: 500px;
+  }
+
+  .confirm-msg h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+
+  .confirm-msg p {
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .confirm-back {
+    margin-top: 2rem;
+    color: var(--orange);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .confirm-back:hover {
+    text-decoration: underline;
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
