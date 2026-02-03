@@ -23,18 +23,21 @@ export async function ensureTable() {
     await sql`
       ALTER TABLE cancellations ADD COLUMN IF NOT EXISTS subscribed BOOLEAN DEFAULT FALSE
     `;
+    await sql`
+      ALTER TABLE cancellations ADD COLUMN IF NOT EXISTS ip_address TEXT
+    `;
   } finally {
     await sql.end();
   }
 }
 
-export async function insertCancellation(email: string, token: string, subscribed: boolean = false) {
+export async function insertCancellation(email: string, token: string, subscribed: boolean = false, ipAddress?: string) {
   await ensureTable();
   const sql = getDb();
   try {
     await sql`
-      INSERT INTO cancellations (email, token, subscribed)
-      VALUES (${email}, ${token}, ${subscribed})
+      INSERT INTO cancellations (email, token, subscribed, ip_address)
+      VALUES (${email}, ${token}, ${subscribed}, ${ipAddress || null})
     `;
   } finally {
     await sql.end();
@@ -92,6 +95,21 @@ export async function getVerifiedCount(): Promise<number> {
   const sql = getDb();
   try {
     const rows = await sql`SELECT COUNT(*) as count FROM cancellations WHERE verified = TRUE`;
+    return parseInt(rows[0].count, 10);
+  } finally {
+    await sql.end();
+  }
+}
+
+export async function getSubmissionsFromIpToday(ip: string): Promise<number> {
+  await ensureTable();
+  const sql = getDb();
+  try {
+    const rows = await sql`
+      SELECT COUNT(*) as count FROM cancellations
+      WHERE ip_address = ${ip}
+      AND created_at > NOW() - INTERVAL '24 hours'
+    `;
     return parseInt(rows[0].count, 10);
   } finally {
     await sql.end();

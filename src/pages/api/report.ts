@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { findByEmail, insertCancellation, updateToken } from '../../lib/db';
+import { findByEmail, insertCancellation, updateToken, getSubmissionsFromIpToday } from '../../lib/db';
 import { Resend } from 'resend';
 
 export const prerender = false;
@@ -8,6 +8,20 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
     const { email, subscribe } = body;
+
+    // Get IP address from headers (Vercel sets these)
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+               request.headers.get('x-real-ip') ||
+               'unknown';
+
+    // Check IP rate limit (max 5 submissions per day)
+    const ipSubmissions = await getSubmissionsFromIpToday(ip);
+    if (ipSubmissions >= 5) {
+      return new Response(JSON.stringify({ error: 'Too many submissions. Please try again tomorrow.' }), {
+        status: 429,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
 
     if (!email) {
       return new Response(JSON.stringify({ error: 'Email is required.' }), {
@@ -39,7 +53,7 @@ export const POST: APIRoute = async ({ request }) => {
     if (existing) {
       await updateToken(email.toLowerCase(), token);
     } else {
-      await insertCancellation(email.toLowerCase(), token, !!subscribe);
+      await insertCancellation(email.toLowerCase(), token, !!subscribe, ip);
     }
 
     const resendKey = process.env.RESEND_API_KEY;
