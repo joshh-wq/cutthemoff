@@ -977,8 +977,10 @@ const deleteGroups = deleteOwnerOrder
 
   .defund-delete-header {
     background: #0f172a;
-    margin-left: -1rem;
-    margin-right: -1rem;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
     padding: 4.5rem 1rem 3.5rem;
     text-align: center;
   }
@@ -1002,27 +1004,13 @@ const deleteGroups = deleteOwnerOrder
 
   .report-section {
     background: #0f172a;
-    margin-left: -1rem;
-    margin-right: -1rem;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
     padding: 2.5rem 1rem 4rem;
     margin-bottom: 1rem;
     text-align: center;
-  }
-
-  @media (min-width: 640px) {
-    .report-section {
-      margin-left: -1.5rem;
-      margin-right: -1.5rem;
-      padding: 2.5rem 1.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .report-section {
-      margin-left: -2rem;
-      margin-right: -2rem;
-      padding: 2.5rem 2rem;
-    }
   }
 
   .goal-label-line {
@@ -1206,8 +1194,6 @@ const deleteGroups = deleteOwnerOrder
 
   @media (min-width: 640px) {
     .defund-delete-header {
-      margin-left: -1.5rem;
-      margin-right: -1.5rem;
       padding: 3rem 1.5rem 2.5rem;
     }
 
@@ -1218,8 +1204,6 @@ const deleteGroups = deleteOwnerOrder
 
   @media (min-width: 1024px) {
     .defund-delete-header {
-      margin-left: -2rem;
-      margin-right: -2rem;
       padding: 4.5rem 2rem 3.5rem;
     }
 
