@@ -1,0 +1,68 @@
+---
+export const prerender = true;
+---
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      width: 1200px;
+      height: 630px;
+      background: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 60px;
+    }
+    .goal-label {
+      font-size: 28px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: underline;
+      text-underline-offset: 8px;
+      margin-bottom: 20px;
+    }
+    .goal-number {
+      font-size: 180px;
+      font-weight: 900;
+      color: #f2b5d4;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .goal-desc {
+      font-size: 48px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 50px;
+    }
+    .cta {
+      font-size: 36px;
+      color: #f2b5d4;
+      font-weight: 700;
+    }
+    .url {
+      font-size: 28px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="goal-label">Goal</div>
+  <div class="goal-number">1,000</div>
+  <div class="goal-desc">Amazon cancellations by February 28</div>
+  <div class="cta">Join the strike. Cancel Amazon.</div>
+  <div class="url">defundbillionaires.org</div>
+</body>
+</html>
