@@ -354,7 +354,7 @@ const deleteGroups = deleteOwnerOrder
 
     <form id="report-form" class="report-form">
       <h3 class="report-heading">Did you cancel an Amazon subscription? Help us count it.</h3>
-      <p class="report-subtext">We'll send one confirmation email. Only sign up for our list if you want to!<br/>Your email is only to try and get an accurate count.</p>
+      <p class="report-subtext">Your email is never shared or stored after verification. It's only to prevent fake counts.<br/><a href="#about" class="report-link">Who's behind this?</a></p>
       <div class="report-fields">
         <input type="email" name="email" placeholder="Your email" required class="report-input" />
         <label class="report-optin">
@@ -510,7 +510,7 @@ const deleteGroups = deleteOwnerOrder
     </div>
   </section>
 
-  <section class="bio-section">
+  <section class="bio-section" id="about">
     <div class="accent-bar" aria-hidden="true"></div>
     <h2>About the Creator</h2>
     <p>Hi! My name is Josh. I live and work in San Francisco as a writer in tech, with a background in political campaigns and messaging strategy. I'm also a collector of way too many books, a cat dad, and someone horrified by the tech billionaires collaborating with the authoritarian regime in the White House.</p>
@@ -1104,6 +1104,15 @@ const deleteGroups = deleteOwnerOrder
     font-size: 0.8rem;
     margin-bottom: 0.75rem;
     text-align: center;
+  }
+
+  .report-link {
+    color: #f2b5d4;
+    text-decoration: underline;
+  }
+
+  .report-link:hover {
+    color: white;
   }
 
   .report-fields {
