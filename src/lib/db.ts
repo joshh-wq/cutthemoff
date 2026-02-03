@@ -5,6 +5,7 @@ let sql: ReturnType<typeof postgres>;
 function getDb() {
   if (!sql) {
     const url = process.env['DATABASE' + '_URL'];
+    console.log('DB URL hostname:', url ? new URL(url).hostname : 'NOT SET');
     if (!url) throw new Error('DATABASE_URL environment variable is not set');
     sql = postgres(url, { ssl: 'require' });
   }
