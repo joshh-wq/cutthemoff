@@ -34,7 +34,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const token = crypto.randomUUID();
-    const siteUrl = globalThis.process?.env?.['SITE_URL'] || import.meta.env.SITE_URL || 'https://defundbillionaires.org';
+    const siteUrl = process.env['SITE' + '_URL'] || 'https://defundbillionaires.org';
 
     if (existing) {
       await updateToken(email.toLowerCase(), token);
@@ -42,7 +42,7 @@ export const POST: APIRoute = async ({ request }) => {
       await insertCancellation(email.toLowerCase(), token, !!subscribe);
     }
 
-    const resendKey = globalThis.process?.env?.['RESEND_API_KEY'] || import.meta.env.RESEND_API_KEY;
+    const resendKey = process.env['RESEND' + '_API_KEY'];
     if (!resendKey) {
       return new Response(JSON.stringify({ error: 'Email service not configured.' }), {
         status: 500,
