@@ -1,75 +1,99 @@
 import postgres from 'postgres';
-import { DATABASE_URL } from 'astro:env/server';
-
-let sql: ReturnType<typeof postgres>;
 
 function getDb() {
-  if (!sql) {
-    sql = postgres(DATABASE_URL, { ssl: 'require' });
-  }
-  return sql;
+  const url = process.env.DATABASE_URL;
+  if (!url) throw new Error('DATABASE_URL environment variable is not set');
+  return postgres(url, { ssl: 'require' });
 }
 
 export async function ensureTable() {
   const sql = getDb();
-  await sql`
-    CREATE TABLE IF NOT EXISTS cancellations (
-      id SERIAL PRIMARY KEY,
-      email TEXT UNIQUE NOT NULL,
-      token TEXT UNIQUE NOT NULL,
-      subscribed BOOLEAN DEFAULT FALSE,
-      verified BOOLEAN DEFAULT FALSE,
-      created_at TIMESTAMP DEFAULT NOW(),
-      verified_at TIMESTAMP
-    )
-  `;
-  await sql`
-    ALTER TABLE cancellations ADD COLUMN IF NOT EXISTS subscribed BOOLEAN DEFAULT FALSE
-  `;
+  try {
+    await sql`
+      CREATE TABLE IF NOT EXISTS cancellations (
+        id SERIAL PRIMARY KEY,
+        email TEXT UNIQUE NOT NULL,
+        token TEXT UNIQUE NOT NULL,
+        subscribed BOOLEAN DEFAULT FALSE,
+        verified BOOLEAN DEFAULT FALSE,
+        created_at TIMESTAMP DEFAULT NOW(),
+        verified_at TIMESTAMP
+      )
+    `;
+    await sql`
+      ALTER TABLE cancellations ADD COLUMN IF NOT EXISTS subscribed BOOLEAN DEFAULT FALSE
+    `;
+  } finally {
+    await sql.end();
+  }
 }
 
 export async function insertCancellation(email: string, token: string, subscribed: boolean = false) {
-  const sql = getDb();
   await ensureTable();
-  await sql`
-    INSERT INTO cancellations (email, token, subscribed)
-    VALUES (${email}, ${token}, ${subscribed})
-  `;
+  const sql = getDb();
+  try {
+    await sql`
+      INSERT INTO cancellations (email, token, subscribed)
+      VALUES (${email}, ${token}, ${subscribed})
+    `;
+  } finally {
+    await sql.end();
+  }
 }
 
 export async function findByEmail(email: string) {
-  const sql = getDb();
   await ensureTable();
-  const rows = await sql`SELECT * FROM cancellations WHERE email = ${email}`;
-  return rows[0] || null;
+  const sql = getDb();
+  try {
+    const rows = await sql`SELECT * FROM cancellations WHERE email = ${email}`;
+    return rows[0] || null;
+  } finally {
+    await sql.end();
+  }
 }
 
 export async function findByToken(token: string) {
-  const sql = getDb();
   await ensureTable();
-  const rows = await sql`SELECT * FROM cancellations WHERE token = ${token}`;
-  return rows[0] || null;
+  const sql = getDb();
+  try {
+    const rows = await sql`SELECT * FROM cancellations WHERE token = ${token}`;
+    return rows[0] || null;
+  } finally {
+    await sql.end();
+  }
 }
 
 export async function verifyToken(token: string) {
   const sql = getDb();
-  await sql`
-    UPDATE cancellations SET verified = TRUE, verified_at = NOW()
-    WHERE token = ${token}
-  `;
+  try {
+    await sql`
+      UPDATE cancellations SET verified = TRUE, verified_at = NOW()
+      WHERE token = ${token}
+    `;
+  } finally {
+    await sql.end();
+  }
 }
 
 export async function updateToken(email: string, newToken: string) {
   const sql = getDb();
-  await sql`
-    UPDATE cancellations SET token = ${newToken}
-    WHERE email = ${email}
-  `;
+  try {
+    await sql`
+      UPDATE cancellations SET token = ${newToken}
+      WHERE email = ${email}
+    `;
+  } finally {
+    await sql.end();
+  }
 }
 
 export async function getVerifiedCount(): Promise<number> {
-  const sql = getDb();
   await ensureTable();
-  const rows = await sql`SELECT COUNT(*) as count FROM cancellations WHERE verified = TRUE`;
-  return parseInt(rows[0].count, 10);
+  const sql = getDb();
+  try {
+    const rows = await sql`SELECT COUNT(*) as count FROM cancellations WHERE verified = TRUE`;
+    return parseInt(rows[0].count, 10);
+  } finally {
+    await sql.end();
+  }
 }

@@ -1,7 +1,6 @@
 import type { APIRoute } from 'astro';
 import { findByEmail, insertCancellation, updateToken } from '../../lib/db';
 import { Resend } from 'resend';
-import { RESEND_API_KEY, SITE_URL } from 'astro:env/server';
 
 export const prerender = false;
 
@@ -35,7 +34,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const token = crypto.randomUUID();
-    const siteUrl = SITE_URL || 'https://defundbillionaires.org';
+    const siteUrl = process.env.SITE_URL || 'https://defundbillionaires.org';
 
     if (existing) {
       await updateToken(email.toLowerCase(), token);
@@ -43,7 +42,15 @@ export const POST: APIRoute = async ({ request }) => {
       await insertCancellation(email.toLowerCase(), token, !!subscribe);
     }
 
-    const resend = new Resend(RESEND_API_KEY);
+    const resendKey = process.env.RESEND_API_KEY;
+    if (!resendKey) {
+      return new Response(JSON.stringify({ error: 'Email service not configured.' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    const resend = new Resend(resendKey);
     const confirmUrl = `${siteUrl}/api/confirm?token=${token}`;
 
     await resend.emails.send({

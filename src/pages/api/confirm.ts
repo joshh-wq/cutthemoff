@@ -1,6 +1,5 @@
 import type { APIRoute } from 'astro';
 import { findByToken, verifyToken } from '../../lib/db';
-import { BUTTONDOWN_API_KEY } from 'astro:env/server';
 
 export const prerender = false;
 
@@ -24,12 +23,13 @@ export const GET: APIRoute = async ({ url, redirect }) => {
   await verifyToken(token);
 
   // Add to Buttondown if they opted in
-  if (row.subscribed && BUTTONDOWN_API_KEY) {
+  const buttondownKey = process.env.BUTTONDOWN_API_KEY;
+  if (row.subscribed && buttondownKey) {
     try {
       await fetch('https://api.buttondown.com/v1/subscribers', {
         method: 'POST',
         headers: {
-          'Authorization': `Token ${BUTTONDOWN_API_KEY}`,
+          'Authorization': `Token ${buttondownKey}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email: row.email }),
